@@ -5,29 +5,29 @@ import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.json.JsonObject;
 
 /** Class for transfering config messages over EventBus */
-public class ImageScalesURLsCodec implements MessageCodec<ImageScalesURLs, ImageScalesURLs> {
+public class OriginURLCodec implements MessageCodec<OriginURL, OriginURL> {
 
     @Override
-    public void encodeToWire(Buffer buffer, ImageScalesURLs imgurls) {
-        String contractsStr = imgurls.toJson().encode();
+    public void encodeToWire(Buffer buffer, OriginURL imgurl) {
+        String contractsStr = imgurl.toJson().encode();
         int length = contractsStr.getBytes().length;
         buffer.appendInt(length);
         buffer.appendString(contractsStr);
     }
 
     @Override
-    public ImageScalesURLs decodeFromWire(int pos, Buffer buffer) {
+    public OriginURL decodeFromWire(int pos, Buffer buffer) {
         int position = pos;
         int length = buffer.getInt(position);
         String jsonStr = buffer.getString(position += 4, position += length);
         JsonObject json = new JsonObject(jsonStr);
 
-        return new ImageScalesURLs(json);
+        return new OriginURL(json);
     }
 
     @Override
-    public ImageScalesURLs transform(ImageScalesURLs imgurls) {
-        return imgurls;
+    public OriginURL transform(OriginURL imgurl) {
+        return imgurl;
     }
 
     @Override

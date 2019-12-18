@@ -38,7 +38,7 @@ public class ImageScalesURLs {
         mJson = new JsonObject()
                 .put(PHOTO_ID, PhotoID)
                 .put(URLs, toJsonWidthURLs(WidthURLs));
-        mPhotoID = PhotoID
+        mPhotoID = PhotoID;
         mWidthURLs = WidthURLs;
     }
 
@@ -61,7 +61,7 @@ public class ImageScalesURLs {
     @Override
     public String toString() {
         return "ImageScalesURLs {" +
-                "mPhotoID = '" + mPhotoID + '\'' +
+                "mPhotoID = '" + mPhotoID.toString() + '\'' +
                 "mWidthURLs = '" + mWidthURLs.toString() + '\'' +
                 '}';
     }
