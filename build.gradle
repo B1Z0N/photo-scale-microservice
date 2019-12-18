@@ -24,6 +24,7 @@ subprojects {
 
     dependencies {
         compile group: "io.vertx", name: "vertx-core", version: "${vertxVersion}"
+        compile 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
     }
 
     def generatedJavaOutputDir = "${buildDir.absolutePath}/generated/"

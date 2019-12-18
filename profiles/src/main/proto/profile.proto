@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package configuration;
-
 option java_package = "profile";
 option java_multiple_files = true;
 
