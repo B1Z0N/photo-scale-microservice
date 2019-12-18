@@ -27,7 +27,6 @@ public class MainVerticle extends MicroserviceVerticle {
 
     List<Promise> verticlePromises = Stream.of(
         ConfigurationVerticle.class,
-        ProfilesVerticle.class,
         ApiVerticle.class,
         ServiceDiscoveryVerticle.class)
       .map(el -> redeployVerticle(el.getName(), new JsonObject()))
