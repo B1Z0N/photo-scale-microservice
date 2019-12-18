@@ -1,7 +1,12 @@
 package profiles.model;
 
+import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /** Data class: representation of conf/config.json in plain java class */
 public class Config {
@@ -16,6 +21,10 @@ public class Config {
   private static final String TLS_PRIV_KEY = "priv_key";
   private static final String TLS_CA = "ca";
 
+  private static final String SIZES = "sizes";
+  private static final String NAME = "name";
+  private static final String WIDTH = "width";
+
   // Variables
 
   private final JsonObject mConfigObject;
@@ -24,6 +33,7 @@ public class Config {
   private final String mTlsCertChain;
   private final String mTlsPrivKey;
   private final String mTlsCa;
+  private final HashMap<String, Integer> mSizes;
 
   // Constructors
 
@@ -38,6 +48,35 @@ public class Config {
     mTlsCertChain = tls.getString(TLS_CERT_CHAIN);
     mTlsPrivKey = tls.getString(TLS_PRIV_KEY);
     mTlsCa = tls.getString(TLS_CA);
+
+    JsonArray sizes = config.getJsonArray(SIZES);
+    mSizes = jsonSizesArrayToMap(sizes);
+  }
+
+  private HashMap<String, Integer> jsonSizesArrayToMap(@Nonnull JsonArray jarr) {
+    HashMap<String, Integer> map = new HashMap<>();
+    for (int i = 0; i < jarr.size(); i++) {
+      JsonObject current = jarr.getJsonObject(i);
+      mSizes.put(current.getString(NAME), current.getInteger(WIDTH));
+    }
+
+    return map;
+  }
+
+  private JsonArray mapSizesToJsonArray(@Nonnull HashMap<String, Integer> map) {
+    JsonArray jarr = new JsonArray();
+    Iterator it = map.entrySet().iterator();
+    while (it.hasNext()) {
+      HashMap.Entry pair = (HashMap.Entry) it.next();
+      jarr.add(
+            new JsonObject()
+              .put(NAME, pair.getKey())
+              .put(WIDTH, pair.getValue())
+      );
+      it.remove(); // avoids a ConcurrentModificationException
+    }
+
+    return jarr;
   }
 
   // Public
@@ -52,9 +91,12 @@ public class Config {
       .put(TLS_PRIV_KEY, mTlsPrivKey)
       .put(TLS_CA, mTlsCa);
 
+    JsonArray sizes = mapSizesToJsonArray(mSizes);
+
     return new JsonObject()
       .put(ENDPOINT, endpoint)
-      .put(TLS, tls);
+      .put(TLS, tls)
+      .put(SIZES, sizes);
   }
 
   // Accessors
@@ -83,6 +125,10 @@ public class Config {
     return mTlsCa;
   }
 
+  public HashMap<String, Integer> getSizes() {
+    return mSizes;
+  }
+
   // Utils
 
   @Override
@@ -93,6 +139,7 @@ public class Config {
       ", mTlsCertChain='" + mTlsCertChain + '\'' +
       ", mTlsPrivKey='" + mTlsPrivKey + '\'' +
       ", mTlsCa='" + mTlsCa + '\'' +
+      ", mSizes='" + mSizes.toString() + '\'' +
       '}';
   }
 }

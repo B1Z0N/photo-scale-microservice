@@ -67,7 +67,7 @@ public class ImageScalesURLs {
     }
 
     private HashMap<Integer, String> fromJsonWidthURLs(@Nonnull JsonArray jarr) {
-        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        HashMap<Integer, String> map = new HashMap<>();
         for (int i = 0; i < jarr.size(); i++) {
             JsonObject current = jarr.getJsonObject(i);
             map.put(current.getInteger(WIDTH), current.getString(SCALE_URL));

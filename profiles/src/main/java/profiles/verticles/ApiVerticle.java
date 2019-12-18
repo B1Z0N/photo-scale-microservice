@@ -2,9 +2,12 @@ package profiles.verticles;
 
 import profiles.model.Config;
 import profiles.model.ConfigMessageCodec;
-import profiles.model.Profile;
-import profiles.model.ProfileMessageCodec;
+import profiles.model.OriginURL;
+import profiles.model.OriginURLCodec;
+import profiles.model.ImageScalesURLs;
+import profiles.model.ImageScalesURLsCodec;
 import profiles.services.ProfileServiceImpl;
+
 import vertx.common.MicroserviceVerticle;
 import io.grpc.protobuf.services.ProtoReflectionService;
 import io.vertx.core.Promise;
@@ -43,7 +46,7 @@ public class ApiVerticle extends MicroserviceVerticle {
   private void registerCodecs() {
     try {
       vertx.eventBus().registerDefaultCodec(Config.class, new ConfigMessageCodec());
-      vertx.eventBus().registerDefaultCodec(Profile.class, new ProfileMessageCodec());
+      vertx.eventBus().registerDefaultCodec(OriginURL.class, new OriginURLCodec());
     } catch (IllegalStateException ignored) {}
   }
 
@@ -99,7 +102,6 @@ public class ApiVerticle extends MicroserviceVerticle {
     mServer = VertxServerBuilder.forAddress(vertx, config.getEndpointHost(), Integer.parseInt(config.getEndpointPort()))
       .useTransportSecurity(certChainFile(config), privateKeyFile(config))
       /** Important, adding service for retrieval of Profile data via gRPC*/
-      .addService(new ProfileServiceImpl(vertx))
       .addService(ProtoReflectionService.newInstance())
       .build()
       .start(ar -> {

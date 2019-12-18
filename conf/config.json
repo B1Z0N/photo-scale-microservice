@@ -7,5 +7,19 @@
     "cert_chain": "ssl/server.crt",
     "priv_key": "ssl/server.pem",
     "ca": "ssl/ca.crt"
-  }
+  },
+  "sizes" : [
+    {
+      "name" : "sm",
+      "width" : 480
+    },
+    {
+      "name" : "md",
+      "width" : 1080
+    },
+    {
+      "name" : "lg",
+      "width" : 1440
+    }
+  ]
 }
