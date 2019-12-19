@@ -6,7 +6,6 @@ import profiles.model.OriginURL;
 import profiles.model.OriginURLCodec;
 import profiles.model.ImageScalesURLs;
 import profiles.model.ImageScalesURLsCodec;
-import profiles.services.ProfileServiceImpl;
 
 import vertx.common.MicroserviceVerticle;
 import io.grpc.protobuf.services.ProtoReflectionService;
@@ -20,6 +19,7 @@ import java.io.File;
 
 import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
 import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
+import static profiles.verticles.ScaleVerticle.EBA_SCALE_ORIGIN;
 
 public class ApiVerticle extends MicroserviceVerticle {
 
@@ -35,9 +35,23 @@ public class ApiVerticle extends MicroserviceVerticle {
     registerCodecs();
     setupConfigListener();
     setupConfig();
+    sendPhotoRequest(1, "https://i.pinimg.com/originals/ec/b9/44/ecb94420f2844e9213969076e3aa2dcb.jpg");
   }
 
   // Private
+
+  private void sendPhotoRequest(@Nonnull Integer ID, @Nonnull String URL) {
+    vertx.eventBus().<OriginURL>request(EBA_SCALE_ORIGIN, new OriginURL(ID, URL), ar -> {
+      if (ar.succeeded()) {
+        // send "OK" to sagas
+        System.out.println("OK! ID: " + ID.toString() + " | " + ar.cause());
+      } else {
+        // send "ERR" to sagas
+        System.out.println("ERR! ID: " + ID.toString());
+      }
+    });
+  }
+
 
   /**
    * Set our channels of communication using Config and Profile classes
