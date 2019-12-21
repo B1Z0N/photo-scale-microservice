@@ -89,57 +89,70 @@ public class ScaleVerticle extends MicroserviceVerticle {
         }
     }
 
+    private void deletionHandler(String photoID, String bucketName) {
+        Iterator it = mSizes.entrySet().iterator();
+        ArrayList<String> scaleURLs = new ArrayList<>();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            scaleURLs.add(photoID + "." + pair.getKey());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+
+        mS3Client.multiDelete(bucketName, scaleURLs);
+    }
+
+    private void scalingHandler(String photoID, String bucketName) throws IOException {
+        File orig = mS3Client.download(bucketName, photoID);
+        Iterator it = mSizes.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+
+            mS3Client.upload(
+                    bucketName,
+                    ImageResize.resizeFromFile(
+                            orig, PHOTO_EXT, (Integer) pair.getValue()
+                    ), photoID + "." + pair.getKey()
+            );
+
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+    }
+
     private void setupScaleListeners() {
         // resize and put to s3
         vertx.eventBus().<OriginID>consumer(EBA_SCALE_ORIGIN, handler -> {
             OriginID url = handler.body();
-            String currentBucket = PHOTOS_BUCKET;
-            if (url.getType() == OriginID.photoType.USERPIC) {
-                currentBucket = USERPICS_BUCKET;
-            }
+            final String currentBucket = url.getType() == OriginID.photoType.USERPIC ?
+                    USERPICS_BUCKET : PHOTOS_BUCKET;
 
-            try {
-                File orig = mS3Client.download(currentBucket, url.getID());
-                Iterator it = mSizes.entrySet().iterator();
-                while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-
-                    mS3Client.upload(
-                            currentBucket,
-                            ImageResize.resizeFromFile(
-                                    orig, PHOTO_EXT, (Integer) pair.getValue()
-                            ), url.getID() + "." + pair.getKey()
-                    );
-
-                    it.remove(); // avoids a ConcurrentModificationException
+            vertx.executeBlocking(promise -> {
+                try {
+                    scalingHandler(url.getID(), currentBucket);
+                    promise.complete("OK");
+                } catch (IOException e) {
+                    // report error to sagas
+                    handler.fail(1, "Can't download original image");
+                    promise.complete("ERR");
                 }
-            } catch (IOException e) {
-                // report error to sagas
-                handler.fail(1, "Can't download original image");
-            }
-            handler.reply("OK");
+            }, false, ar -> {
+                if (ar.result() == "OK")
+                    handler.reply("OK");
+                else
+                    handler.fail(-1, "ERR");
+            });
         });
+
 
         // remove scales from s3
         vertx.eventBus().<OriginID>consumer(EBA_DELETE_ORIGIN, handler -> {
             OriginID url = handler.body();
-            String currentBucket = PHOTOS_BUCKET;
-            if (url.getType() == OriginID.photoType.USERPIC) {
-                currentBucket = USERPICS_BUCKET;
-            }
+            final String currentBucket = url.getType() == OriginID.photoType.USERPIC ?
+                    USERPICS_BUCKET : PHOTOS_BUCKET;
 
-            Iterator it = mSizes.entrySet().iterator();
-            ArrayList<String> scaleURLs = new ArrayList<>();
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry) it.next();
-
-                scaleURLs.add(url.getID() + "." + pair.getKey());
-
-                it.remove(); // avoids a ConcurrentModificationException
-            }
-
-            mS3Client.multiDelete(currentBucket, scaleURLs);
-            handler.reply("OK");
+            vertx.executeBlocking(promise -> {
+                deletionHandler(url.getID(), currentBucket);
+                promise.complete("");
+            }, false, ar -> handler.reply("OK"));
         });
     }
 //
