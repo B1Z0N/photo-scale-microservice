@@ -57,7 +57,7 @@ public class Config {
     HashMap<String, Integer> map = new HashMap<>();
     for (int i = 0; i < jarr.size(); i++) {
       JsonObject current = jarr.getJsonObject(i);
-      mSizes.put(current.getString(NAME), current.getInteger(WIDTH));
+      map.put(current.getString(NAME), current.getInteger(WIDTH));
     }
 
     return map;

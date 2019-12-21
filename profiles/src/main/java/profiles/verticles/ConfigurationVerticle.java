@@ -58,6 +58,7 @@ public class ConfigurationVerticle extends MicroserviceVerticle {
         }
       });
     });
+
     retriever.listen(this::onConfigChange);
     retriever.configStream().exceptionHandler(e -> System.out.println("Error. Config file not found"));
   }

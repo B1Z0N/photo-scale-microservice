@@ -5,10 +5,10 @@ import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.json.JsonObject;
 
 /** Class for transfering config messages over EventBus */
-public class OriginURLCodec implements MessageCodec<OriginURL, OriginURL> {
+public class OriginIDCodec implements MessageCodec<OriginID, OriginID> {
 
     @Override
-    public void encodeToWire(Buffer buffer, OriginURL imgurl) {
+    public void encodeToWire(Buffer buffer, OriginID imgurl) {
         String contractsStr = imgurl.toJson().encode();
         int length = contractsStr.getBytes().length;
         buffer.appendInt(length);
@@ -16,17 +16,17 @@ public class OriginURLCodec implements MessageCodec<OriginURL, OriginURL> {
     }
 
     @Override
-    public OriginURL decodeFromWire(int pos, Buffer buffer) {
+    public OriginID decodeFromWire(int pos, Buffer buffer) {
         int position = pos;
         int length = buffer.getInt(position);
         String jsonStr = buffer.getString(position += 4, position += length);
         JsonObject json = new JsonObject(jsonStr);
 
-        return new OriginURL(json);
+        return new OriginID(json);
     }
 
     @Override
-    public OriginURL transform(OriginURL imgurl) {
+    public OriginID transform(OriginID imgurl) {
         return imgurl;
     }
 

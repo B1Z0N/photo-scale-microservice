@@ -12,68 +12,71 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/** Verticle that deploys all other verticles */
+/**
+ * Verticle that deploys all other verticles
+ */
 public class MainVerticle extends MicroserviceVerticle {
 
-  // Variables
+    // Variables
 
-  private Map<String, List<String>> mVerticles = new HashMap<>();
+    private Map<String, List<String>> mVerticles = new HashMap<>();
 
-  // Overrides
+    // Overrides
 
-  @Override
-  public void start(Promise<Void> startPromise) {
-    createServiceDiscovery();
+    @Override
+    public void start(Promise<Void> startPromise) {
+        createServiceDiscovery();
 
-    List<Promise> verticlePromises = Stream.of(
-        ConfigurationVerticle.class,
-        ApiVerticle.class,
-        ServiceDiscoveryVerticle.class)
-      .map(el -> redeployVerticle(el.getName(), new JsonObject()))
-      .collect(Collectors.toList());
+        List<Promise> verticlePromises = Stream.of(
+                ServiceDiscoveryVerticle.class,
+                ConfigurationVerticle.class,
+                ScaleVerticle.class,
+                ApiVerticle.class)
+                .map(el -> redeployVerticle(el.getName(), new JsonObject()))
+                .collect(Collectors.toList());
 
-    List<Future> futures = verticlePromises.stream()
-      .map((Function<Promise, Future>) Promise::future)
-      .collect(Collectors.toList());
+        List<Future> futures = verticlePromises.stream()
+                .map((Function<Promise, Future>) Promise::future)
+                .collect(Collectors.toList());
 
-    CompositeFuture.all(futures).setHandler(ar -> {
-      if (ar.failed()) {
-        startPromise.fail(ar.cause());
-      } else {
-        startPromise.complete();
-      }
-    });
-  }
+        CompositeFuture.all(futures).setHandler(ar -> {
+            if (ar.failed()) {
+                startPromise.fail(ar.cause());
+            } else {
+                startPromise.complete();
+            }
+        });
+    }
 
-  // Private
+    // Private
 
-  private Promise<Void> redeployVerticle(String className, JsonObject config) {
-    Promise<Void> completion = Promise.promise();
-    removeExistingVerticles(className);
+    private Promise<Void> redeployVerticle(String className, JsonObject config) {
+        Promise<Void> completion = Promise.promise();
+        removeExistingVerticles(className);
 
-    DeploymentOptions options = new DeploymentOptions()
-      .setConfig(config);
-    vertx.deployVerticle(className, options, ar -> {
-      if (ar.failed()) {
-        completion.fail(ar.cause());
-      } else {
-        registerVerticle(className, ar.result());
-        completion.complete();
-      }
-    });
+        DeploymentOptions options = new DeploymentOptions()
+                .setConfig(config);
+        vertx.deployVerticle(className, options, ar -> {
+            if (ar.failed()) {
+                completion.fail(ar.cause());
+            } else {
+                registerVerticle(className, ar.result());
+                completion.complete();
+            }
+        });
 
-    return completion;
-  }
+        return completion;
+    }
 
-  private void registerVerticle(String className, String deploymentId) {
-    mVerticles.computeIfAbsent(className, k -> new ArrayList<>());
-    ArrayList<String> configVerticles = (ArrayList<String>) mVerticles.get(className);
-    configVerticles.add(deploymentId);
-  }
+    private void registerVerticle(String className, String deploymentId) {
+        mVerticles.computeIfAbsent(className, k -> new ArrayList<>());
+        ArrayList<String> configVerticles = (ArrayList<String>) mVerticles.get(className);
+        configVerticles.add(deploymentId);
+    }
 
-  private void removeExistingVerticles(String className) {
-    mVerticles.getOrDefault(className, new ArrayList<>())
-      .forEach(vertx::undeploy);
-    mVerticles.remove(className);
-  }
+    private void removeExistingVerticles(String className) {
+        mVerticles.getOrDefault(className, new ArrayList<>())
+                .forEach(vertx::undeploy);
+        mVerticles.remove(className);
+    }
 }

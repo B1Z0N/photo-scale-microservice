@@ -68,7 +68,7 @@ public class S3client {
 
     public void multiDelete(String bucketName, ArrayList<String> pathes) {
         DeleteObjectsRequest delObjReq = new DeleteObjectsRequest(bucketName)
-                .withKeys(pathes);
+                .withKeys(pathes.toArray(new String[]{}));
         mClient.deleteObjects(delObjReq);
     }
 }
