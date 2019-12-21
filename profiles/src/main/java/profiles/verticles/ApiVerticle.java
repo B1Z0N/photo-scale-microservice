@@ -32,33 +32,35 @@ public class ApiVerticle extends MicroserviceVerticle {
     public void start() throws InterruptedException {
         createServiceDiscovery();
         registerCodecs();
-        photoScale("website.jpg", photoType.PHOTO);
-//        photoDelete("website.jpg", photoType.PHOTO);
+        photoScale("pretty_woman.jpg", photoType.PHOTO);
+        photoDelete("pretty_woman.jpg", photoType.PHOTO);
     }
 
     // Private
 
     private void photoScale(@Nonnull String ID, photoType type) {
         vertx.eventBus().<OriginID>request(EBA_SCALE_ORIGIN, new OriginID(ID, type), ar -> {
-            if (ar.succeeded()) {
-                // send "OK" to sagas
-                System.out.println("SCALE OK! ID: " + ID.toString());
-            } else {
+            if (ar.failed()) {
                 // send "ERR" to sagas
                 System.out.println("SCALE ERR! ID: " + ID.toString() + " | " + ar.cause());
+                return;
             }
+
+            // send "OK" to sagas
+            System.out.println("SCALE OK! ID: " + ID.toString());
         });
     }
 
     private void photoDelete(@Nonnull String ID, photoType type) {
         vertx.eventBus().<OriginID>request(EBA_DELETE_ORIGIN, new OriginID(ID, type), ar -> {
-            if (ar.succeeded()) {
-                // send "OK" to sagas
-                System.out.println("DELETE OK! ID: " + ID.toString());
-            } else {
+            if (ar.failed()) {
                 // send "ERR" to sagas
                 System.out.println("DELETE ERR! ID: " + ID.toString() + " | " + ar.cause());
+                return;
             }
+
+            // send "OK" to sagas
+            System.out.println("DELETE OK! ID: " + ID.toString());
         });
     }
 

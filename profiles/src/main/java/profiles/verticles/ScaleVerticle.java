@@ -93,36 +93,40 @@ public class ScaleVerticle extends MicroserviceVerticle {
         // resize and put to s3
         vertx.eventBus().<OriginID>consumer(EBA_SCALE_ORIGIN, handler -> {
             OriginID url = handler.body();
-            final String currentBucket = url.getType() == OriginID.photoType.USERPIC ?
-                    USERPICS_BUCKET : PHOTOS_BUCKET;
+            String currentBucket = PHOTOS_BUCKET;
+            if (url.getType() == OriginID.photoType.USERPIC) {
+                currentBucket = USERPICS_BUCKET;
+            }
 
-            vertx.executeBlocking(promise -> {
-                // Calling blocking API that takes a significant amount of time to return
-                try {
-                    File orig = mS3Client.download(currentBucket, url.getID());
-                    Iterator it = mSizes.entrySet().iterator();
-                    while (it.hasNext()) {
-                        Map.Entry pair = (Map.Entry) it.next();
+            try {
+                File orig = mS3Client.download(currentBucket, url.getID());
+                Iterator it = mSizes.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
 
-                        mS3Client.upload(currentBucket,
-                                ImageResize.resizeFromFile(orig, PHOTO_EXT, (Integer) pair.getValue()),
-                                url.getID() + "." + pair.getKey());
+                    mS3Client.upload(
+                            currentBucket,
+                            ImageResize.resizeFromFile(
+                                    orig, PHOTO_EXT, (Integer) pair.getValue()
+                            ), url.getID() + "." + pair.getKey()
+                    );
 
-                        it.remove(); // avoids a ConcurrentModificationException
-                    }
-                } catch (IOException e) {
-                    // report error to sagas
-                    handler.fail(1, "Can't download original image");
+                    it.remove(); // avoids a ConcurrentModificationException
                 }
-                promise.complete();
-            }, false, res -> {});
+            } catch (IOException e) {
+                // report error to sagas
+                handler.fail(1, "Can't download original image");
+            }
+            handler.reply("OK");
         });
 
         // remove scales from s3
         vertx.eventBus().<OriginID>consumer(EBA_DELETE_ORIGIN, handler -> {
             OriginID url = handler.body();
-            final String currentBucket = url.getType() == OriginID.photoType.USERPIC ?
-                    USERPICS_BUCKET : PHOTOS_BUCKET;
+            String currentBucket = PHOTOS_BUCKET;
+            if (url.getType() == OriginID.photoType.USERPIC) {
+                currentBucket = USERPICS_BUCKET;
+            }
 
             Iterator it = mSizes.entrySet().iterator();
             ArrayList<String> scaleURLs = new ArrayList<>();
@@ -135,6 +139,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
             }
 
             mS3Client.multiDelete(currentBucket, scaleURLs);
+            handler.reply("OK");
         });
     }
 //

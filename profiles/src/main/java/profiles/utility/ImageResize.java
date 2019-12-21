@@ -9,6 +9,7 @@ import java.io.IOException;
 public class ImageResize {
 
     public static File resizeFromFile(File imgFile, String imgExt, Integer newWidth) throws IOException {
+        imgExt = imgExt.toLowerCase();
         if (imgExt == "jpeg") imgExt = "jpg";
 
         BufferedImage img = ImageIO.read(imgFile);
