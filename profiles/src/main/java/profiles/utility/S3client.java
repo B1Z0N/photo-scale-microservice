@@ -11,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class S3client {
@@ -65,7 +66,7 @@ public class S3client {
         mClient.deleteObject(bucketName, path);
     }
 
-    public void multiDelete(String bucketName, String[] pathes) {
+    public void multiDelete(String bucketName, ArrayList<String> pathes) {
         DeleteObjectsRequest delObjReq = new DeleteObjectsRequest(bucketName)
                 .withKeys(pathes);
         mClient.deleteObjects(delObjReq);

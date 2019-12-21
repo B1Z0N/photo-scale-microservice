@@ -19,6 +19,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -34,8 +35,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
     // Constants
 
     public static final String EBA_SCALE_ORIGIN = "put:origin";
-//    public static final String EBA_GET_SCALE = "get:scale";
-//    public static final String EBA_DELETE_ORIGIN = "delete:origin";
+    public static final String EBA_DELETE_ORIGIN = "delete:origin";
 
     private HashMap<String, Integer> mSizes;
     private S3client mS3Client;
@@ -57,7 +57,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
         registerCodecs();
         setupConfigListener();
         setupConfig();
-        setupListeners();
+        setupScaleListeners();
     }
 
     // Private
@@ -80,9 +80,9 @@ public class ScaleVerticle extends MicroserviceVerticle {
         }
     }
 
-    private void setupListeners() {
+    private void setupScaleListeners() {
+        // resize and put to s3
         vertx.eventBus().<OriginURL>consumer(EBA_SCALE_ORIGIN, handler -> {
-            // resize and put to s3
             OriginURL url = handler.body();
             String currentBucket = PHOTOS_BUCKET;
             if (url.getType() == OriginURL.photoType.USERPIC) {
@@ -99,7 +99,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
                             currentBucket,
                             ImageResize.resizeFromFile(
                                     orig, PHOTO_EXT, (Integer) pair.getValue()
-                            ),url.getUrl() + pair.getKey()
+                            ), url.getUrl() + pair.getKey()
                     );
 
                     it.remove(); // avoids a ConcurrentModificationException
@@ -108,6 +108,27 @@ public class ScaleVerticle extends MicroserviceVerticle {
                 // report error to sagas
                 handler.fail(1, "Can't download original image");
             }
+        });
+
+        // remove scales from s3
+        vertx.eventBus().<OriginURL>consumer(EBA_DELETE_ORIGIN, handler -> {
+            OriginURL url = handler.body();
+            String currentBucket = PHOTOS_BUCKET;
+            if (url.getType() == OriginURL.photoType.USERPIC) {
+                currentBucket = USERPICS_BUCKET;
+            }
+
+            Iterator it = mSizes.entrySet().iterator();
+            ArrayList<String> scaleURLs = new ArrayList<String>();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+
+                scaleURLs.add(url.getUrl() + pair.getKey());
+
+                it.remove(); // avoids a ConcurrentModificationException
+            }
+
+            mS3Client.multiDelete(currentBucket, scaleURLs);
         });
     }
 
