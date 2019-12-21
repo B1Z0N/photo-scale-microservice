@@ -1,19 +1,27 @@
 package profiles.verticles;
 
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import profiles.model.Config;
 import profiles.model.ConfigMessageCodec;
 import profiles.model.ImageScalesURLs;
 import profiles.model.ImageScalesURLsCodec;
 import profiles.model.OriginURL;
 import profiles.model.OriginURLCodec;
-import profiles.utility.ImageResize
+import profiles.utility.ImageResize;
+import profiles.utility.S3client;
 
 import vertx.common.MicroserviceVerticle;
 
 import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
 import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
@@ -30,11 +38,21 @@ public class ScaleVerticle extends MicroserviceVerticle {
 //    public static final String EBA_DELETE_ORIGIN = "delete:origin";
 
     private HashMap<String, Integer> mSizes;
+    private S3client mS3Client;
 
+    // it is very sensible data
+    private static final String ACCESS_KEY = System.getenv("AWS_S3_ACCESS_KEY");
+    private static final String SECRET_KEY = System.getenv("AWS_S3_SECRET_KEY");
+    private static final String PHOTOS_BUCKET = System.getenv("AWS_S3_PHOTOS_BUCKET");
+    private static final String USERPICS_BUCKET = System.getenv("AWS_S3_USERPICS_BUCKET");
+
+    private static final String PHOTO_EXT = "jpg";
+    private static final Regions REGION = Regions.US_EAST_2;
     // Overrides
 
     @Override
     public void start(Promise<Void> startPromise) {
+        setupS3Client();
         createServiceDiscovery();
         registerCodecs();
         setupConfigListener();
@@ -43,6 +61,15 @@ public class ScaleVerticle extends MicroserviceVerticle {
     }
 
     // Private
+
+    private void setupS3Client() throws NullPointerException {
+        if (ACCESS_KEY == null || SECRET_KEY == null ||
+                PHOTOS_BUCKET == null || USERPICS_BUCKET == null) {
+            throw new NullPointerException("Environment variables not settled up to it's values!");
+        }
+
+        mS3Client = new S3client(ACCESS_KEY, SECRET_KEY, REGION);
+    }
 
     private void registerCodecs() {
         try {
@@ -54,8 +81,33 @@ public class ScaleVerticle extends MicroserviceVerticle {
     }
 
     private void setupListeners() {
-        vertx.eventBus().<JsonObject>consumer(EBA_SCALE_ORIGIN, handler -> {
-            // resize and put to s3, insert into db
+        vertx.eventBus().<OriginURL>consumer(EBA_SCALE_ORIGIN, handler -> {
+            // resize and put to s3
+            OriginURL url = handler.body();
+            String currentBucket = PHOTOS_BUCKET;
+            if (url.getType() == OriginURL.photoType.USERPIC) {
+                currentBucket = USERPICS_BUCKET;
+            }
+
+            try {
+                File orig = mS3Client.download(currentBucket, url.getUrl());
+                Iterator it = mSizes.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry) it.next();
+
+                    mS3Client.upload(
+                            currentBucket,
+                            ImageResize.resizeFromFile(
+                                    orig, PHOTO_EXT, (Integer) pair.getValue()
+                            ),url.getUrl() + pair.getKey()
+                    );
+
+                    it.remove(); // avoids a ConcurrentModificationException
+                }
+            } catch (IOException e) {
+                // report error to sagas
+                handler.fail(1, "Can't download original image");
+            }
         });
     }
 

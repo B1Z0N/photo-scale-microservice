@@ -3,22 +3,22 @@ package profiles.utility;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 public class ImageResize {
 
-    public static BufferedImage resizeFromURL(String imgURL, Integer newWidth) throws IOException {
-        String imgExt = imgURL.substring(imgURL.lastIndexOf('.') + 1);
+    public static File resizeFromFile(File imgFile, String imgExt, Integer newWidth) throws IOException {
         if (imgExt == "jpeg") imgExt = "jpg";
 
-        BufferedImage image = imageFromURL(imgURL);
-        return resizeToWidth(image, newWidth);
-    }
+        BufferedImage img = ImageIO.read(imgFile);
+        img = resizeToWidth(img, newWidth);
 
-    private static BufferedImage imageFromURL(String urlPath) throws IOException {
-        URL url = new URL(urlPath);
-        return ImageIO.read(url);
+        File outputFile = File.createTempFile("aws", "s3");
+        ImageIO.write(img, imgExt, outputFile);
+
+        return outputFile;
     }
 
     private static BufferedImage resizeToWidth(BufferedImage img, int width) {

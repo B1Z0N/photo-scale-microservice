@@ -24,7 +24,13 @@ subprojects {
 
     dependencies {
         compile group: "io.vertx", name: "vertx-core", version: "${vertxVersion}"
-        compile 'com.hubrick.vertx:vertx-s3-client:3.3.3'
+
+        // S3client
+        compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.697'
+        compile group: 'commons-io', name: 'commons-io', version: '2.6'
+        //// performance/compatibility issues solution
+        implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+        implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
     }
 
     def generatedJavaOutputDir = "${buildDir.absolutePath}/generated/"
