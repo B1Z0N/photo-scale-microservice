@@ -1,25 +1,37 @@
 {
+  "__comment__" : "Single source of truth about non-secret data",
+
   "endpoint": {
     "host": "0.0.0.0",
     "port": "50051"
   },
+
   "tls": {
     "cert_chain": "ssl/server.crt",
     "priv_key": "ssl/server.pem",
     "ca": "ssl/ca.crt"
   },
-  "sizes" : [
+
+  "sizes": [
     {
-      "name" : "sm",
-      "width" : 480
+      "name": "sm",
+      "width": 480
     },
     {
-      "name" : "md",
-      "width" : 1080
+      "name": "md",
+      "width": 1080
     },
     {
-      "name" : "lg",
-      "width" : 1440
+      "name": "lg",
+      "width": 1440
     }
-  ]
+  ],
+
+  "aws": {
+    "photosBucket": "sagas.life.photos",
+    "userpicsBucket": "sagas.life.userpics",
+    "region": "US_EAST_2"
+  },
+
+  "extension": "jpg"
 }

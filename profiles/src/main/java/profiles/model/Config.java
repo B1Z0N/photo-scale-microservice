@@ -1,5 +1,6 @@
 package profiles.model;
 
+import com.amazonaws.regions.Regions;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
@@ -25,6 +26,12 @@ public class Config {
   private static final String NAME = "name";
   private static final String WIDTH = "width";
 
+  private static final String AWS = "aws";
+  private static final String PHOTOS_BUCKET = "photosBucket";
+  private static final String USERPIC_BUCKET = "userpicsBucket";
+  private static final String REGION = "region";
+  private static final String EXTENSION = "extension";
+
   // Variables
 
   private final JsonObject mConfigObject;
@@ -33,7 +40,12 @@ public class Config {
   private final String mTlsCertChain;
   private final String mTlsPrivKey;
   private final String mTlsCa;
+
   private final HashMap<String, Integer> mSizes;
+  private final Regions mRegion;
+  private final String mPhotosBucket;
+  private final String mUserpicBucket;
+  private final String mExtension;
 
   // Constructors
 
@@ -51,6 +63,13 @@ public class Config {
 
     JsonArray sizes = config.getJsonArray(SIZES);
     mSizes = jsonSizesArrayToMap(sizes);
+
+    JsonObject aws = config.getJsonObject(AWS);
+    mRegion = Regions.valueOf(aws.getString(REGION));
+    mUserpicBucket = aws.getString(USERPIC_BUCKET);
+    mPhotosBucket = aws.getString(PHOTOS_BUCKET);
+
+    mExtension = config.getString(EXTENSION);
   }
 
   private HashMap<String, Integer> jsonSizesArrayToMap(@Nonnull JsonArray jarr) {
@@ -129,6 +148,21 @@ public class Config {
     return mSizes;
   }
 
+  public Regions getRegion() {
+    return mRegion;
+  }
+
+  public String getPhotosBucket() {
+    return mPhotosBucket;
+  }
+
+  public String getUserpicBucket() {
+    return mUserpicBucket;
+  }
+
+  public String getExtension() {
+    return mExtension;
+  }
   // Utils
 
   @Override

@@ -16,22 +16,15 @@ import java.util.stream.Stream;
  * Verticle that deploys all other verticles
  */
 public class MainVerticle extends MicroserviceVerticle {
-
     // Variables
-
-    private Map<String, List<String>> mVerticles = new HashMap<>();
-
-    // Overrides
+    private Map<String, List<String>> mVerticles = new HashMap<>(); // Overrides
 
     @Override
     public void start(Promise<Void> startPromise) {
         createServiceDiscovery();
-
         List<Promise> verticlePromises = Stream.of(
                 ServiceDiscoveryVerticle.class,
-                ConfigurationVerticle.class,
-                ScaleVerticle.class,
-                ApiVerticle.class)
+                ConfigurationVerticle.class)
                 .map(el -> redeployVerticle(el.getName(), new JsonObject()))
                 .collect(Collectors.toList());
 
@@ -42,20 +35,35 @@ public class MainVerticle extends MicroserviceVerticle {
         CompositeFuture.all(futures).setHandler(ar -> {
             if (ar.failed()) {
                 startPromise.fail(ar.cause());
-            } else {
-                startPromise.complete();
             }
+        }).compose(v -> {
+            // When the file is created (fut1), execute this:
+            return redeployVerticle(ScaleVerticle.class.getName(), new JsonObject())
+                    .future().setHandler(
+                            ar -> {
+                                if (ar.failed()) {
+                                    startPromise.fail(ar.cause());
+                                }
+                            });
+        }).compose(v -> {
+            // When the file is created (fut1), execute this:
+            return redeployVerticle(ApiVerticle.class.getName(), new JsonObject())
+                    .future().setHandler(
+                            ar -> {
+                                if (ar.failed()) {
+                                    startPromise.fail(ar.cause());
+                                } else {
+                                    startPromise.complete();
+                                }
+                            });
         });
     }
 
     // Private
-
     private Promise<Void> redeployVerticle(String className, JsonObject config) {
         Promise<Void> completion = Promise.promise();
         removeExistingVerticles(className);
-
-        DeploymentOptions options = new DeploymentOptions()
-                .setConfig(config);
+        DeploymentOptions options = new DeploymentOptions().setConfig(config);
         vertx.deployVerticle(className, options, ar -> {
             if (ar.failed()) {
                 completion.fail(ar.cause());
@@ -64,7 +72,6 @@ public class MainVerticle extends MicroserviceVerticle {
                 completion.complete();
             }
         });
-
         return completion;
     }
 
@@ -75,8 +82,7 @@ public class MainVerticle extends MicroserviceVerticle {
     }
 
     private void removeExistingVerticles(String className) {
-        mVerticles.getOrDefault(className, new ArrayList<>())
-                .forEach(vertx::undeploy);
+        mVerticles.getOrDefault(className, new ArrayList<>()).forEach(vertx::undeploy);
         mVerticles.remove(className);
     }
 }
