@@ -33,5 +33,12 @@
     "region": "US_EAST_2"
   },
 
-  "extension": "jpg"
+  "extension": "jpg",
+
+  "kafka" : {
+    "host" : "localhost",
+    "port" : "9092",
+    "photosTopic" : "photosTopic",
+    "userpicsTopc" : "userpicsTopic"
+  }
 }

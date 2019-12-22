@@ -61,7 +61,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
 
     private void setupFromConfig(@Nonnull Config config) {
         mPhotosBucket = config.getPhotosBucket();
-        mUserpicsBucket = config.getUserpicBucket();
+        mUserpicsBucket = config.getUserpicsBucket();
         mRegion = config.getRegion();
         mExtension = config.getExtension();
         mSizes = config.getSizes();

@@ -32,11 +32,16 @@ public class ApiVerticle extends MicroserviceVerticle {
     public void start() throws InterruptedException {
         createServiceDiscovery();
         registerCodecs();
+        setupKafkaConsumers();
         photoScale("pretty_woman.jpg", photoType.PHOTO);
         photoDelete("pretty_woman.jpg", photoType.PHOTO);
     }
 
     // Private
+
+    public void setupKafkaConsumers() {
+
+    }
 
     private void photoScale(@Nonnull String ID, photoType type) {
         vertx.eventBus().<OriginID>request(EBA_SCALE_ORIGIN, new OriginID(ID, type), ar -> {
