@@ -24,6 +24,7 @@ import javax.annotation.Nonnull;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
 import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
@@ -36,8 +37,10 @@ public class ApiVerticle extends MicroserviceVerticle {
 
     KafkaConsumer<String, String> mConsumer;
 
-    private String mKafkaHost = "localhost";
-    private String mKafkaPort = "9092";
+    private String mKafkaHost;
+    private String mKafkaPort;
+    private String mScaleRequest;
+    private String mDeleteRequest;
     private String mUserpicsTopic;
     private String mPhotosTopic;
 
@@ -51,36 +54,45 @@ public class ApiVerticle extends MicroserviceVerticle {
     }
 
     // Private
+
     private void setupFromConfig(@Nonnull Config config) {
         mKafkaHost = config.getKafkaHost();
         mKafkaPort = config.getKafkaPort();
         mUserpicsTopic = config.getUserpicsTopic();
         mPhotosTopic = config.getPhotosTopic();
+        mDeleteRequest = config.getDeleteRequest();
+        mScaleRequest = config.getScaleRequest();
+
+        if (mConsumer != null) mConsumer.unsubscribe();
         setupKafkaConsumers();
     }
 
     public void setupKafkaConsumers() {
         Map<String, String> config = new HashMap<>();
         config.put("bootstrap.servers", String.join(":", mKafkaHost, mKafkaPort));
-        config.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        config.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        config.put("acks", "1");
+        config.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        config.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        config.put("group.id", "my_group");
+        config.put("auto.offset.reset", "earliest");
+        config.put("enable.auto.commit", "false");
 
-        mConsumer = KafkaConsumer.create(Vertx.vertx(), config);
+        mConsumer = KafkaConsumer.create(getVertx(), config);
         mConsumer.handler(record -> {
-            System.out.println("Record: " + record.topic() + " | " + record.value());
+            vinfo("Handling record: " + record.topic() + "  " + record.value());
 
             photoType type = record.topic().equals(mUserpicsTopic) ? photoType.USERPIC : photoType.PHOTO;
 
-            if (record.value().startsWith("del:")) photoScale(record.value().substring(4), type);
-            else if (record.value().startsWith("put:")) photoDelete(record.value().substring(4), type);
+            if (record.value().startsWith(mScaleRequest))
+                photoScale(record.value().substring(mScaleRequest.length()), type);
+            else if (record.value().startsWith(mDeleteRequest))
+                photoDelete(record.value().substring(mDeleteRequest.length()), type);
         });
 
         mConsumer.subscribe(mUserpicsTopic, ar -> {
             if (ar.succeeded()) {
-                System.out.println(String.format("Subscribed to %s successfully", mUserpicsTopic));
+                vsuccess(String.format("Subscribed to %s successfully", mUserpicsTopic));
             } else {
-                System.out.println(
+                verror(
                         String.format("Could not subscribe to %s: ", mUserpicsTopic) + ar.cause().getMessage()
                 );
             }
@@ -88,10 +100,10 @@ public class ApiVerticle extends MicroserviceVerticle {
 
         mConsumer.subscribe(mPhotosTopic, ar -> {
             if (ar.succeeded()) {
-                System.out.println(String.format("Subscribed to %s successfully", mPhotosTopic));
+                vsuccess(String.format("Subscribed to %s successfully", mPhotosTopic));
             } else {
-                System.out.println(
-                        String.format("Could not subscribe to %s: ", mPhotosTopic) + ar.cause().getMessage()
+                verror(
+                    String.format("Could not subscribe to %s: ", mPhotosTopic) + ar.cause().getMessage()
                 );
             }
         });
@@ -101,12 +113,12 @@ public class ApiVerticle extends MicroserviceVerticle {
         vertx.eventBus().<OriginID>request(EBA_SCALE_ORIGIN, new OriginID(ID, type), ar -> {
             if (ar.failed()) {
                 // send "ERR" to sagas
-                System.out.println("SCALE ERR! ID: " + ID.toString() + " | " + ar.cause());
+                vsuccess("Scaling, photoID: " + ID.toString() + " | " + ar.cause());
                 return;
             }
 
             // send "OK" to sagas
-            System.out.println("SCALE OK! ID: " + ID.toString());
+            verror("Scaling photoID: " + ID.toString());
         });
     }
 
@@ -146,7 +158,7 @@ public class ApiVerticle extends MicroserviceVerticle {
     private void setupConfigListener() {
         vertx.eventBus().<Config>consumer(EBA_CONFIG_UPDATE, configAr -> {
             setupFromConfig(configAr.body());
-            System.out.println("New kafka setup came up: " + mSizes);
+            vinfo("New kafka setup came up: ");
         });
     }
 
@@ -154,9 +166,10 @@ public class ApiVerticle extends MicroserviceVerticle {
         Promise<Config> promise = Promise.promise();
         promise.future().setHandler(configAr -> {
             if (configAr.failed()) {
-                System.out.println("1can't be fetched correctly: " + configAr.cause().getMessage());
+                verror("Config fetch: " + configAr.cause().getMessage());
             } else {
-                System.out.println("New sizes came up: " + configAr.result().getSizes().toString());
+                vsuccess("Config fetch, kafka: " +
+                        configAr.result().getKafkaHost() + ":" + configAr.result().getKafkaPort());
             }
         });
         fetchConfig(promise, startPromise);
@@ -170,11 +183,13 @@ public class ApiVerticle extends MicroserviceVerticle {
             if (configAr.failed()) {
                 promise.fail(configAr.cause());
                 startPromise.fail(configAr.cause());
+                verror("Setup");
                 return;
             }
 
             setupFromConfig(configAr.result().body());
             startPromise.complete();
+            vsuccess("Setup");
         });
     }
 }

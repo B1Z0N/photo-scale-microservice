@@ -35,6 +35,7 @@ public class MainVerticle extends MicroserviceVerticle {
         CompositeFuture.all(futures).setHandler(ar -> {
             if (ar.failed()) {
                 startPromise.fail(ar.cause());
+                verror("Setup");
             }
         }).compose(v -> {
             // When the file is created (fut1), execute this:
@@ -43,6 +44,7 @@ public class MainVerticle extends MicroserviceVerticle {
                             ar -> {
                                 if (ar.failed()) {
                                     startPromise.fail(ar.cause());
+                                    verror("Setup");
                                 }
                             });
         }).compose(v -> {
@@ -52,8 +54,10 @@ public class MainVerticle extends MicroserviceVerticle {
                             ar -> {
                                 if (ar.failed()) {
                                     startPromise.fail(ar.cause());
+                                    verror("Setup");
                                 } else {
                                     startPromise.complete();
+                                    vsuccess("Setup");
                                 }
                             });
         });
@@ -67,9 +71,11 @@ public class MainVerticle extends MicroserviceVerticle {
         vertx.deployVerticle(className, options, ar -> {
             if (ar.failed()) {
                 completion.fail(ar.cause());
+                verror("Deploy: " + className);
             } else {
                 registerVerticle(className, ar.result());
                 completion.complete();
+                vsuccess("Deploy: " + className);
             }
         });
         return completion;

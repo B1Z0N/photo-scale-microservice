@@ -41,6 +41,8 @@ public class Config {
     private static final String KAFKA_PORT = "port";
     private static final String PHOTOS_TOPIC = "photosTopic";
     private static final String USERPICS_TOPIC = "userpicsTopic";
+    private static final String DELETE_REQUEST = "deleteRequest";
+    private static final String SCALE_REQUEST = "scaleRequest";
 
     // Variables
 
@@ -62,6 +64,9 @@ public class Config {
     private final String mKafkaPort;
     private final String mPhotosTopic;
     private final String mUserpicsTopic;
+
+    private final String mDeleteRequest;
+    private final String mScaleRequest;
 
     // Constructors
 
@@ -92,6 +97,8 @@ public class Config {
         mKafkaPort = kafka.getString(KAFKA_PORT);
         mUserpicsTopic = kafka.getString(USERPICS_TOPIC);
         mPhotosTopic = kafka.getString(PHOTOS_TOPIC);
+        mDeleteRequest = kafka.getString(DELETE_REQUEST);
+        mScaleRequest = kafka.getString(SCALE_REQUEST);
     }
 
     // Public
@@ -117,7 +124,9 @@ public class Config {
                 .put(KAFKA_HOST, mKafkaHost)
                 .put(KAFKA_PORT, mKafkaPort)
                 .put(PHOTOS_TOPIC, mPhotosTopic)
-                .put(USERPICS_TOPIC, mUserpicsTopic);
+                .put(USERPICS_TOPIC, mUserpicsTopic)
+                .put(DELETE_REQUEST, mDeleteRequest)
+                .put(SCALE_REQUEST, mScaleRequest);
 
         return new JsonObject()
                 .put(ENDPOINT, endpoint)
@@ -190,6 +199,13 @@ public class Config {
         return mPhotosTopic;
     }
 
+    public String getDeleteRequest() {
+        return mDeleteRequest;
+    }
+
+    public String getScaleRequest() {
+        return mScaleRequest;
+    }
     // Utils
 
     @Override

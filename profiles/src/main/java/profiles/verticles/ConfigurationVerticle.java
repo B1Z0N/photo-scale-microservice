@@ -42,6 +42,7 @@ public class ConfigurationVerticle extends MicroserviceVerticle {
     ConfigRetriever retriever = ConfigRetriever.create(vertx);
     retriever.getConfig(configAr -> {
       if (configAr.failed()) {
+        verror("Setup");
         startPromise.fail(configAr.cause());
         return;
       }
@@ -50,17 +51,19 @@ public class ConfigurationVerticle extends MicroserviceVerticle {
 
       publishMessageSource(EBA_CONFIG_UPDATE, EBA_CONFIG_UPDATE, publishAr -> {
         if (publishAr.failed()) {
+          verror("Setup");
           startPromise.fail(publishAr.cause());
         } else {
           vertx.eventBus().publish(EBA_CONFIG_UPDATE, mConfig);
 
           startPromise.complete();
+          vsuccess("Setup");
         }
       });
     });
 
     retriever.listen(this::onConfigChange);
-    retriever.configStream().exceptionHandler(e -> System.out.println("Error. Config file not found"));
+    retriever.configStream().exceptionHandler(e -> verror("Condig file not found"));
   }
 
   private void onConfigChange(ConfigChange change) {

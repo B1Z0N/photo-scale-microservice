@@ -35,6 +35,24 @@ public class MicroserviceVerticle extends AbstractVerticle {
 
   // Overrides
 
+  protected void vsuccess(String msg) {
+    System.out.println(
+            String.join(" | ", this.getClass().getName(), "OK", msg)
+    );
+  }
+
+  protected void verror(String msg) {
+    System.out.println(
+            String.join(" | ", this.getClass().getName(), "ERR", msg)
+    );
+  }
+
+  protected void vinfo(String msg) {
+    System.out.println(
+            String.join(" | ", this.getClass().getName(), "INFO", msg)
+    );
+  }
+
   /**
    * Initialize our ServiceDiscovery object - an instrument
    * to publish and discover various resources

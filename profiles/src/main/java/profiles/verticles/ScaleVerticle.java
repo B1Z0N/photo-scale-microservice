@@ -70,6 +70,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
 
     private S3client setupS3Client() throws NullPointerException {
         if (ACCESS_KEY == null || SECRET_KEY == null || mRegion == null) {
+            verror("Internal error: secret data not settled up");
             throw new NullPointerException("Environment variables not settled up to it's values!");
         }
         return new S3client(ACCESS_KEY, SECRET_KEY, mRegion);
@@ -148,7 +149,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
     private void setupConfigListener() {
         vertx.eventBus().<Config>consumer(EBA_CONFIG_UPDATE, configAr -> {
             setupFromConfig(configAr.body());
-            System.out.println("New sizes came up: " + mSizes);
+            vinfo("New sizes came up: " + mSizes);
         });
     }
 
@@ -156,9 +157,10 @@ public class ScaleVerticle extends MicroserviceVerticle {
         Promise<Config> promise = Promise.promise();
         promise.future().setHandler(configAr -> {
             if (configAr.failed()) {
-                System.out.println("Scales can't be fetched correctly: " + configAr.cause().getMessage());
+                verror("Config fetch: " + configAr.cause().getMessage());
             } else {
-                System.out.println("New sizes came up: " + configAr.result().getSizes().toString());
+                vsuccess("Config fetch, sizes: " +
+                        configAr.result().getKafkaHost() + ":" + configAr.result().getSizes().toString());
             }
         });
         fetchConfig(promise, startPromise);
@@ -172,11 +174,13 @@ public class ScaleVerticle extends MicroserviceVerticle {
             if (configAr.failed()) {
                 promise.fail(configAr.cause());
                 startPromise.fail(configAr.cause());
+                verror("Setup");
                 return;
             }
 
             setupFromConfig(configAr.result().body());
             startPromise.complete();
+            vsuccess("Setup");
         });
     }
 }

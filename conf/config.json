@@ -39,6 +39,8 @@
     "host" : "localhost",
     "port" : "9092",
     "photosTopic" : "photosTopic",
-    "userpicsTopc" : "userpicsTopic"
+    "userpicsTopic" : "userpicsTopic",
+    "deleteRequest" : "del:",
+    "scaleRequest" : "put:"
   }
 }
