@@ -1,4 +1,4 @@
-package profiles.verticles;
+package scales.verticles;
 
 import vertx.common.MicroserviceVerticle;
 import io.vertx.core.CompositeFuture;

@@ -29,16 +29,21 @@ subprojects {
         compile group: "io.vertx", name: "vertx-core", version: "${vertxVersion}"
 
         // S3client
-
-        compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.697'
-        compile group: 'commons-io', name: 'commons-io', version: '2.6'
-        //// performance/compatibility issues solution
+        compile 'com.hubrick.vertx:vertx-s3-client:3.3.3'
+//        compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.697'
+//        compile group: 'commons-io', name: 'commons-io', version: '2.6'
+//        //// performance/compatibility issues solution
         implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
         implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
 
         // kafka client
 
         compile 'io.vertx:vertx-kafka-client:3.8.4'
+
+        // kafka for demo
+
+        compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.4.0'
+
     }
 
     def generatedJavaOutputDir = "${buildDir.absolutePath}/generated/"

@@ -1,13 +1,9 @@
-package profiles.model;
+package scales.model;
 
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.dynamodbv2.xspec.S;
-import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -54,7 +50,7 @@ public class Config {
     private final String mTlsCa;
 
     private final HashMap<String, Integer> mSizes;
-    private final Regions mRegion;
+    private final String mRegion;
     private final String mPhotosBucket;
     private final String mUserpicsBucket;
 
@@ -86,7 +82,7 @@ public class Config {
         mSizes = jsonSizesArrayToMap(sizes);
 
         JsonObject aws = config.getJsonObject(AWS);
-        mRegion = Regions.valueOf(aws.getString(REGION));
+        mRegion = aws.getString(REGION);
         mUserpicsBucket = aws.getString(USERPICS_BUCKET);
         mPhotosBucket = aws.getString(PHOTOS_BUCKET);
 
@@ -103,7 +99,7 @@ public class Config {
 
     // Public
 
-    public JsonObject toJson() {
+    JsonObject toJson() {
         JsonObject endpoint = new JsonObject()
                 .put(ENDPOINT_HOST, mEndpointHost)
                 .put(ENDPOINT_PORT, mEndpointPort);
@@ -167,7 +163,7 @@ public class Config {
         return mSizes;
     }
 
-    public Regions getRegion() {
+    public String getRegion() {
         return mRegion;
     }
 

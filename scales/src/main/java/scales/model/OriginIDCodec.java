@@ -1,10 +1,12 @@
-package profiles.model;
+package scales.model;
 
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.json.JsonObject;
 
-/** Class for transfering config messages over EventBus */
+/**
+ * Class for transfering config messages over EventBus
+ */
 public class OriginIDCodec implements MessageCodec<OriginID, OriginID> {
 
     @Override
@@ -19,7 +21,7 @@ public class OriginIDCodec implements MessageCodec<OriginID, OriginID> {
     public OriginID decodeFromWire(int pos, Buffer buffer) {
         int position = pos;
         int length = buffer.getInt(position);
-        String jsonStr = buffer.getString(position += 4, position += length);
+        String jsonStr = buffer.getString(position += 4, position + length);
         JsonObject json = new JsonObject(jsonStr);
 
         return new OriginID(json);

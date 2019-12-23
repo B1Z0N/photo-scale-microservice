@@ -1,4 +1,4 @@
-package profiles.utility;
+package scales.utility;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -6,11 +6,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+
+// class for image resizing from different sources
 public class ImageResize {
 
     public static File resizeFromFile(File imgFile, String imgExt, Integer newWidth) throws IOException {
         imgExt = imgExt.toLowerCase();
-        if (imgExt == "jpeg") imgExt = "jpg";
+        if (imgExt.equals("jpeg")) imgExt = "jpg";
 
         BufferedImage img = ImageIO.read(imgFile);
         img = resizeToWidth(img, newWidth);

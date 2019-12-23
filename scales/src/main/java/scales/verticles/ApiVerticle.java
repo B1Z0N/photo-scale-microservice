@@ -1,41 +1,30 @@
-package profiles.verticles;
+package scales.verticles;
 
-import com.sun.xml.bind.v2.model.core.ID;
-import io.vertx.core.Vertx;
 import io.vertx.kafka.client.consumer.KafkaConsumer;
-import io.vertx.kafka.client.producer.KafkaProducer;
-import io.vertx.kafka.client.producer.KafkaProducerRecord;
-import profiles.model.Config;
-import profiles.model.ConfigMessageCodec;
-import profiles.model.OriginID;
-import profiles.model.OriginID.photoType;
-import profiles.model.OriginIDCodec;
-import profiles.model.ImageScalesURLs;
-import profiles.model.ImageScalesURLsCodec;
+import scales.model.Config;
+import scales.model.ConfigMessageCodec;
+import scales.model.OriginID;
+import scales.model.OriginID.photoType;
+import scales.model.OriginIDCodec;
 
 import vertx.common.MicroserviceVerticle;
-import io.grpc.protobuf.services.ProtoReflectionService;
 import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
-import io.vertx.grpc.VertxServer;
-import io.vertx.grpc.VertxServerBuilder;
 
 import javax.annotation.Nonnull;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
-import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
-import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
-import static profiles.verticles.ScaleVerticle.EBA_DELETE_ORIGIN;
-import static profiles.verticles.ScaleVerticle.EBA_SCALE_ORIGIN;
+import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
+import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
+import static scales.verticles.ScaleVerticle.EBA_DELETE_ORIGIN;
+import static scales.verticles.ScaleVerticle.EBA_SCALE_ORIGIN;
 
+// verticle for communicating with kafka and internal implementation
 public class ApiVerticle extends MicroserviceVerticle {
 
     // Overrides
 
-    KafkaConsumer<String, String> mConsumer;
+    private KafkaConsumer<String, String> mConsumer;
 
     private String mKafkaHost;
     private String mKafkaPort;
@@ -46,7 +35,7 @@ public class ApiVerticle extends MicroserviceVerticle {
 
 
     @Override
-    public void start(Promise<Void> startPromise) throws InterruptedException {
+    public void start(Promise<Void> startPromise) {
         createServiceDiscovery();
         registerCodecs();
         setupConfigListener();
@@ -67,18 +56,18 @@ public class ApiVerticle extends MicroserviceVerticle {
         setupKafkaConsumers();
     }
 
-    public void setupKafkaConsumers() {
+    private void setupKafkaConsumers() {
         Map<String, String> config = new HashMap<>();
         config.put("bootstrap.servers", String.join(":", mKafkaHost, mKafkaPort));
         config.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         config.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         config.put("group.id", "my_group");
         config.put("auto.offset.reset", "earliest");
-        config.put("enable.auto.commit", "false");
+        config.put("enable.auto.commit", "true");
 
         mConsumer = KafkaConsumer.create(getVertx(), config);
         mConsumer.handler(record -> {
-            vinfo("Handling record: " + record.topic() + "  " + record.value());
+            vinfo("Handling record: " + record.topic() + "  " + ":" + record.value());
 
             photoType type = record.topic().equals(mUserpicsTopic) ? photoType.USERPIC : photoType.PHOTO;
 
@@ -88,22 +77,16 @@ public class ApiVerticle extends MicroserviceVerticle {
                 photoDelete(record.value().substring(mDeleteRequest.length()), type);
         });
 
-        mConsumer.subscribe(mUserpicsTopic, ar -> {
+        Set<String> topics = new HashSet<>();
+        topics.add(mUserpicsTopic);
+        topics.add(mPhotosTopic);
+
+        mConsumer.subscribe(topics, ar -> {
             if (ar.succeeded()) {
                 vsuccess(String.format("Subscribed to %s successfully", mUserpicsTopic));
             } else {
                 verror(
                         String.format("Could not subscribe to %s: ", mUserpicsTopic) + ar.cause().getMessage()
-                );
-            }
-        });
-
-        mConsumer.subscribe(mPhotosTopic, ar -> {
-            if (ar.succeeded()) {
-                vsuccess(String.format("Subscribed to %s successfully", mPhotosTopic));
-            } else {
-                verror(
-                    String.format("Could not subscribe to %s: ", mPhotosTopic) + ar.cause().getMessage()
                 );
             }
         });
@@ -113,12 +96,12 @@ public class ApiVerticle extends MicroserviceVerticle {
         vertx.eventBus().<OriginID>request(EBA_SCALE_ORIGIN, new OriginID(ID, type), ar -> {
             if (ar.failed()) {
                 // send "ERR" to sagas
-                vsuccess("Scaling, photoID: " + ID.toString() + " | " + ar.cause());
+                verror("Scaling, " + type.toString() + " : " + ID + " | " + ar.cause());
                 return;
             }
 
             // send "OK" to sagas
-            verror("Scaling photoID: " + ID.toString());
+            vsuccess("Scaling, " + type.toString() + " : " + ID);
         });
     }
 
@@ -126,12 +109,12 @@ public class ApiVerticle extends MicroserviceVerticle {
         vertx.eventBus().<OriginID>request(EBA_DELETE_ORIGIN, new OriginID(ID, type), ar -> {
             if (ar.failed()) {
                 // send "ERR" to sagas
-                System.out.println("DELETE ERR! ID: " + ID.toString() + " | " + ar.cause());
+                verror("Deleting, " + type.toString() + " : " + ID + " | " + ar.cause());
                 return;
             }
 
             // send "OK" to sagas
-            System.out.println("DELETE OK! ID: " + ID.toString());
+            vsuccess("Deleting, " + type.toString() + " : " + ID);
         });
     }
 

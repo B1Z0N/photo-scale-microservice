@@ -30,7 +30,7 @@
   "aws": {
     "photosBucket": "sagas.life.photos",
     "userpicsBucket": "sagas.life.userpics",
-    "region": "US_EAST_2"
+    "region": "us-east-2"
   },
 
   "extension": "jpg",

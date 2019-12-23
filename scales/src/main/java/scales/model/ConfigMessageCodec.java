@@ -1,33 +1,36 @@
-package profiles.model;
+package scales.model;
 
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.MessageCodec;
 import io.vertx.core.json.JsonObject;
 
-/** Class for transfering config messages over EventBus */
-public class ImageScalesURLsCodec implements MessageCodec<ImageScalesURLs, ImageScalesURLs> {
+/**
+ * Class for transfering config messages over EventBus
+ */
+public class ConfigMessageCodec implements MessageCodec<Config, Config> {
 
     @Override
-    public void encodeToWire(Buffer buffer, ImageScalesURLs imgurls) {
-        String contractsStr = imgurls.toJson().encode();
+    public void encodeToWire(Buffer buffer, Config config) {
+        String contractsStr = config.toJson()
+                .encode();
         int length = contractsStr.getBytes().length;
         buffer.appendInt(length);
         buffer.appendString(contractsStr);
     }
 
     @Override
-    public ImageScalesURLs decodeFromWire(int pos, Buffer buffer) {
+    public Config decodeFromWire(int pos, Buffer buffer) {
         int position = pos;
         int length = buffer.getInt(position);
-        String jsonStr = buffer.getString(position += 4, position += length);
+        String jsonStr = buffer.getString(position += 4, position + length);
         JsonObject json = new JsonObject(jsonStr);
 
-        return new ImageScalesURLs(json);
+        return new Config(json);
     }
 
     @Override
-    public ImageScalesURLs transform(ImageScalesURLs imgurls) {
-        return imgurls;
+    public Config transform(Config config) {
+        return config;
     }
 
     @Override
