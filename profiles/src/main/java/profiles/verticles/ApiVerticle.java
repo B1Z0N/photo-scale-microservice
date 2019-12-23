@@ -36,6 +36,7 @@ public class ApiVerticle extends MicroserviceVerticle {
 
     @Override
     public void start(Promise<Void> startPromise) {
+        setupSagasProducer();
         createServiceDiscovery();
         registerCodecs();
         setupConfigListener();
@@ -96,12 +97,12 @@ public class ApiVerticle extends MicroserviceVerticle {
         vertx.eventBus().<OriginID>request(EBA_SCALE_ORIGIN, new OriginID(ID, type), ar -> {
             if (ar.failed()) {
                 // send "ERR" to sagas
-                verror("Scaling, " + type.toString() + " : " + ID + " | " + ar.cause());
+                verror("Scaling, " + type.toString() + " : " + ID + " | " + ar.cause()).sagas();
                 return;
             }
 
             // send "OK" to sagas
-            vsuccess("Scaling, " + type.toString() + " : " + ID);
+            vsuccess("Scaling, " + type.toString() + " : " + ID).sagas();
         });
     }
 
@@ -109,12 +110,12 @@ public class ApiVerticle extends MicroserviceVerticle {
         vertx.eventBus().<OriginID>request(EBA_DELETE_ORIGIN, new OriginID(ID, type), ar -> {
             if (ar.failed()) {
                 // send "ERR" to sagas
-                verror("Deleting, " + type.toString() + " : " + ID + " | " + ar.cause());
+                verror("Deleting, " + type.toString() + " : " + ID + " | " + ar.cause()).sagas();
                 return;
             }
 
             // send "OK" to sagas
-            vsuccess("Deleting, " + type.toString() + " : " + ID);
+            vsuccess("Deleting, " + type.toString() + " : " + ID).sagas();
         });
     }
 

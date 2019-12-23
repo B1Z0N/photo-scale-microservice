@@ -7,4 +7,5 @@ dependencies {
     compile group: "io.vertx", name: "vertx-web-client", version: "${vertxVersion}"
     compile group: "io.vertx", name: "vertx-circuit-breaker", version: "${vertxVersion}"
     compile group: "io.vertx", name: "vertx-health-check", version: "${vertxVersion}"
+    compile group: "profiles", name: "profiles", version: "1.0"
 }

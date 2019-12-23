@@ -42,5 +42,7 @@
     "userpicsTopic" : "userpicsTopic",
     "deleteRequest" : "del:",
     "scaleRequest" : "put:"
-  }
+  },
+
+  "sagasTopic" : "sagasTopic"
 }
