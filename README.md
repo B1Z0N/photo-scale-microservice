@@ -9,7 +9,7 @@ Now let's dive in this project:
 
 # Files
 
-There are some important files to understand this project. Two main directories is `common` and `scales`.
+There are some important files to understand this project. Two main directories is `common` and `profiles`.
 
 ## common
 
@@ -31,15 +31,15 @@ Start reading `Launcher.java` first and `MicroserviceVerticle.java` second.
 That is why it is `common` - because all this code is common for our project(and lots of other `vert.x` projects, perhaps)
 
 
-## scales
+## profiles
 
-This time `scales/build.gradle` contains pretty much the same libraries with few additions like `google` and `vert.x` libraries for `gRPC`. We won't stop here, go to `scales/src/main/java/scales/` folder.
+This time `profiles/build.gradle` contains pretty much the same libraries with few additions like `google` and `vert.x` libraries for `gRPC`. We won't stop here, go to `profiles/src/main/java/profiles/` folder.
 
 `Launcher.java` is the entry point that runs `vert.x`. Other classes are placed in folders:
 
 ### model
 
-This folder contains classes for transfering to main types of messages over `eventbus`: configuration messages and scales messages. So here is the meaning of every class here:
+This folder contains classes for transfering to main types of messages over `eventbus`: configuration messages and profiles messages. So here is the meaning of every class here:
 
 - `Config` is just a data class: representation of conf/config.json in plain java class 
 - `ConfigMessageCoded` is an class that implements `MessageCodec` interface - general way of transportation of custom message types over `eventbus` and this class are used concretly to transport `Config` class.

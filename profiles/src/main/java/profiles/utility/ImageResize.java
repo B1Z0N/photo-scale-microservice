@@ -1,29 +1,18 @@
-package scales.utility;
+package profiles.utility;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 
 
 // class for image resizing from different sources
 public class ImageResize {
-
-    public static File resizeFromFile(File imgFile, String imgExt, Integer newWidth) throws IOException {
-        imgExt = imgExt.toLowerCase();
-        if (imgExt.equals("jpeg")) imgExt = "jpg";
-
-        BufferedImage img = ImageIO.read(imgFile);
-        img = resizeToWidth(img, newWidth);
-
-        File outputFile = File.createTempFile("aws", "s3");
-        ImageIO.write(img, imgExt, outputFile);
-
-        return outputFile;
-    }
-
-    private static BufferedImage resizeToWidth(BufferedImage img, int width) {
+    public static BufferedImage resizeToWidth(BufferedImage img, int width) {
         int height = (int) ((1.0 * img.getHeight()) / img.getWidth() * width);
         return resize(img, height, width);
     }
@@ -36,4 +25,19 @@ public class ImageResize {
         g2d.dispose();
         return resized;
     }
+
+    public static BufferedImage bytesToImage(byte[] bts) throws IOException {
+        try(ByteArrayInputStream bais = new ByteArrayInputStream(bts)) {
+            return ImageIO.read(bais);
+        }
+    }
+
+    public static byte[] imageToBytes(BufferedImage img, String ext) throws IOException {
+        try(ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageIO.write(img, ext, baos);
+            baos.flush();
+            return baos.toByteArray();
+        }
+    }
+
 }

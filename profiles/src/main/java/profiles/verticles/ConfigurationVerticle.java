@@ -1,7 +1,7 @@
-package scales.verticles;
+package profiles.verticles;
 
-import scales.model.Config;
-import scales.model.ConfigMessageCodec;
+import profiles.model.Config;
+import profiles.model.ConfigMessageCodec;
 import vertx.common.MicroserviceVerticle;
 import io.vertx.config.ConfigChange;
 import io.vertx.config.ConfigRetriever;

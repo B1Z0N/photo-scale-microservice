@@ -1,11 +1,11 @@
-package scales.verticles;
+package profiles.verticles;
 
 import io.vertx.kafka.client.consumer.KafkaConsumer;
-import scales.model.Config;
-import scales.model.ConfigMessageCodec;
-import scales.model.OriginID;
-import scales.model.OriginID.photoType;
-import scales.model.OriginIDCodec;
+import profiles.model.Config;
+import profiles.model.ConfigMessageCodec;
+import profiles.model.OriginID;
+import profiles.model.OriginID.photoType;
+import profiles.model.OriginIDCodec;
 
 import vertx.common.MicroserviceVerticle;
 import io.vertx.core.Promise;
@@ -14,10 +14,10 @@ import io.vertx.core.json.JsonObject;
 import javax.annotation.Nonnull;
 import java.util.*;
 
-import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
-import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
-import static scales.verticles.ScaleVerticle.EBA_DELETE_ORIGIN;
-import static scales.verticles.ScaleVerticle.EBA_SCALE_ORIGIN;
+import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
+import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
+import static profiles.verticles.ScaleVerticle.EBA_DELETE_ORIGIN;
+import static profiles.verticles.ScaleVerticle.EBA_SCALE_ORIGIN;
 
 // verticle for communicating with kafka and internal implementation
 public class ApiVerticle extends MicroserviceVerticle {
@@ -83,10 +83,10 @@ public class ApiVerticle extends MicroserviceVerticle {
 
         mConsumer.subscribe(topics, ar -> {
             if (ar.succeeded()) {
-                vsuccess(String.format("Subscribed to %s successfully", mUserpicsTopic));
+                vsuccess(String.format("Subscribed to %s and %s successfully", mUserpicsTopic, mPhotosTopic));
             } else {
                 verror(
-                        String.format("Could not subscribe to %s: ", mUserpicsTopic) + ar.cause().getMessage()
+                        String.format("Could not subscribe to %s or %s: ", mUserpicsTopic, mPhotosTopic) + ar.cause().getMessage()
                 );
             }
         });

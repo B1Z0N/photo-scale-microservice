@@ -1,4 +1,4 @@
-package scales.model;
+package profiles.model;
 
 import io.vertx.core.json.JsonObject;
 

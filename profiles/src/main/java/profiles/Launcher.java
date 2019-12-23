@@ -1,4 +1,4 @@
-package scales;
+package profiles;
 
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.VertxOptions;
