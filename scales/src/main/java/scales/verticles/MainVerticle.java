@@ -1,4 +1,4 @@
-package profiles.verticles;
+package scales.verticles;
 
 import vertx.common.MicroserviceVerticle;
 import io.vertx.core.CompositeFuture;
@@ -23,7 +23,6 @@ public class MainVerticle extends MicroserviceVerticle {
     public void start(Promise<Void> startPromise) {
         createServiceDiscovery();
         List<Promise> verticlePromises = Stream.of(
-                ServiceDiscoveryVerticle.class,
                 ConfigurationVerticle.class)
                 .map(el -> redeployVerticle(el.getName(), new JsonObject()))
                 .collect(Collectors.toList());

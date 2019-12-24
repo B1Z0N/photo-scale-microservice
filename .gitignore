@@ -87,3 +87,8 @@ bin/
 .vertx
 file-uploads
 **/src/main/resources/*-js
+
+# My own #
+##########
+.envrc
+.env

@@ -8,8 +8,8 @@ shadowJar {
         include "META-INF/services/io.vertx.core.spi.VerticleFactory"
     }
     manifest {
-        attributes 'Main-Class': 'profiles.Launcher'
-        attributes 'Main-Verticle': 'profiles.verticles.MainVerticle'
+        attributes 'Main-Class': 'scales.Launcher'
+        attributes 'Main-Verticle': 'scales.verticles.MainVerticle'
     }
 }
 

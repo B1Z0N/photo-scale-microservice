@@ -5,7 +5,7 @@ buildscript {
 }
 
 allprojects {
-    group = 'vertx-starter-pack'
+    group = 'photo-scale-microservice'
     version = '0.1.0'
 }
 

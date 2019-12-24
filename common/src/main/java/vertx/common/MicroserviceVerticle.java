@@ -1,10 +1,7 @@
 package vertx.common;
 
-import com.hazelcast.config.ConfigXmlGenerator;
-import io.vertx.config.ConfigRetriever;
 import io.vertx.core.*;
 import io.vertx.core.impl.ConcurrentHashSet;
-import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.healthchecks.HealthCheckHandler;
 import io.vertx.ext.healthchecks.HealthChecks;
@@ -18,8 +15,6 @@ import io.vertx.servicediscovery.ServiceDiscoveryOptions;
 import io.vertx.servicediscovery.types.EventBusService;
 import io.vertx.servicediscovery.types.HttpEndpoint;
 import io.vertx.servicediscovery.types.MessageSource;
-import kafka.Kafka;
-
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,78 +37,16 @@ public class MicroserviceVerticle extends AbstractVerticle {
     private ServiceDiscovery mDiscovery;
     private Set<Record> mRegisteredRecords = new ConcurrentHashSet<>();
 
-    private String mSagasTopic;
-    private KafkaProducer<String, String> mSagasProducer;
-
-    // Overrides
-
-    public enum ReportType {
-        OK,
-        ERR
-    }
-
-
-    protected void setupSagasProducer() {
-        ConfigRetriever retriever = ConfigRetriever.create(vertx);
-        retriever.getConfig(ar -> {
-            if (ar.failed()) {
-                verror("Fetching config");
-            } else {
-                JsonObject kafka = ar.result().getJsonObject("kafka");
-                String host = kafka.getString("host");
-                String port = kafka.getString("port");
-
-                Map<String, String> kafkaConfig = new HashMap<>();
-                kafkaConfig.put("bootstrap.servers", String.join(":", host, port));
-                kafkaConfig.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-                kafkaConfig.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-                kafkaConfig.put("group.id", "my_group");
-                kafkaConfig.put("auto.offset.reset", "earliest");
-                kafkaConfig.put("enable.auto.commit", "true");
-
-                vsuccess("Fetching config");
-                mSagasProducer = KafkaProducer.create(vertx, kafkaConfig);
-                mSagasTopic = ar.result().getString("sagasTopic");
-            }
-        });
-    }
-
-    protected class SagasReport {
-
-        private final String mMsg;
-        private final ReportType mType;
-
-        SagasReport(String msg, String type) {
-            mMsg = msg;
-            mType = ReportType.valueOf(type);
-        }
-
-        public void sagas() {
-            if (mSagasProducer == null)
-                throw new RuntimeException(
-                        "Call setupSagasProducer() at the start of your verticle, to setup sagas messaging"
-                );
-
-            mSagasProducer.write(
-                    KafkaProducerRecord.create(mSagasTopic, mType.toString() + " | " + mMsg)
-            );
-        }
-    }
-
-    protected SagasReport vsuccess(String msg) {
+    protected void vsuccess(String msg) {
         System.out.println(
                 String.join(" | ", this.getClass().getName(), "OK", msg)
         );
-
-        return new SagasReport(msg, "OK");
     }
 
-    protected SagasReport verror(String msg) {
+    protected void verror(String msg) {
         System.out.println(
                 String.join(" | ", this.getClass().getName(), "ERR", msg)
         );
-
-        return new SagasReport(msg, "ERR");
     }
 
     protected void vinfo(String msg) {

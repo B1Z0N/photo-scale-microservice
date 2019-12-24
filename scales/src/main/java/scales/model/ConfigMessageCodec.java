@@ -1,4 +1,4 @@
-package profiles.model;
+package scales.model;
 
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.MessageCodec;

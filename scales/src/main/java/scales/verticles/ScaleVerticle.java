@@ -1,4 +1,4 @@
-package profiles.verticles;
+package scales.verticles;
 
 import com.hubrick.vertx.s3.client.S3Client;
 import com.hubrick.vertx.s3.client.S3ClientOptions;
@@ -6,13 +6,14 @@ import com.hubrick.vertx.s3.model.request.DeleteObjectRequest;
 import com.hubrick.vertx.s3.model.request.GetObjectRequest;
 import com.hubrick.vertx.s3.model.request.PutObjectRequest;
 import io.vertx.core.CompositeFuture;
+import io.vertx.core.Future;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.Message;
-import profiles.model.Config;
-import profiles.model.ConfigMessageCodec;
-import profiles.model.OriginID;
-import profiles.model.OriginIDCodec;
-import profiles.utility.ImageResize;
+import scales.model.Config;
+import scales.model.ConfigMessageCodec;
+import scales.model.OriginID;
+import scales.model.OriginIDCodec;
+import scales.utility.ImageResize;
 import vertx.common.MicroserviceVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
@@ -26,8 +27,8 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
-import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
-import static profiles.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
+import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
+import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
 
 /**
  * Verticle that replies to create scales and delete scales requests
@@ -118,7 +119,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
 
     // call some S3 request on data from iteration of Sizes
     // and promise to complete after all the job on this iteration is done
-    private ArrayList<Promise<Void>> forEachInSizes(BiConsumer<Map.Entry, Promise<Void>> S3request) {
+    private ArrayList<Promise<Void>> forEachInSizes(ThreeArgumentFunction<String, Integer, Promise<Void>> S3request) {
         Iterator it = mSizes.entrySet().iterator();
         ArrayList<Promise<Void>> proms = new ArrayList<>();
 
@@ -127,71 +128,75 @@ public class ScaleVerticle extends MicroserviceVerticle {
             // create new promise for this task
             Promise<Void> current = Promise.promise();
 
-            S3request.accept(pair, current);
+            S3request.apply((String) pair.getKey(), (Integer) pair.getValue(), current);
 
             proms.add(current);
-            it.remove(); // avoids a ConcurrentModificationException
         }
 
         return proms;
     }
 
+    @FunctionalInterface
+    interface ThreeArgumentFunction<One, Two, Three> {
+        void apply(One one, Two two, Three three);
+    }
 
     // delete scales from S3
     private void deletionHandler(String photoID, String bucketName, Message<OriginID> finish) {
         ArrayList<Promise<Void>> proms = forEachInSizes(
-                (pair, current) ->
-                        mS3Client.deleteObject(
-                                bucketName,
-                                photoID + "." + pair.getKey(),
-                                new DeleteObjectRequest(),
-                                response -> {
-                                    vinfo("Deleting from AWS, " + photoID + " :"
-                                            + response.getHeader().getContentType());
-                                    // complete one of the promises
-                                    current.complete();
-                                },
-                                Throwable::printStackTrace
-                        ));
+                (sizeName, width, current) -> {
+                    String scaleName = String.join(".", photoID, sizeName);
+                    mS3Client.deleteObject(
+                            bucketName,
+                            scaleName,
+                            new DeleteObjectRequest(),
+                            response -> {
+                                vinfo("AWS | Deleting " + scaleName);
+                                // complete one of the promises
+                                current.complete();
+                            },
+                            err -> finish.fail(-1, "ERR")
+                    );
+                });
 
         finishAfterAll(proms, finish);
     }
 
+    private Future<Buffer> executeResize(Buffer originImg, int width) {
+        Promise<Buffer> result = Promise.promise();
+
+        getVertx().executeBlocking(blockingPromise -> {
+            try {
+                Buffer scaledImg = ImageResize.bufferResizeToWidth(originImg, width, mExtension);
+                result.complete(scaledImg);
+            } catch (IOException e) {
+                result.fail("Scaling error");
+            }
+        }, res -> {
+        });
+
+        return result.future();
+    }
+
     // scale buffer and upload it's scales to S3
-    private void uploadScaleFromBuffer(Buffer buff, String bucketName, String photoID, Message<OriginID> finish) {
-        try {
-            final BufferedImage img = ImageResize.bytesToImage(buff.getBytes());
-            ArrayList<Promise<Void>> proms = forEachInSizes(
-                    (pair, current) -> {
-                        // resize
+    private void uploadScaleFromBuffer(Buffer originImg, String bucketName, String photoID, Message<OriginID> finish) {
+        ArrayList<Promise<Void>> proms = forEachInSizes(
+                (sizeName, width, current) -> {
+                    String scaleName = String.join(".", photoID, sizeName);
 
-                        try {
-                            Buffer scaled = Buffer.buffer(
-                                    ImageResize.imageToBytes(
-                                            ImageResize.resizeToWidth(
-                                                    img, Integer.parseInt(pair.getValue().toString())
-                                            ), mExtension
-                                    )
-                            );
-
+                    executeResize(originImg, width).setHandler(scalingAr ->
                             mS3Client.putObject(
-                                    bucketName,
-                                    photoID + "." + pair.getKey(),
-                                    new PutObjectRequest(scaled).withContentType("application/json"),
-                                    putResponse -> current.complete(),
-                                    Throwable::printStackTrace
-                            );
-                        } catch (IOException e) {
-                            finish.fail(-1, "Scaling error");
-                            return;
-                        }
-                    });
+                                    bucketName, scaleName,
+                                    new PutObjectRequest(scalingAr.result()),
+                                    putResponse -> {
+                                        current.complete();
+                                        vinfo("AWS | Scaling " + scaleName);
+                                    },
+                                    err -> finish.fail(-1, "ERR")
+                            ));
+                });
 
-            finishAfterAll(proms, finish);
-        } catch (IOException e) {
-            finish.fail(-1, "IO error");
-            return;
-        }
+        finishAfterAll(proms, finish);
     }
 
     // download original image from S3
@@ -201,16 +206,16 @@ public class ScaleVerticle extends MicroserviceVerticle {
         mS3Client.getObject(
                 bucketName,
                 photoID,
-                new GetObjectRequest().withResponseContentType("application/json"),
+                new GetObjectRequest(),
                 // get original photo, scale and put it's scales to s3
                 getResponse -> {
                     getResponse.getData().handler(img::appendBuffer);
-                    getResponse.getData().endHandler(ar -> {
-                        uploadScaleFromBuffer(img, bucketName, photoID, finish);
-                        vinfo("Scaling, AWS, " + photoID + " :" + getResponse.getHeader().getContentType());
-                    });
+                    getResponse.getData().endHandler(
+                            ar -> uploadScaleFromBuffer(img, bucketName, photoID, finish)
+                    );
+                    vinfo("AWS | Uploading " + photoID);
                 },
-                Throwable::printStackTrace
+                err -> finish.fail(-1, "ERR")
         );
 
     }

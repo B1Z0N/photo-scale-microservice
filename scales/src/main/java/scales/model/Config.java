@@ -1,4 +1,4 @@
-package profiles.model;
+package scales.model;
 
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
@@ -13,14 +13,6 @@ import java.util.Iterator;
 public class Config {
 
     // Constants
-
-    private static final String ENDPOINT = "endpoint";
-    private static final String ENDPOINT_HOST = "host";
-    private static final String ENDPOINT_PORT = "port";
-    private static final String TLS = "tls";
-    private static final String TLS_CERT_CHAIN = "cert_chain";
-    private static final String TLS_PRIV_KEY = "priv_key";
-    private static final String TLS_CA = "ca";
 
     private static final String SIZES = "sizes";
     private static final String NAME = "name";
@@ -37,17 +29,13 @@ public class Config {
     private static final String KAFKA_PORT = "port";
     private static final String PHOTOS_TOPIC = "photosTopic";
     private static final String USERPICS_TOPIC = "userpicsTopic";
+    private static final String SAGAS_TOPIC = "sagasTopic";
     private static final String DELETE_REQUEST = "deleteRequest";
     private static final String SCALE_REQUEST = "scaleRequest";
 
     // Variables
 
     private final JsonObject mConfigObject;
-    private final String mEndpointHost;
-    private final String mEndpointPort;
-    private final String mTlsCertChain;
-    private final String mTlsPrivKey;
-    private final String mTlsCa;
 
     private final HashMap<String, Integer> mSizes;
     private final String mRegion;
@@ -60,6 +48,7 @@ public class Config {
     private final String mKafkaPort;
     private final String mPhotosTopic;
     private final String mUserpicsTopic;
+    private final String mSagasTopic;
 
     private final String mDeleteRequest;
     private final String mScaleRequest;
@@ -68,15 +57,6 @@ public class Config {
 
     public Config(@Nonnull JsonObject config) {
         mConfigObject = config;
-
-        JsonObject endpoint = config.getJsonObject(ENDPOINT);
-        mEndpointHost = endpoint.getString(ENDPOINT_HOST);
-        mEndpointPort = endpoint.getString(ENDPOINT_PORT);
-
-        JsonObject tls = config.getJsonObject(TLS);
-        mTlsCertChain = tls.getString(TLS_CERT_CHAIN);
-        mTlsPrivKey = tls.getString(TLS_PRIV_KEY);
-        mTlsCa = tls.getString(TLS_CA);
 
         JsonArray sizes = config.getJsonArray(SIZES);
         mSizes = jsonSizesArrayToMap(sizes);
@@ -93,6 +73,7 @@ public class Config {
         mKafkaPort = kafka.getString(KAFKA_PORT);
         mUserpicsTopic = kafka.getString(USERPICS_TOPIC);
         mPhotosTopic = kafka.getString(PHOTOS_TOPIC);
+        mSagasTopic = kafka.getString(SAGAS_TOPIC);
         mDeleteRequest = kafka.getString(DELETE_REQUEST);
         mScaleRequest = kafka.getString(SCALE_REQUEST);
     }
@@ -100,15 +81,6 @@ public class Config {
     // Public
 
     JsonObject toJson() {
-        JsonObject endpoint = new JsonObject()
-                .put(ENDPOINT_HOST, mEndpointHost)
-                .put(ENDPOINT_PORT, mEndpointPort);
-
-        JsonObject tls = new JsonObject()
-                .put(TLS_CERT_CHAIN, mTlsCertChain)
-                .put(TLS_PRIV_KEY, mTlsPrivKey)
-                .put(TLS_CA, mTlsCa);
-
         JsonArray sizes = mapSizesToJsonArray(mSizes);
 
         JsonObject aws = new JsonObject()
@@ -121,12 +93,11 @@ public class Config {
                 .put(KAFKA_PORT, mKafkaPort)
                 .put(PHOTOS_TOPIC, mPhotosTopic)
                 .put(USERPICS_TOPIC, mUserpicsTopic)
+                .put(SAGAS_TOPIC, mSagasTopic)
                 .put(DELETE_REQUEST, mDeleteRequest)
                 .put(SCALE_REQUEST, mScaleRequest);
 
         return new JsonObject()
-                .put(ENDPOINT, endpoint)
-                .put(TLS, tls)
                 .put(SIZES, sizes)
                 .put(EXTENSION, mExtension)
                 .put(AWS, aws)
@@ -137,26 +108,6 @@ public class Config {
 
     JsonObject getConfigObject() {
         return mConfigObject;
-    }
-
-    public String getEndpointHost() {
-        return mEndpointHost;
-    }
-
-    public String getEndpointPort() {
-        return mEndpointPort;
-    }
-
-    public String getTlsCertChain() {
-        return mTlsCertChain;
-    }
-
-    public String getTlsPrivKey() {
-        return mTlsPrivKey;
-    }
-
-    public String getTlsCa() {
-        return mTlsCa;
     }
 
     public HashMap<String, Integer> getSizes() {
@@ -202,19 +153,10 @@ public class Config {
     public String getScaleRequest() {
         return mScaleRequest;
     }
-    // Utils
 
-    @Override
-    public String toString() {
-        return "Config{" +
-                "mEndpointHost='" + mEndpointHost + '\'' +
-                ", mEndpointPort=" + mEndpointPort +
-                ", mTlsCertChain='" + mTlsCertChain + '\'' +
-                ", mTlsPrivKey='" + mTlsPrivKey + '\'' +
-                ", mTlsCa='" + mTlsCa + '\'' +
-                ", mSizes='" + mSizes.toString() + '\'' +
-                '}';
-    }
+    public String getSagasTopic() { return mSagasTopic; }
+
+    // Utils
 
     private HashMap<String, Integer> jsonSizesArrayToMap(@Nonnull JsonArray jarr) {
         HashMap<String, Integer> map = new HashMap<>();

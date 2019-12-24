@@ -1,8 +1,8 @@
-rootProject.name = 'vertx-starter-pack'
+rootProject.name = 'photo-scale-microservice'
 
 include 'common'
-include 'profiles'
+include 'scales'
 
 project(':common').projectDir = file('common')
-project(':profiles').projectDir = file('profiles')
+project(':scales').projectDir = file('scales')
 
