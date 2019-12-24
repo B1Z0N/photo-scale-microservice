@@ -19,12 +19,8 @@ import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 
 import javax.annotation.Nonnull;
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
-import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
@@ -58,7 +54,6 @@ public class ScaleVerticle extends MicroserviceVerticle {
 
     @Override
     public void start(Promise<Void> startPromise) {
-        createServiceDiscovery();
         registerCodecs();
         setupConfigListener();
         setupConfig(startPromise);

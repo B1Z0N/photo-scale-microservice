@@ -1,6 +1,5 @@
 package scales.verticles;
 
-import io.vertx.config.ConfigRetriever;
 import io.vertx.kafka.client.consumer.KafkaConsumer;
 import io.vertx.kafka.client.producer.KafkaProducer;
 import io.vertx.kafka.client.producer.KafkaProducerRecord;
@@ -43,7 +42,6 @@ public class ApiVerticle extends MicroserviceVerticle {
 
     @Override
     public void start(Promise<Void> startPromise) {
-        createServiceDiscovery();
         registerCodecs();
         setupConfigListener();
         setupConfig(startPromise);
