@@ -1,99 +1,69 @@
-# vertx-starter-pack
-Starter pack for Vert.x development. Read a [wiki](https://github.com/IASA-HUB/vertx-starter-pack/wiki) for preparation.
+# About
 
-# Note about IDEA
+This is microservice of our *IASA-KA-75-KA-76-Pharos-Production-Distributed-Systems* project called **SagasLife**. This part is responsible for scaling photos to different resolutions(by width).
 
-[Here](https://github.com/B1Z0N/java-basics/blob/master/README.md#idea-shortcuts) you could find some IDEA shortcuts that i've found the most useful(this list is being updated continuosly).
+# Algorithm
 
-Now let's dive in this project:
+Two main operations is put and delete photo. Both of them accept image name. Requests to this microservice are sent via Kafka topics. All of the topic names can be configured via `conf/config.json`. All errors are being reported to `Sagas` microservice via `sagasTopic` option in config file. 
 
-# Files
+There are two main topics `userpicsTopic` and `photosTopic` that are responsible for streaming two types of messages: `put:` and `del:` photo. The type of topic is needed to determine the type of AWS S3 bucket, that stores original photo to rescale and in which future scales will be stored.
 
-There are some important files to understand this project. Two main directories is `common` and `profiles`.
+# Examples
 
-## common
+### Scaling new photo
 
-Look at `build.gradle`, it is the first project configuration file. You should see project dependencies, 
-their's meanings one by one:
+Message in `userpicsTopic` : 
 
-- Service discovery - component, that provides an infrastructure to publish and discover various services
-- Hazlecast - default custer manager
-- Web - http server
-- Web client - asynchronous http client
-- Circuit breaker - implementation of [`Circuit breaker pattern`](https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern)
-- Health check - testing the health of the application
+**put:pretty_woman.jpg**
 
-*Check [Useful `vert.x` concepts](#useful-vertx-concepts) section for more.
+Actions:
 
-Now turn your attention to `src/main/java/vertx/common` folder. There are two files.
-Start reading `Launcher.java` first and `MicroserviceVerticle.java` second.
-**This whole part is just two classes intended for future reuse by inheriting from them**.
-That is why it is `common` - because all this code is common for our project(and lots of other `vert.x` projects, perhaps)
+1. `put:` means this is scale request, `userpicsTopic` means, that this photo is stored in `userpicsBucket`.
+2. Get original `pretty_woman.jpg` photo from AWS
+3. Scale it to different sizes defined in config file.
+4. Sent it to S3 adding suffixes defined in config. For example three new files will be created: `pretty_woman.jpg.sm`, `pretty_woman.jpg.md`, `pretty_woman.jpg.lg`, that means small, medium and large sizes respectively.
+5. Report operation status to `Sagas`
 
+### Deletion of scales
 
-## profiles
+Message in `photosTopic` :  
 
-This time `profiles/build.gradle` contains pretty much the same libraries with few additions like `google` and `vert.x` libraries for `gRPC`. We won't stop here, go to `profiles/src/main/java/profiles/` folder.
+**del:pretty_woman.jpg**
 
-`Launcher.java` is the entry point that runs `vert.x`. Other classes are placed in folders:
+Actions:
 
-### model
+1. `del:` means this is scale request, `photosTopic` means, that this photo is stored in `photosBucket`.
+2. Sent removal request to AWS s3 adding suffixes defined in config. For example three files will be removed : `pretty_woman.jpg.sm`, `pretty_woman.jpg.md`, `pretty_woman.jpg.lg` that means small, medium and large sizes respectively.
+3. Report operation status to `Sagas`
 
-This folder contains classes for transfering to main types of messages over `eventbus`: configuration messages and profiles messages. So here is the meaning of every class here:
+# Customization
 
-- `Config` is just a data class: representation of conf/config.json in plain java class 
-- `ConfigMessageCoded` is an class that implements `MessageCodec` interface - general way of transportation of custom message types over `eventbus` and this class are used concretly to transport `Config` class.
-- `Profile` is just a data class: representation of user info in plain java class
-- `ProfileMessageCodec` is just like an `ConfigMessageCodec` but for transporting of `Profile` class
+All this settings defined in `conf/config.json` - Single Source Of Truth. Customize it to suit your needs, even without reloading the project.
 
-### services
+1. `sizes`: add new sizes to scale into
+2. `aws`
+   - `photosBucket`: name of ordinary photos S3 bucket
+   - `userpicsBucket`: name of userpics S3 bucket
+   - `region`: region of bucket, like it is defined in aws links(e. g. `us-east-2`)
+3. `extension`: image extension(e. g. `jpg`)
+4. `kafka`
+   - `host`
+   - `port`
+   - `photosTopic`: name of ordinary photos topic
+   - `userpicsTopic`: name of userpics topic
+   - `sagasTopic`: name of `Sagas` topic
+   - `deleteRequest`: prefix of delete request(like `del:`) 
+   - `scaleRequest`: prefix of scale request(like `put:`)
+   
+# Running
 
-The folder contains only one file: `ProfileServiceImpl.java`. This class is a service for fetching profile. First it fetches
-`Profile` object, transforms it to `ProfileObject` object, wraps it with `ProfileResponse` object and passes it to client when it is requested.
+Use java 12. Add new configuration with such settings:
+1. Main class: `scales.Launcher`
+2. Program arguments: `run scales.verticles.MainVerticle -cluster`
+3. Classpath of module: `photo-scale-microservice.scales.main`
 
-### verticles
+Then provide such environment variables: `AWS_S3_ACCESS_KEY` and `AWS_S3_SECRET_KEY`, to use your AWS S3. 
+All of these you could get as described [here](https://support.infinitewp.com/support/solutions/articles/212258-where-are-my-amazon-s3-credentials-).
 
-This folder contains classes and here is theirs purpose:
+For more info, read [this](https://github.com/IASA-HUB/vertx-starter-pack/wiki/How-to-make-things-work).
 
-- `ConfigurationVerticle` - for configuration maintenance update/retrieval
-- `ServiceDiscoveryVerticle` - the name suggests the meaning, read [here](https://vertx.io/docs/vertx-service-discovery/java/) for more
-- `ApiVerticle` - for settling `VertxServer`(adding service for retrieval of Profile data via gRPC)
-- `ProfileVerticle` - just replying to Profile requests with {"Petr",  "Ivanov", ... }.
-- `MainVerticle` - for deploying all verticles listed above
-
-### Client
-
-`ProfilesClient.java` is a client class that connects to our server and prints response("Petr",  "Ivanov", ... ). 
-
-The common question is: "How do our client knows the address of our server and other configuration info?". Well, it takes all this from our `conf/config.json` file. It is not magic.
-
-For more - read comments in code.
-
-# Resources
-
-This part is all about useful links to understand `vert.x` and this project of course(be patient):
-
-## Beginner
-
-- Unofficial [tutorial](http://tutorials.jenkov.com/vert.x/index.html)
-- Official [tutorial](https://vertx.io/blog/posts/introduction-to-vertx.html)
-- [Guide](https://vertx.io/docs/guide-for-java-devs/) to asynchronous programming, actually all about `vert.x`(read the first three items)
-
-## Useful `vert.x` concepts
-
-- [ServiceDiscovery](https://vertx.io/docs/vertx-service-discovery/java/)(read the first eight items)
-- [Hazelcast](https://vertx.io/docs/vertx-hazelcast/java/)
-- [Web](https://vertx.io/docs/vertx-web/java/)
-- [Web client](https://vertx.io/docs/vertx-web-client/java/)
-- [Circuit breaker](https://vertx.io/docs/vertx-circuit-breaker/java/)
-- [Health check](https://vertx.io/docs/vertx-health-check/java/)
-
-## Other
-
-- What is REST - [part 1](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f) and [part 2](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-2-rest-constraints-129a4b69a582)
-- What is [`gRPC`](https://grpc.io/docs/guides/)?
-- What is [`SSL`](https://www.digicert.com/ssl/)(`TLS` is just a successor of `SSL`)?
-
----
-
-**Google a lot and read a lot, other info is comments in files.**
