@@ -15,8 +15,8 @@ public class ConfigurationVerticle extends MicroserviceVerticle {
 
     // Constants
 
-    static final String EBA_CONFIG_FETCH = "configuration:fetch";
-    static final String EBA_CONFIG_UPDATE = "configuration:update";
+    public static final String EBA_CONFIG_FETCH = "configuration:fetch";
+    public static final String EBA_CONFIG_UPDATE = "configuration:update";
 
     // Variables
 

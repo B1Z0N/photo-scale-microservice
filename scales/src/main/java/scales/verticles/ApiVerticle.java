@@ -49,6 +49,7 @@ public class ApiVerticle extends MicroserviceVerticle {
 
     // Private
 
+
     private void setupFromConfig(@Nonnull Config config) {
         mKafkaHost = config.getKafkaHost();
         mKafkaPort = config.getKafkaPort();
@@ -63,6 +64,7 @@ public class ApiVerticle extends MicroserviceVerticle {
         setupKafkaConsumers();
     }
 
+
     private void setupSagasProducer() {
         Map<String, String> kafkaConfig = new HashMap<>();
         kafkaConfig.put("bootstrap.servers", String.join(":", mKafkaHost, mKafkaPort));
@@ -74,6 +76,7 @@ public class ApiVerticle extends MicroserviceVerticle {
 
         mSagasProducer = KafkaProducer.create(vertx, kafkaConfig);
     }
+
 
     private void setupKafkaConsumers() {
         Map<String, String> config = new HashMap<>();
@@ -111,6 +114,7 @@ public class ApiVerticle extends MicroserviceVerticle {
         });
     }
 
+
     private void sagas(String msg) {
         mSagasProducer.write(
                 KafkaProducerRecord.create(mSagasTopic, msg)
@@ -123,28 +127,29 @@ public class ApiVerticle extends MicroserviceVerticle {
             if (ar.failed()) {
                 // send "ERR" to sagas
                 verror("Scaling, " + type.toString() + " : " + ID + " | " + ar.cause());
-                sagas("photo-scale:put:err:" + ID);
+                sagas("photo-scale:" + mScaleRequest + "err:" + ID);
                 return;
             }
 
             // send "OK" to sagas
             vsuccess("Scaling, " + type.toString() + " : " + ID);
-            sagas("photo-scale:put:ok:" + ID);
+            sagas("photo-scale:" + mScaleRequest + "ok:" + ID);
         });
     }
+
 
     private void photoDelete(@Nonnull String ID, photoType type) {
         vertx.eventBus().<OriginID>request(EBA_DELETE_ORIGIN, new OriginID(ID, type), ar -> {
             if (ar.failed()) {
                 // send "ERR" to sagas
                 verror("Deleting, " + type.toString() + " : " + ID + " | " + ar.cause());
-                sagas("photo-scale:del:err:" + ID);
+                sagas("photo-scale:" + mDeleteRequest + ":err:" + ID);
                 return;
             }
 
             // send "OK" to sagas
             vsuccess("" + type.toString() + " : " + ID);
-            sagas("photo-scale:del:ok:" + ID);
+            sagas("photo-scale:" + mDeleteRequest + "ok:" + ID);
         });
     }
 
