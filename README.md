@@ -70,8 +70,27 @@ Use java 12. Add new configuration with such settings:
 2. Program arguments: `run scales.verticles.MainVerticle -cluster`
 3. Classpath of module: `photo-scale-microservice.scales.main`
 
-Then provide such environment variables: `AWS_S3_ACCESS_KEY` and `AWS_S3_SECRET_KEY`, to use your AWS S3. 
-All of these you could get as described [here](https://support.infinitewp.com/support/solutions/articles/212258-where-are-my-amazon-s3-credentials-).
+Then provide such environment variables: `AWS_S3_ACCESS_KEY` and `AWS_S3_SECRET_KEY`, to use your AWS S3. All of these you could get as described [here](https://support.infinitewp.com/support/solutions/articles/212258-where-are-my-amazon-s3-credentials-).
 
-For more info, read [this](https://github.com/IASA-HUB/vertx-starter-pack/wiki/How-to-make-things-work).
+For more info on configuring run, read [this](https://github.com/IASA-HUB/vertx-starter-pack/wiki/How-to-make-things-work) one.
 
+# Running kafka
+
+To run project you need to start kafka with configuration from `conf/config.json` file. Go to `misc/kafk..` and there are 5 `.sh` files:
+
+1. `start1ZooKeeper.sh`
+2. `start2Kafka.sh`
+3. `createTopic.sh topicName`
+4. `listenTopic.sh topicName`
+5. `send2Topic.sh topicName`
+
+Here is my normal usage of this commands(assuming topics are previously created):
+1. `./start1ZooKeeper.sh`
+2. `./start2Kafka.sh`
+3. `./send2Topic.sh userpicsTopic`
+4. `./send2Topic.sh photosTopic`
+5. `./listenTopic.sh sagasTopic`
+
+
+
+P. S. You'll need a whole lot of terminals(or a virtual terminals, like [terminator is](https://terminator-gtk3.readthedocs.io/en/latest/#). Highly recommend!)
