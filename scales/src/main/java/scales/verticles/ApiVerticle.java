@@ -123,13 +123,13 @@ public class ApiVerticle extends MicroserviceVerticle {
             if (ar.failed()) {
                 // send "ERR" to sagas
                 verror("Scaling, " + type.toString() + " : " + ID + " | " + ar.cause());
-                sagas("Scaling error: " + ID);
+                sagas("photo-scale:put:err:" + ID);
                 return;
             }
 
             // send "OK" to sagas
             vsuccess("Scaling, " + type.toString() + " : " + ID);
-            sagas("Scaling success: " + ID);
+            sagas("photo-scale:put:ok:" + ID);
         });
     }
 
@@ -138,13 +138,13 @@ public class ApiVerticle extends MicroserviceVerticle {
             if (ar.failed()) {
                 // send "ERR" to sagas
                 verror("Deleting, " + type.toString() + " : " + ID + " | " + ar.cause());
-                sagas("Deletion error: " + ID);
+                sagas("photo-scale:del:err:" + ID);
                 return;
             }
 
             // send "OK" to sagas
-            vsuccess("Deleting, " + type.toString() + " : " + ID);
-            sagas("Deletion success: " + ID);
+            vsuccess("" + type.toString() + " : " + ID);
+            sagas("photo-scale:del:ok:" + ID);
         });
     }
 

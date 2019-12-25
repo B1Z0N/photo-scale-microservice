@@ -105,7 +105,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
                 .collect(Collectors.toList())
         ).setHandler(ar -> {
             if (ar.succeeded()) {
-                finish.reply("OK");
+                finish.reply("");
             } else {
                 finish.fail(-1, ar.cause().getMessage());
             }
@@ -150,7 +150,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
                                 // complete one of the promises
                                 current.complete();
                             },
-                            err -> finish.fail(-1, "ERR")
+                            err -> finish.fail(-1, "Deletion error")
                     );
                 });
 
@@ -167,6 +167,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
             } catch (IOException e) {
                 result.fail("Scaling error");
             }
+            blockingPromise.complete();
         }, res -> {
         });
 
@@ -187,7 +188,7 @@ public class ScaleVerticle extends MicroserviceVerticle {
                                         current.complete();
                                         vinfo("AWS | Scaling " + scaleName);
                                     },
-                                    err -> finish.fail(-1, "ERR")
+                                    err -> finish.fail(-1, "Scaling error")
                             ));
                 });
 
@@ -208,9 +209,9 @@ public class ScaleVerticle extends MicroserviceVerticle {
                     getResponse.getData().endHandler(
                             ar -> uploadScaleFromBuffer(img, bucketName, photoID, finish)
                     );
-                    vinfo("AWS | Uploading " + photoID);
+                    vinfo("AWS | Downloading " + photoID);
                 },
-                err -> finish.fail(-1, "ERR")
+                err -> finish.fail(-1, "Original download error")
         );
 
     }

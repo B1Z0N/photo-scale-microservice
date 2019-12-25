@@ -80,9 +80,9 @@ To run project you need to start kafka with configuration from `conf/config.json
 
 1. `start1ZooKeeper.sh`
 2. `start2Kafka.sh`
-3. `createTopic.sh topicName`
-4. `listenTopic.sh topicName`
-5. `send2Topic.sh topicName`
+3. `createTopic.sh`
+4. `listenTopic.sh`
+5. `send2Topic.sh`
 
 Here is my normal usage of this commands(assuming topics are previously created):
 1. `./start1ZooKeeper.sh`
@@ -94,3 +94,10 @@ Here is my normal usage of this commands(assuming topics are previously created)
 
 
 P. S. You'll need a whole lot of terminals(or a virtual terminals, like [terminator is](https://terminator-gtk3.readthedocs.io/en/latest/#). Highly recommend!)
+
+
+
+# TODO:
+
+1. Cover with tests(both integration and unit)
+2. Put into docker

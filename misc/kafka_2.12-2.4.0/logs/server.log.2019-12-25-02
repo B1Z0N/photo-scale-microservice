@@ -1,0 +1,917 @@
+[2019-12-25 02:41:36,152] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,154] WARN config/zookeeper.properties is relative. Prepend ./ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,155] INFO clientPortAddress is 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,155] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,157] INFO autopurge.snapRetainCount set to 3 (org.apache.zookeeper.server.DatadirCleanupManager)
+[2019-12-25 02:41:36,157] INFO autopurge.purgeInterval set to 0 (org.apache.zookeeper.server.DatadirCleanupManager)
+[2019-12-25 02:41:36,157] INFO Purge task is not scheduled. (org.apache.zookeeper.server.DatadirCleanupManager)
+[2019-12-25 02:41:36,158] WARN Either no config or no quorum defined in config, running  in standalone mode (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+[2019-12-25 02:41:36,159] INFO Log4j found with jmx enabled. (org.apache.zookeeper.jmx.ManagedUtil)
+[2019-12-25 02:41:36,173] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,173] WARN config/zookeeper.properties is relative. Prepend ./ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,173] INFO clientPortAddress is 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,173] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:36,173] INFO Starting server (org.apache.zookeeper.server.ZooKeeperServerMain)
+[2019-12-25 02:41:36,176] INFO zookeeper.snapshot.trust.empty : false (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2019-12-25 02:41:36,185] INFO Server environment:zookeeper.version=3.5.6-c11b7e26bc554b8523dc929761dd28808913f091, built on 10/08/2019 20:18 GMT (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,185] INFO Server environment:host.name=ALAN (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,185] INFO Server environment:java.version=11.0.5 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,185] INFO Server environment:java.vendor=Private Build (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,185] INFO Server environment:java.home=/usr/lib/jvm/java-11-openjdk-amd64 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,185] INFO Server environment:java.class.path=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/activation-1.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/aopalliance-repackaged-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/argparse4j-0.7.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/audience-annotations-0.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-cli-1.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-lang3-3.8.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-api-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-basic-auth-extension-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-file-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-json-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-client-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-runtime-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-transforms-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/guava-20.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-api-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-locator-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-utils-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-core-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-databind-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-dataformat-csv-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-datatype-jdk8-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-base-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-json-provider-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-jaxb-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-paranamer-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-scala_2.12-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.activation-api-1.2.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.annotation-api-1.3.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.inject-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.ws.rs-api-2.1.5.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.xml.bind-api-2.3.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javassist-3.22.0-CR2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.servlet-api-3.1.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.ws.rs-api-2.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jaxb-api-2.3.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-client-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-common-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-core-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-hk2-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-media-jaxb-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-server-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-client-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-continuation-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-http-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-io-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-security-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-server-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlet-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlets-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-util-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jopt-simple-5.0.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0-sources.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-clients-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-log4j-appender-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-examples-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-scala_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-test-utils-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-tools-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/log4j-1.2.17.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/lz4-java-1.6.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/maven-artifact-3.6.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/metrics-core-2.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-buffer-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-codec-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-handler-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-resolver-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-epoll-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-unix-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/osgi-resource-locator-1.0.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/paranamer-2.8.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/plexus-utils-3.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/reflections-0.9.11.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/rocksdbjni-5.18.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-collection-compat_2.12-2.1.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-java8-compat_2.12-0.9.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-library-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-logging_2.12-3.9.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-reflect-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-api-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-log4j12-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/snappy-java-1.1.7.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/validation-api-2.0.1.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-jute-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zstd-jni-1.4.3-1.jar (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:java.library.path=/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:java.io.tmpdir=/tmp (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:java.compiler=<NA> (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:os.name=Linux (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:os.arch=amd64 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:os.version=5.3.0-24-generic (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:user.name=b1zon (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:user.home=/home/b1zon (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:user.dir=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:os.memory.free=494MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:os.memory.max=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,186] INFO Server environment:os.memory.total=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,188] INFO minSessionTimeout set to 6000 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,188] INFO maxSessionTimeout set to 60000 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,188] INFO Created server with tickTime 3000 minSessionTimeout 6000 maxSessionTimeout 60000 datadir /tmp/zookeeper/version-2 snapdir /tmp/zookeeper/version-2 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:36,197] INFO Using org.apache.zookeeper.server.NIOServerCnxnFactory as server connection factory (org.apache.zookeeper.server.ServerCnxnFactory)
+[2019-12-25 02:41:36,200] INFO Configuring NIO connection handler with 10s sessionless connection timeout, 2 selector thread(s), 16 worker threads, and 64 kB direct buffers. (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2019-12-25 02:41:36,204] INFO binding to port 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2019-12-25 02:41:36,219] INFO zookeeper.snapshotSizeFactor = 0.33 (org.apache.zookeeper.server.ZKDatabase)
+[2019-12-25 02:41:36,222] INFO Reading snapshot /tmp/zookeeper/version-2/snapshot.103 (org.apache.zookeeper.server.persistence.FileSnap)
+[2019-12-25 02:41:36,238] INFO Snapshotting: 0x116 to /tmp/zookeeper/version-2/snapshot.116 (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2019-12-25 02:41:36,259] INFO Using checkIntervalMs=60000 maxPerMinute=10000 (org.apache.zookeeper.server.ContainerManager)
+[2019-12-25 02:41:43,721] INFO Registered kafka:type=kafka.Log4jController MBean (kafka.utils.Log4jControllerRegistration$)
+[2019-12-25 02:41:44,123] INFO Registered signal handlers for TERM, INT, HUP (org.apache.kafka.common.utils.LoggingSignalHandler)
+[2019-12-25 02:41:44,123] INFO starting (kafka.server.KafkaServer)
+[2019-12-25 02:41:44,124] INFO Connecting to zookeeper on localhost:2181 (kafka.server.KafkaServer)
+[2019-12-25 02:41:44,143] INFO [ZooKeeperClient Kafka server] Initializing a new session to localhost:2181. (kafka.zookeeper.ZooKeeperClient)
+[2019-12-25 02:41:44,147] INFO Client environment:zookeeper.version=3.5.6-c11b7e26bc554b8523dc929761dd28808913f091, built on 10/08/2019 20:18 GMT (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,148] INFO Client environment:host.name=ALAN (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,148] INFO Client environment:java.version=11.0.5 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,148] INFO Client environment:java.vendor=Private Build (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,148] INFO Client environment:java.home=/usr/lib/jvm/java-11-openjdk-amd64 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,148] INFO Client environment:java.class.path=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/activation-1.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/aopalliance-repackaged-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/argparse4j-0.7.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/audience-annotations-0.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-cli-1.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-lang3-3.8.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-api-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-basic-auth-extension-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-file-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-json-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-client-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-runtime-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-transforms-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/guava-20.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-api-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-locator-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-utils-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-core-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-databind-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-dataformat-csv-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-datatype-jdk8-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-base-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-json-provider-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-jaxb-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-paranamer-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-scala_2.12-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.activation-api-1.2.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.annotation-api-1.3.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.inject-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.ws.rs-api-2.1.5.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.xml.bind-api-2.3.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javassist-3.22.0-CR2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.servlet-api-3.1.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.ws.rs-api-2.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jaxb-api-2.3.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-client-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-common-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-core-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-hk2-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-media-jaxb-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-server-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-client-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-continuation-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-http-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-io-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-security-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-server-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlet-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlets-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-util-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jopt-simple-5.0.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0-sources.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-clients-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-log4j-appender-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-examples-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-scala_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-test-utils-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-tools-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/log4j-1.2.17.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/lz4-java-1.6.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/maven-artifact-3.6.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/metrics-core-2.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-buffer-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-codec-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-handler-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-resolver-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-epoll-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-unix-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/osgi-resource-locator-1.0.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/paranamer-2.8.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/plexus-utils-3.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/reflections-0.9.11.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/rocksdbjni-5.18.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-collection-compat_2.12-2.1.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-java8-compat_2.12-0.9.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-library-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-logging_2.12-3.9.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-reflect-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-api-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-log4j12-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/snappy-java-1.1.7.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/validation-api-2.0.1.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-jute-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zstd-jni-1.4.3-1.jar (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:java.library.path=/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:java.io.tmpdir=/tmp (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:java.compiler=<NA> (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:os.name=Linux (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:os.arch=amd64 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:os.version=5.3.0-24-generic (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:user.name=b1zon (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:user.home=/home/b1zon (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,149] INFO Client environment:user.dir=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,150] INFO Client environment:os.memory.free=981MB (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,150] INFO Client environment:os.memory.max=1024MB (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,150] INFO Client environment:os.memory.total=1024MB (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,152] INFO Initiating client connection, connectString=localhost:2181 sessionTimeout=6000 watcher=kafka.zookeeper.ZooKeeperClient$ZooKeeperClientWatcher$@6d5620ce (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:41:44,159] INFO Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation (org.apache.zookeeper.common.X509Util)
+[2019-12-25 02:41:44,166] INFO jute.maxbuffer value is 4194304 Bytes (org.apache.zookeeper.ClientCnxnSocket)
+[2019-12-25 02:41:44,171] INFO zookeeper.request.timeout value is 0. feature enabled= (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:41:44,175] INFO [ZooKeeperClient Kafka server] Waiting until connected. (kafka.zookeeper.ZooKeeperClient)
+[2019-12-25 02:41:44,181] INFO Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error) (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:41:44,186] INFO Socket error occurred: localhost/127.0.0.1:2181: Connection refused (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:41:45,291] INFO Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error) (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:41:45,293] INFO Socket error occurred: localhost/127.0.0.1:2181: Connection refused (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:41:46,191] INFO Terminating process due to signal SIGINT (org.apache.kafka.common.utils.LoggingSignalHandler)
+[2019-12-25 02:41:46,197] INFO shutting down (kafka.server.KafkaServer)
+[2019-12-25 02:41:46,208] ERROR Fatal error during KafkaServer shutdown. (kafka.server.KafkaServer)
+java.lang.IllegalStateException: Kafka server is still starting up, cannot shut down!
+	at kafka.server.KafkaServer.shutdown(KafkaServer.scala:597)
+	at kafka.server.KafkaServerStartable.shutdown(KafkaServerStartable.scala:54)
+	at kafka.Kafka$$anon$1.run(Kafka.scala:81)
+[2019-12-25 02:41:46,213] ERROR Halting Kafka. (kafka.server.KafkaServerStartable)
+[2019-12-25 02:41:49,903] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,905] WARN config/zookeeper.properties is relative. Prepend ./ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,906] INFO clientPortAddress is 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,906] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,908] INFO autopurge.snapRetainCount set to 3 (org.apache.zookeeper.server.DatadirCleanupManager)
+[2019-12-25 02:41:49,908] INFO autopurge.purgeInterval set to 0 (org.apache.zookeeper.server.DatadirCleanupManager)
+[2019-12-25 02:41:49,908] INFO Purge task is not scheduled. (org.apache.zookeeper.server.DatadirCleanupManager)
+[2019-12-25 02:41:49,909] WARN Either no config or no quorum defined in config, running  in standalone mode (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+[2019-12-25 02:41:49,910] INFO Log4j found with jmx enabled. (org.apache.zookeeper.jmx.ManagedUtil)
+[2019-12-25 02:41:49,929] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,930] WARN config/zookeeper.properties is relative. Prepend ./ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,930] INFO clientPortAddress is 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,930] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2019-12-25 02:41:49,930] INFO Starting server (org.apache.zookeeper.server.ZooKeeperServerMain)
+[2019-12-25 02:41:49,933] INFO zookeeper.snapshot.trust.empty : false (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2019-12-25 02:41:49,945] INFO Server environment:zookeeper.version=3.5.6-c11b7e26bc554b8523dc929761dd28808913f091, built on 10/08/2019 20:18 GMT (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:host.name=ALAN (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:java.version=11.0.5 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:java.vendor=Private Build (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:java.home=/usr/lib/jvm/java-11-openjdk-amd64 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:java.class.path=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/activation-1.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/aopalliance-repackaged-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/argparse4j-0.7.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/audience-annotations-0.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-cli-1.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-lang3-3.8.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-api-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-basic-auth-extension-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-file-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-json-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-client-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-runtime-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-transforms-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/guava-20.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-api-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-locator-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-utils-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-core-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-databind-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-dataformat-csv-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-datatype-jdk8-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-base-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-json-provider-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-jaxb-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-paranamer-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-scala_2.12-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.activation-api-1.2.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.annotation-api-1.3.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.inject-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.ws.rs-api-2.1.5.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.xml.bind-api-2.3.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javassist-3.22.0-CR2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.servlet-api-3.1.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.ws.rs-api-2.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jaxb-api-2.3.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-client-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-common-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-core-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-hk2-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-media-jaxb-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-server-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-client-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-continuation-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-http-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-io-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-security-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-server-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlet-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlets-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-util-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jopt-simple-5.0.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0-sources.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-clients-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-log4j-appender-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-examples-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-scala_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-test-utils-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-tools-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/log4j-1.2.17.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/lz4-java-1.6.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/maven-artifact-3.6.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/metrics-core-2.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-buffer-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-codec-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-handler-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-resolver-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-epoll-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-unix-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/osgi-resource-locator-1.0.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/paranamer-2.8.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/plexus-utils-3.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/reflections-0.9.11.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/rocksdbjni-5.18.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-collection-compat_2.12-2.1.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-java8-compat_2.12-0.9.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-library-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-logging_2.12-3.9.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-reflect-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-api-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-log4j12-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/snappy-java-1.1.7.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/validation-api-2.0.1.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-jute-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zstd-jni-1.4.3-1.jar (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:java.library.path=/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,945] INFO Server environment:java.io.tmpdir=/tmp (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:java.compiler=<NA> (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:os.name=Linux (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:os.arch=amd64 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:os.version=5.3.0-24-generic (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:user.name=b1zon (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:user.home=/home/b1zon (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:user.dir=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:os.memory.free=494MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:os.memory.max=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,946] INFO Server environment:os.memory.total=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,947] INFO minSessionTimeout set to 6000 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,947] INFO maxSessionTimeout set to 60000 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,948] INFO Created server with tickTime 3000 minSessionTimeout 6000 maxSessionTimeout 60000 datadir /tmp/zookeeper/version-2 snapdir /tmp/zookeeper/version-2 (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:49,958] INFO Using org.apache.zookeeper.server.NIOServerCnxnFactory as server connection factory (org.apache.zookeeper.server.ServerCnxnFactory)
+[2019-12-25 02:41:49,961] INFO Configuring NIO connection handler with 10s sessionless connection timeout, 2 selector thread(s), 16 worker threads, and 64 kB direct buffers. (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2019-12-25 02:41:49,965] INFO binding to port 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2019-12-25 02:41:49,983] INFO zookeeper.snapshotSizeFactor = 0.33 (org.apache.zookeeper.server.ZKDatabase)
+[2019-12-25 02:41:49,984] INFO Reading snapshot /tmp/zookeeper/version-2/snapshot.116 (org.apache.zookeeper.server.persistence.FileSnap)
+[2019-12-25 02:41:49,995] INFO Snapshotting: 0x116 to /tmp/zookeeper/version-2/snapshot.116 (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2019-12-25 02:41:50,020] INFO Using checkIntervalMs=60000 maxPerMinute=10000 (org.apache.zookeeper.server.ContainerManager)
+[2019-12-25 02:41:58,731] INFO Expiring session 0x1000216a4200000, timeout of 6000ms exceeded (org.apache.zookeeper.server.ZooKeeperServer)
+[2019-12-25 02:41:58,736] INFO Creating new log file: log.117 (org.apache.zookeeper.server.persistence.FileTxnLog)
+[2019-12-25 02:42:03,121] INFO Registered kafka:type=kafka.Log4jController MBean (kafka.utils.Log4jControllerRegistration$)
+[2019-12-25 02:42:03,511] INFO Registered signal handlers for TERM, INT, HUP (org.apache.kafka.common.utils.LoggingSignalHandler)
+[2019-12-25 02:42:03,512] INFO starting (kafka.server.KafkaServer)
+[2019-12-25 02:42:03,513] INFO Connecting to zookeeper on localhost:2181 (kafka.server.KafkaServer)
+[2019-12-25 02:42:03,528] INFO [ZooKeeperClient Kafka server] Initializing a new session to localhost:2181. (kafka.zookeeper.ZooKeeperClient)
+[2019-12-25 02:42:03,533] INFO Client environment:zookeeper.version=3.5.6-c11b7e26bc554b8523dc929761dd28808913f091, built on 10/08/2019 20:18 GMT (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,533] INFO Client environment:host.name=ALAN (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,533] INFO Client environment:java.version=11.0.5 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,533] INFO Client environment:java.vendor=Private Build (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,533] INFO Client environment:java.home=/usr/lib/jvm/java-11-openjdk-amd64 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,533] INFO Client environment:java.class.path=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/activation-1.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/aopalliance-repackaged-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/argparse4j-0.7.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/audience-annotations-0.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-cli-1.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/commons-lang3-3.8.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-api-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-basic-auth-extension-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-file-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-json-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-mirror-client-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-runtime-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/connect-transforms-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/guava-20.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-api-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-locator-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/hk2-utils-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-core-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-databind-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-dataformat-csv-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-datatype-jdk8-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-base-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-jaxrs-json-provider-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-jaxb-annotations-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-paranamer-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jackson-module-scala_2.12-2.10.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.activation-api-1.2.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.annotation-api-1.3.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.inject-2.5.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.ws.rs-api-2.1.5.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jakarta.xml.bind-api-2.3.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javassist-3.22.0-CR2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.servlet-api-3.1.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/javax.ws.rs-api-2.1.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jaxb-api-2.3.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-client-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-common-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-container-servlet-core-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-hk2-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-media-jaxb-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jersey-server-2.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-client-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-continuation-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-http-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-io-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-security-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-server-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlet-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-servlets-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jetty-util-9.4.20.v20190813.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/jopt-simple-5.0.4.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka_2.12-2.4.0-sources.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-clients-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-log4j-appender-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-examples-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-scala_2.12-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-streams-test-utils-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/kafka-tools-2.4.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/log4j-1.2.17.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/lz4-java-1.6.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/maven-artifact-3.6.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/metrics-core-2.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-buffer-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-codec-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-handler-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-resolver-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-epoll-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/netty-transport-native-unix-common-4.1.42.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/osgi-resource-locator-1.0.1.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/paranamer-2.8.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/plexus-utils-3.2.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/reflections-0.9.11.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/rocksdbjni-5.18.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-collection-compat_2.12-2.1.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-java8-compat_2.12-0.9.0.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-library-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-logging_2.12-3.9.2.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/scala-reflect-2.12.10.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-api-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/slf4j-log4j12-1.7.28.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/snappy-java-1.1.7.3.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/validation-api-2.0.1.Final.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zookeeper-jute-3.5.6.jar:/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0/bin/../libs/zstd-jni-1.4.3-1.jar (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:java.library.path=/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:java.io.tmpdir=/tmp (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:java.compiler=<NA> (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:os.name=Linux (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:os.arch=amd64 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:os.version=5.3.0-24-generic (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:user.name=b1zon (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:user.home=/home/b1zon (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:user.dir=/home/b1zon/Desktop/LABS/distributed_systems/photo-scale-microservice/misc/kafka_2.12-2.4.0 (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:os.memory.free=981MB (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,534] INFO Client environment:os.memory.max=1024MB (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,535] INFO Client environment:os.memory.total=1024MB (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,537] INFO Initiating client connection, connectString=localhost:2181 sessionTimeout=6000 watcher=kafka.zookeeper.ZooKeeperClient$ZooKeeperClientWatcher$@6d5620ce (org.apache.zookeeper.ZooKeeper)
+[2019-12-25 02:42:03,541] INFO Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation (org.apache.zookeeper.common.X509Util)
+[2019-12-25 02:42:03,546] INFO jute.maxbuffer value is 4194304 Bytes (org.apache.zookeeper.ClientCnxnSocket)
+[2019-12-25 02:42:03,550] INFO zookeeper.request.timeout value is 0. feature enabled= (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:42:03,552] INFO [ZooKeeperClient Kafka server] Waiting until connected. (kafka.zookeeper.ZooKeeperClient)
+[2019-12-25 02:42:03,557] INFO Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error) (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:42:03,562] INFO Socket connection established, initiating session, client: /127.0.0.1:52808, server: localhost/127.0.0.1:2181 (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:42:03,586] INFO Session establishment complete on server localhost/127.0.0.1:2181, sessionid = 0x10003c8c4fa0000, negotiated timeout = 6000 (org.apache.zookeeper.ClientCnxn)
+[2019-12-25 02:42:03,589] INFO [ZooKeeperClient Kafka server] Connected. (kafka.zookeeper.ZooKeeperClient)
+[2019-12-25 02:42:03,813] INFO Cluster ID = DyyOVCrCRAygMFxWnmtzLA (kafka.server.KafkaServer)
+[2019-12-25 02:42:03,876] INFO KafkaConfig values: 
+	advertised.host.name = null
+	advertised.listeners = null
+	advertised.port = null
+	alter.config.policy.class.name = null
+	alter.log.dirs.replication.quota.window.num = 11
+	alter.log.dirs.replication.quota.window.size.seconds = 1
+	authorizer.class.name = 
+	auto.create.topics.enable = true
+	auto.leader.rebalance.enable = true
+	background.threads = 10
+	broker.id = 0
+	broker.id.generation.enable = true
+	broker.rack = null
+	client.quota.callback.class = null
+	compression.type = producer
+	connection.failed.authentication.delay.ms = 100
+	connections.max.idle.ms = 600000
+	connections.max.reauth.ms = 0
+	control.plane.listener.name = null
+	controlled.shutdown.enable = true
+	controlled.shutdown.max.retries = 3
+	controlled.shutdown.retry.backoff.ms = 5000
+	controller.socket.timeout.ms = 30000
+	create.topic.policy.class.name = null
+	default.replication.factor = 1
+	delegation.token.expiry.check.interval.ms = 3600000
+	delegation.token.expiry.time.ms = 86400000
+	delegation.token.master.key = null
+	delegation.token.max.lifetime.ms = 604800000
+	delete.records.purgatory.purge.interval.requests = 1
+	delete.topic.enable = true
+	fetch.purgatory.purge.interval.requests = 1000
+	group.initial.rebalance.delay.ms = 0
+	group.max.session.timeout.ms = 1800000
+	group.max.size = 2147483647
+	group.min.session.timeout.ms = 6000
+	host.name = 
+	inter.broker.listener.name = null
+	inter.broker.protocol.version = 2.4-IV1
+	kafka.metrics.polling.interval.secs = 10
+	kafka.metrics.reporters = []
+	leader.imbalance.check.interval.seconds = 300
+	leader.imbalance.per.broker.percentage = 10
+	listener.security.protocol.map = PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+	listeners = null
+	log.cleaner.backoff.ms = 15000
+	log.cleaner.dedupe.buffer.size = 134217728
+	log.cleaner.delete.retention.ms = 86400000
+	log.cleaner.enable = true
+	log.cleaner.io.buffer.load.factor = 0.9
+	log.cleaner.io.buffer.size = 524288
+	log.cleaner.io.max.bytes.per.second = 1.7976931348623157E308
+	log.cleaner.max.compaction.lag.ms = 9223372036854775807
+	log.cleaner.min.cleanable.ratio = 0.5
+	log.cleaner.min.compaction.lag.ms = 0
+	log.cleaner.threads = 1
+	log.cleanup.policy = [delete]
+	log.dir = /tmp/kafka-logs
+	log.dirs = /tmp/kafka-logs
+	log.flush.interval.messages = 9223372036854775807
+	log.flush.interval.ms = null
+	log.flush.offset.checkpoint.interval.ms = 60000
+	log.flush.scheduler.interval.ms = 9223372036854775807
+	log.flush.start.offset.checkpoint.interval.ms = 60000
+	log.index.interval.bytes = 4096
+	log.index.size.max.bytes = 10485760
+	log.message.downconversion.enable = true
+	log.message.format.version = 2.4-IV1
+	log.message.timestamp.difference.max.ms = 9223372036854775807
+	log.message.timestamp.type = CreateTime
+	log.preallocate = false
+	log.retention.bytes = -1
+	log.retention.check.interval.ms = 300000
+	log.retention.hours = 168
+	log.retention.minutes = null
+	log.retention.ms = null
+	log.roll.hours = 168
+	log.roll.jitter.hours = 0
+	log.roll.jitter.ms = null
+	log.roll.ms = null
+	log.segment.bytes = 1073741824
+	log.segment.delete.delay.ms = 60000
+	max.connections = 2147483647
+	max.connections.per.ip = 2147483647
+	max.connections.per.ip.overrides = 
+	max.incremental.fetch.session.cache.slots = 1000
+	message.max.bytes = 1000012
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	min.insync.replicas = 1
+	num.io.threads = 8
+	num.network.threads = 3
+	num.partitions = 1
+	num.recovery.threads.per.data.dir = 1
+	num.replica.alter.log.dirs.threads = null
+	num.replica.fetchers = 1
+	offset.metadata.max.bytes = 4096
+	offsets.commit.required.acks = -1
+	offsets.commit.timeout.ms = 5000
+	offsets.load.buffer.size = 5242880
+	offsets.retention.check.interval.ms = 600000
+	offsets.retention.minutes = 10080
+	offsets.topic.compression.codec = 0
+	offsets.topic.num.partitions = 50
+	offsets.topic.replication.factor = 1
+	offsets.topic.segment.bytes = 104857600
+	password.encoder.cipher.algorithm = AES/CBC/PKCS5Padding
+	password.encoder.iterations = 4096
+	password.encoder.key.length = 128
+	password.encoder.keyfactory.algorithm = null
+	password.encoder.old.secret = null
+	password.encoder.secret = null
+	port = 9092
+	principal.builder.class = null
+	producer.purgatory.purge.interval.requests = 1000
+	queued.max.request.bytes = -1
+	queued.max.requests = 500
+	quota.consumer.default = 9223372036854775807
+	quota.producer.default = 9223372036854775807
+	quota.window.num = 11
+	quota.window.size.seconds = 1
+	replica.fetch.backoff.ms = 1000
+	replica.fetch.max.bytes = 1048576
+	replica.fetch.min.bytes = 1
+	replica.fetch.response.max.bytes = 10485760
+	replica.fetch.wait.max.ms = 500
+	replica.high.watermark.checkpoint.interval.ms = 5000
+	replica.lag.time.max.ms = 10000
+	replica.selector.class = null
+	replica.socket.receive.buffer.bytes = 65536
+	replica.socket.timeout.ms = 30000
+	replication.quota.window.num = 11
+	replication.quota.window.size.seconds = 1
+	request.timeout.ms = 30000
+	reserved.broker.max.id = 1000
+	sasl.client.callback.handler.class = null
+	sasl.enabled.mechanisms = [GSSAPI]
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.principal.to.local.rules = [DEFAULT]
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism.inter.broker.protocol = GSSAPI
+	sasl.server.callback.handler.class = null
+	security.inter.broker.protocol = PLAINTEXT
+	security.providers = null
+	socket.receive.buffer.bytes = 102400
+	socket.request.max.bytes = 104857600
+	socket.send.buffer.bytes = 102400
+	ssl.cipher.suites = []
+	ssl.client.auth = none
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.principal.mapping.rules = DEFAULT
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.abort.timed.out.transaction.cleanup.interval.ms = 60000
+	transaction.max.timeout.ms = 900000
+	transaction.remove.expired.transaction.cleanup.interval.ms = 3600000
+	transaction.state.log.load.buffer.size = 5242880
+	transaction.state.log.min.isr = 1
+	transaction.state.log.num.partitions = 50
+	transaction.state.log.replication.factor = 1
+	transaction.state.log.segment.bytes = 104857600
+	transactional.id.expiration.ms = 604800000
+	unclean.leader.election.enable = false
+	zookeeper.connect = localhost:2181
+	zookeeper.connection.timeout.ms = 6000
+	zookeeper.max.in.flight.requests = 10
+	zookeeper.session.timeout.ms = 6000
+	zookeeper.set.acl = false
+	zookeeper.sync.time.ms = 2000
+ (kafka.server.KafkaConfig)
+[2019-12-25 02:42:03,886] INFO KafkaConfig values: 
+	advertised.host.name = null
+	advertised.listeners = null
+	advertised.port = null
+	alter.config.policy.class.name = null
+	alter.log.dirs.replication.quota.window.num = 11
+	alter.log.dirs.replication.quota.window.size.seconds = 1
+	authorizer.class.name = 
+	auto.create.topics.enable = true
+	auto.leader.rebalance.enable = true
+	background.threads = 10
+	broker.id = 0
+	broker.id.generation.enable = true
+	broker.rack = null
+	client.quota.callback.class = null
+	compression.type = producer
+	connection.failed.authentication.delay.ms = 100
+	connections.max.idle.ms = 600000
+	connections.max.reauth.ms = 0
+	control.plane.listener.name = null
+	controlled.shutdown.enable = true
+	controlled.shutdown.max.retries = 3
+	controlled.shutdown.retry.backoff.ms = 5000
+	controller.socket.timeout.ms = 30000
+	create.topic.policy.class.name = null
+	default.replication.factor = 1
+	delegation.token.expiry.check.interval.ms = 3600000
+	delegation.token.expiry.time.ms = 86400000
+	delegation.token.master.key = null
+	delegation.token.max.lifetime.ms = 604800000
+	delete.records.purgatory.purge.interval.requests = 1
+	delete.topic.enable = true
+	fetch.purgatory.purge.interval.requests = 1000
+	group.initial.rebalance.delay.ms = 0
+	group.max.session.timeout.ms = 1800000
+	group.max.size = 2147483647
+	group.min.session.timeout.ms = 6000
+	host.name = 
+	inter.broker.listener.name = null
+	inter.broker.protocol.version = 2.4-IV1
+	kafka.metrics.polling.interval.secs = 10
+	kafka.metrics.reporters = []
+	leader.imbalance.check.interval.seconds = 300
+	leader.imbalance.per.broker.percentage = 10
+	listener.security.protocol.map = PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
+	listeners = null
+	log.cleaner.backoff.ms = 15000
+	log.cleaner.dedupe.buffer.size = 134217728
+	log.cleaner.delete.retention.ms = 86400000
+	log.cleaner.enable = true
+	log.cleaner.io.buffer.load.factor = 0.9
+	log.cleaner.io.buffer.size = 524288
+	log.cleaner.io.max.bytes.per.second = 1.7976931348623157E308
+	log.cleaner.max.compaction.lag.ms = 9223372036854775807
+	log.cleaner.min.cleanable.ratio = 0.5
+	log.cleaner.min.compaction.lag.ms = 0
+	log.cleaner.threads = 1
+	log.cleanup.policy = [delete]
+	log.dir = /tmp/kafka-logs
+	log.dirs = /tmp/kafka-logs
+	log.flush.interval.messages = 9223372036854775807
+	log.flush.interval.ms = null
+	log.flush.offset.checkpoint.interval.ms = 60000
+	log.flush.scheduler.interval.ms = 9223372036854775807
+	log.flush.start.offset.checkpoint.interval.ms = 60000
+	log.index.interval.bytes = 4096
+	log.index.size.max.bytes = 10485760
+	log.message.downconversion.enable = true
+	log.message.format.version = 2.4-IV1
+	log.message.timestamp.difference.max.ms = 9223372036854775807
+	log.message.timestamp.type = CreateTime
+	log.preallocate = false
+	log.retention.bytes = -1
+	log.retention.check.interval.ms = 300000
+	log.retention.hours = 168
+	log.retention.minutes = null
+	log.retention.ms = null
+	log.roll.hours = 168
+	log.roll.jitter.hours = 0
+	log.roll.jitter.ms = null
+	log.roll.ms = null
+	log.segment.bytes = 1073741824
+	log.segment.delete.delay.ms = 60000
+	max.connections = 2147483647
+	max.connections.per.ip = 2147483647
+	max.connections.per.ip.overrides = 
+	max.incremental.fetch.session.cache.slots = 1000
+	message.max.bytes = 1000012
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	min.insync.replicas = 1
+	num.io.threads = 8
+	num.network.threads = 3
+	num.partitions = 1
+	num.recovery.threads.per.data.dir = 1
+	num.replica.alter.log.dirs.threads = null
+	num.replica.fetchers = 1
+	offset.metadata.max.bytes = 4096
+	offsets.commit.required.acks = -1
+	offsets.commit.timeout.ms = 5000
+	offsets.load.buffer.size = 5242880
+	offsets.retention.check.interval.ms = 600000
+	offsets.retention.minutes = 10080
+	offsets.topic.compression.codec = 0
+	offsets.topic.num.partitions = 50
+	offsets.topic.replication.factor = 1
+	offsets.topic.segment.bytes = 104857600
+	password.encoder.cipher.algorithm = AES/CBC/PKCS5Padding
+	password.encoder.iterations = 4096
+	password.encoder.key.length = 128
+	password.encoder.keyfactory.algorithm = null
+	password.encoder.old.secret = null
+	password.encoder.secret = null
+	port = 9092
+	principal.builder.class = null
+	producer.purgatory.purge.interval.requests = 1000
+	queued.max.request.bytes = -1
+	queued.max.requests = 500
+	quota.consumer.default = 9223372036854775807
+	quota.producer.default = 9223372036854775807
+	quota.window.num = 11
+	quota.window.size.seconds = 1
+	replica.fetch.backoff.ms = 1000
+	replica.fetch.max.bytes = 1048576
+	replica.fetch.min.bytes = 1
+	replica.fetch.response.max.bytes = 10485760
+	replica.fetch.wait.max.ms = 500
+	replica.high.watermark.checkpoint.interval.ms = 5000
+	replica.lag.time.max.ms = 10000
+	replica.selector.class = null
+	replica.socket.receive.buffer.bytes = 65536
+	replica.socket.timeout.ms = 30000
+	replication.quota.window.num = 11
+	replication.quota.window.size.seconds = 1
+	request.timeout.ms = 30000
+	reserved.broker.max.id = 1000
+	sasl.client.callback.handler.class = null
+	sasl.enabled.mechanisms = [GSSAPI]
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.principal.to.local.rules = [DEFAULT]
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism.inter.broker.protocol = GSSAPI
+	sasl.server.callback.handler.class = null
+	security.inter.broker.protocol = PLAINTEXT
+	security.providers = null
+	socket.receive.buffer.bytes = 102400
+	socket.request.max.bytes = 104857600
+	socket.send.buffer.bytes = 102400
+	ssl.cipher.suites = []
+	ssl.client.auth = none
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.principal.mapping.rules = DEFAULT
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.abort.timed.out.transaction.cleanup.interval.ms = 60000
+	transaction.max.timeout.ms = 900000
+	transaction.remove.expired.transaction.cleanup.interval.ms = 3600000
+	transaction.state.log.load.buffer.size = 5242880
+	transaction.state.log.min.isr = 1
+	transaction.state.log.num.partitions = 50
+	transaction.state.log.replication.factor = 1
+	transaction.state.log.segment.bytes = 104857600
+	transactional.id.expiration.ms = 604800000
+	unclean.leader.election.enable = false
+	zookeeper.connect = localhost:2181
+	zookeeper.connection.timeout.ms = 6000
+	zookeeper.max.in.flight.requests = 10
+	zookeeper.session.timeout.ms = 6000
+	zookeeper.set.acl = false
+	zookeeper.sync.time.ms = 2000
+ (kafka.server.KafkaConfig)
+[2019-12-25 02:42:03,908] INFO [ThrottledChannelReaper-Fetch]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2019-12-25 02:42:03,908] INFO [ThrottledChannelReaper-Produce]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2019-12-25 02:42:03,910] INFO [ThrottledChannelReaper-Request]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2019-12-25 02:42:03,943] INFO Loading logs. (kafka.log.LogManager)
+[2019-12-25 02:42:04,028] INFO [Log partition=__consumer_offsets-44, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,041] INFO [Log partition=__consumer_offsets-44, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 70 ms (kafka.log.Log)
+[2019-12-25 02:42:04,055] INFO [Log partition=__consumer_offsets-47, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,055] INFO [Log partition=__consumer_offsets-47, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,063] INFO [Log partition=__consumer_offsets-46, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,063] INFO [Log partition=__consumer_offsets-46, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,071] INFO [Log partition=__consumer_offsets-28, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,072] INFO [Log partition=__consumer_offsets-28, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 6 ms (kafka.log.Log)
+[2019-12-25 02:42:04,079] INFO [Log partition=__consumer_offsets-0, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,079] INFO [Log partition=__consumer_offsets-0, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,086] INFO [Log partition=__consumer_offsets-25, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,086] INFO [Log partition=__consumer_offsets-25, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,094] INFO [Log partition=__consumer_offsets-6, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,094] INFO [Log partition=__consumer_offsets-6, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,101] INFO [Log partition=__consumer_offsets-11, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,101] INFO [Log partition=__consumer_offsets-11, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,108] INFO [Log partition=__consumer_offsets-1, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,108] INFO [Log partition=__consumer_offsets-1, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,115] INFO [Log partition=__consumer_offsets-33, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,115] INFO [Log partition=__consumer_offsets-33, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,123] INFO [Log partition=__consumer_offsets-19, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,123] INFO [Log partition=__consumer_offsets-19, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,130] INFO [Log partition=__consumer_offsets-34, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,131] INFO [Log partition=__consumer_offsets-34, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 6 ms (kafka.log.Log)
+[2019-12-25 02:42:04,147] INFO [Log partition=__consumer_offsets-31, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,148] INFO [Log partition=__consumer_offsets-31, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 10 ms (kafka.log.Log)
+[2019-12-25 02:42:04,161] INFO [Log partition=__consumer_offsets-48, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,162] INFO [Log partition=__consumer_offsets-48, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 7 ms (kafka.log.Log)
+[2019-12-25 02:42:04,179] INFO [Log partition=userpicsTopic-0, dir=/tmp/kafka-logs] Loading producer state till offset 28 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,184] INFO [ProducerStateManager partition=userpicsTopic-0] Loading producer state from snapshot file '/tmp/kafka-logs/userpicsTopic-0/00000000000000000028.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,196] INFO [Log partition=userpicsTopic-0, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 28 in 31 ms (kafka.log.Log)
+[2019-12-25 02:42:04,203] INFO [Log partition=sagasTopic-0, dir=/tmp/kafka-logs] Loading producer state till offset 65 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,203] INFO [ProducerStateManager partition=sagasTopic-0] Loading producer state from snapshot file '/tmp/kafka-logs/sagasTopic-0/00000000000000000065.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,204] INFO [Log partition=sagasTopic-0, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 65 in 6 ms (kafka.log.Log)
+[2019-12-25 02:42:04,210] INFO [Log partition=__consumer_offsets-23, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,210] INFO [Log partition=__consumer_offsets-23, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,218] INFO [Log partition=__consumer_offsets-21, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,218] INFO [Log partition=__consumer_offsets-21, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,223] INFO [Log partition=__consumer_offsets-49, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,224] INFO [Log partition=__consumer_offsets-49, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,234] INFO [Log partition=__consumer_offsets-13, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,234] INFO [Log partition=__consumer_offsets-13, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 9 ms (kafka.log.Log)
+[2019-12-25 02:42:04,242] INFO [Log partition=__consumer_offsets-9, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,242] INFO [Log partition=__consumer_offsets-9, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 6 ms (kafka.log.Log)
+[2019-12-25 02:42:04,255] INFO [Log partition=__consumer_offsets-35, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,256] INFO [Log partition=__consumer_offsets-35, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 12 ms (kafka.log.Log)
+[2019-12-25 02:42:04,268] INFO [Log partition=__consumer_offsets-16, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,268] INFO [Log partition=__consumer_offsets-16, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 7 ms (kafka.log.Log)
+[2019-12-25 02:42:04,276] INFO [Log partition=__consumer_offsets-41, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,276] INFO [Log partition=__consumer_offsets-41, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 6 ms (kafka.log.Log)
+[2019-12-25 02:42:04,284] INFO [Log partition=__consumer_offsets-10, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,284] INFO [Log partition=__consumer_offsets-10, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,290] INFO [Log partition=__consumer_offsets-40, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,290] INFO [Log partition=__consumer_offsets-40, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,296] INFO [Log partition=__consumer_offsets-7, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,296] INFO [Log partition=__consumer_offsets-7, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,302] INFO [Log partition=__consumer_offsets-27, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,302] INFO [Log partition=__consumer_offsets-27, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,308] INFO [Log partition=__consumer_offsets-30, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,308] INFO [Log partition=__consumer_offsets-30, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,315] INFO [Log partition=__consumer_offsets-32, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,315] INFO [Log partition=__consumer_offsets-32, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,320] INFO [Log partition=__consumer_offsets-4, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,320] INFO [Log partition=__consumer_offsets-4, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,326] INFO [Log partition=__consumer_offsets-14, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,326] INFO [Log partition=__consumer_offsets-14, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,332] INFO [Log partition=__consumer_offsets-8, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,332] INFO [Log partition=__consumer_offsets-8, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,338] INFO [Log partition=__consumer_offsets-3, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,338] INFO [Log partition=__consumer_offsets-3, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,344] INFO [Log partition=__consumer_offsets-36, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,344] INFO [Log partition=__consumer_offsets-36, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,351] INFO [Log partition=photosTopic-0, dir=/tmp/kafka-logs] Loading producer state till offset 32 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,351] INFO [ProducerStateManager partition=photosTopic-0] Loading producer state from snapshot file '/tmp/kafka-logs/photosTopic-0/00000000000000000032.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,352] INFO [Log partition=photosTopic-0, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 32 in 7 ms (kafka.log.Log)
+[2019-12-25 02:42:04,358] INFO [Log partition=__consumer_offsets-45, dir=/tmp/kafka-logs] Loading producer state till offset 3 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,358] INFO [ProducerStateManager partition=__consumer_offsets-45] Loading producer state from snapshot file '/tmp/kafka-logs/__consumer_offsets-45/00000000000000000003.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,358] INFO [Log partition=__consumer_offsets-45, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 3 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,364] INFO [Log partition=__consumer_offsets-2, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,364] INFO [Log partition=__consumer_offsets-2, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,369] INFO [Log partition=__consumer_offsets-17, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,369] INFO [Log partition=__consumer_offsets-17, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,375] INFO [Log partition=__consumer_offsets-43, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,375] INFO [Log partition=__consumer_offsets-43, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,381] INFO [Log partition=__consumer_offsets-18, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,381] INFO [Log partition=__consumer_offsets-18, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,386] INFO [Log partition=__consumer_offsets-37, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,386] INFO [Log partition=__consumer_offsets-37, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,391] INFO [Log partition=__consumer_offsets-38, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,391] INFO [Log partition=__consumer_offsets-38, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,396] INFO [Log partition=__consumer_offsets-15, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,396] INFO [Log partition=__consumer_offsets-15, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,403] INFO [Log partition=__consumer_offsets-12, dir=/tmp/kafka-logs] Loading producer state till offset 6090 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,403] INFO [ProducerStateManager partition=__consumer_offsets-12] Loading producer state from snapshot file '/tmp/kafka-logs/__consumer_offsets-12/00000000000000006090.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,404] INFO [Log partition=__consumer_offsets-12, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 6090 in 7 ms (kafka.log.Log)
+[2019-12-25 02:42:04,409] INFO [Log partition=__consumer_offsets-42, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,409] INFO [Log partition=__consumer_offsets-42, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,414] INFO [Log partition=__consumer_offsets-22, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,415] INFO [Log partition=__consumer_offsets-22, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,420] INFO [Log partition=userTopics-0, dir=/tmp/kafka-logs] Loading producer state till offset 1 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,420] INFO [ProducerStateManager partition=userTopics-0] Loading producer state from snapshot file '/tmp/kafka-logs/userTopics-0/00000000000000000001.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,420] INFO [Log partition=userTopics-0, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 1 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,426] INFO [Log partition=__consumer_offsets-24, dir=/tmp/kafka-logs] Loading producer state till offset 3 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,426] INFO [ProducerStateManager partition=__consumer_offsets-24] Loading producer state from snapshot file '/tmp/kafka-logs/__consumer_offsets-24/00000000000000000003.snapshot' (kafka.log.ProducerStateManager)
+[2019-12-25 02:42:04,426] INFO [Log partition=__consumer_offsets-24, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 3 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,432] INFO [Log partition=__consumer_offsets-26, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,432] INFO [Log partition=__consumer_offsets-26, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,437] INFO [Log partition=__consumer_offsets-20, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,437] INFO [Log partition=__consumer_offsets-20, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,443] INFO [Log partition=__consumer_offsets-29, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,443] INFO [Log partition=__consumer_offsets-29, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,448] INFO [Log partition=__consumer_offsets-5, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,449] INFO [Log partition=__consumer_offsets-5, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 5 ms (kafka.log.Log)
+[2019-12-25 02:42:04,454] INFO [Log partition=__consumer_offsets-39, dir=/tmp/kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.Log)
+[2019-12-25 02:42:04,454] INFO [Log partition=__consumer_offsets-39, dir=/tmp/kafka-logs] Completed load of log with 1 segments, log start offset 0 and log end offset 0 in 4 ms (kafka.log.Log)
+[2019-12-25 02:42:04,457] INFO Logs loading complete in 514 ms. (kafka.log.LogManager)
+[2019-12-25 02:42:04,467] INFO Starting log cleanup with a period of 300000 ms. (kafka.log.LogManager)
+[2019-12-25 02:42:04,468] INFO Starting log flusher with a default period of 9223372036854775807 ms. (kafka.log.LogManager)
+[2019-12-25 02:42:04,737] INFO Awaiting socket connections on 0.0.0.0:9092. (kafka.network.Acceptor)
+[2019-12-25 02:42:04,760] INFO [SocketServer brokerId=0] Created data-plane acceptor and processors for endpoint : EndPoint(null,9092,ListenerName(PLAINTEXT),PLAINTEXT) (kafka.network.SocketServer)
+[2019-12-25 02:42:04,761] INFO [SocketServer brokerId=0] Started 1 acceptor threads for data-plane (kafka.network.SocketServer)
+[2019-12-25 02:42:04,779] INFO [ExpirationReaper-0-Produce]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,780] INFO [ExpirationReaper-0-Fetch]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,781] INFO [ExpirationReaper-0-DeleteRecords]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,781] INFO [ExpirationReaper-0-ElectLeader]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,795] INFO [LogDirFailureHandler]: Starting (kafka.server.ReplicaManager$LogDirFailureHandler)
+[2019-12-25 02:42:04,843] INFO Creating /brokers/ids/0 (is it secure? false) (kafka.zk.KafkaZkClient)
+[2019-12-25 02:42:04,866] INFO Stat of the created znode at /brokers/ids/0 is: 294,294,1577234524856,1577234524856,1,0,0,72061754870988800,178,0,294
+ (kafka.zk.KafkaZkClient)
+[2019-12-25 02:42:04,867] INFO Registered broker 0 at path /brokers/ids/0 with addresses: ArrayBuffer(EndPoint(ALAN,9092,ListenerName(PLAINTEXT),PLAINTEXT)), czxid (broker epoch): 294 (kafka.zk.KafkaZkClient)
+[2019-12-25 02:42:04,934] INFO [ExpirationReaper-0-topic]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,936] INFO [ExpirationReaper-0-Heartbeat]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,937] INFO [ExpirationReaper-0-Rebalance]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:04,974] INFO [GroupCoordinator 0]: Starting up. (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:42:04,975] INFO [GroupCoordinator 0]: Startup complete. (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:42:04,979] INFO [GroupMetadataManager brokerId=0] Removed 0 expired offsets in 4 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:04,992] INFO [ProducerId Manager 0]: Acquired new producerId block (brokerId:0,blockStartProducerId:5000,blockEndProducerId:5999) by writing to Zk with path version 6 (kafka.coordinator.transaction.ProducerIdManager)
+[2019-12-25 02:42:05,018] INFO [TransactionCoordinator id=0] Starting up. (kafka.coordinator.transaction.TransactionCoordinator)
+[2019-12-25 02:42:05,020] INFO [TransactionCoordinator id=0] Startup complete. (kafka.coordinator.transaction.TransactionCoordinator)
+[2019-12-25 02:42:05,020] INFO [Transaction Marker Channel Manager 0]: Starting (kafka.coordinator.transaction.TransactionMarkerChannelManager)
+[2019-12-25 02:42:05,049] INFO [ExpirationReaper-0-AlterAcls]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2019-12-25 02:42:05,071] INFO [/config/changes-event-process-thread]: Starting (kafka.common.ZkNodeChangeNotificationListener$ChangeEventProcessThread)
+[2019-12-25 02:42:05,107] INFO [SocketServer brokerId=0] Started data-plane processors for 1 acceptors (kafka.network.SocketServer)
+[2019-12-25 02:42:05,114] INFO Kafka version: 2.4.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2019-12-25 02:42:05,114] INFO Kafka commitId: 77a89fcf8d7fa018 (org.apache.kafka.common.utils.AppInfoParser)
+[2019-12-25 02:42:05,114] INFO Kafka startTimeMs: 1577234525107 (org.apache.kafka.common.utils.AppInfoParser)
+[2019-12-25 02:42:05,116] INFO [KafkaServer id=0] started (kafka.server.KafkaServer)
+[2019-12-25 02:42:05,199] INFO [ReplicaFetcherManager on broker 0] Removed fetcher for partitions Set(__consumer_offsets-22, __consumer_offsets-30, __consumer_offsets-8, __consumer_offsets-21, __consumer_offsets-4, __consumer_offsets-27, __consumer_offsets-7, userTopics-0, __consumer_offsets-9, __consumer_offsets-46, __consumer_offsets-25, __consumer_offsets-35, __consumer_offsets-41, __consumer_offsets-33, __consumer_offsets-23, __consumer_offsets-49, __consumer_offsets-47, __consumer_offsets-16, __consumer_offsets-28, __consumer_offsets-31, __consumer_offsets-36, __consumer_offsets-42, __consumer_offsets-3, __consumer_offsets-18, __consumer_offsets-37, __consumer_offsets-15, __consumer_offsets-24, photosTopic-0, __consumer_offsets-38, __consumer_offsets-17, __consumer_offsets-48, __consumer_offsets-19, __consumer_offsets-11, __consumer_offsets-13, __consumer_offsets-2, __consumer_offsets-43, __consumer_offsets-6, __consumer_offsets-14, sagasTopic-0, __consumer_offsets-20, __consumer_offsets-0, __consumer_offsets-44, __consumer_offsets-39, __consumer_offsets-12, __consumer_offsets-45, __consumer_offsets-1, __consumer_offsets-5, __consumer_offsets-26, __consumer_offsets-29, __consumer_offsets-34, __consumer_offsets-10, userpicsTopic-0, __consumer_offsets-32, __consumer_offsets-40) (kafka.server.ReplicaFetcherManager)
+[2019-12-25 02:42:05,248] INFO [Partition __consumer_offsets-0 broker=0] Log loaded for partition __consumer_offsets-0 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,249] INFO [Partition __consumer_offsets-0 broker=0] __consumer_offsets-0 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,264] INFO [Partition __consumer_offsets-29 broker=0] Log loaded for partition __consumer_offsets-29 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,264] INFO [Partition __consumer_offsets-29 broker=0] __consumer_offsets-29 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,270] INFO [Partition __consumer_offsets-48 broker=0] Log loaded for partition __consumer_offsets-48 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,270] INFO [Partition __consumer_offsets-48 broker=0] __consumer_offsets-48 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,275] INFO [Partition userpicsTopic-0 broker=0] Log loaded for partition userpicsTopic-0 with initial high watermark 28 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,275] INFO [Partition userpicsTopic-0 broker=0] userpicsTopic-0 starts at Leader Epoch 0 from offset 28. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,278] INFO [Partition __consumer_offsets-10 broker=0] Log loaded for partition __consumer_offsets-10 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,278] INFO [Partition __consumer_offsets-10 broker=0] __consumer_offsets-10 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,284] INFO [Partition __consumer_offsets-45 broker=0] Log loaded for partition __consumer_offsets-45 with initial high watermark 3 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,284] INFO [Partition __consumer_offsets-45 broker=0] __consumer_offsets-45 starts at Leader Epoch 0 from offset 3. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,286] INFO [Partition __consumer_offsets-26 broker=0] Log loaded for partition __consumer_offsets-26 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,286] INFO [Partition __consumer_offsets-26 broker=0] __consumer_offsets-26 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,297] INFO [Partition __consumer_offsets-7 broker=0] Log loaded for partition __consumer_offsets-7 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,297] INFO [Partition __consumer_offsets-7 broker=0] __consumer_offsets-7 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,302] INFO [Partition __consumer_offsets-42 broker=0] Log loaded for partition __consumer_offsets-42 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,302] INFO [Partition __consumer_offsets-42 broker=0] __consumer_offsets-42 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,308] INFO [Partition __consumer_offsets-4 broker=0] Log loaded for partition __consumer_offsets-4 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,308] INFO [Partition __consumer_offsets-4 broker=0] __consumer_offsets-4 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,314] INFO [Partition __consumer_offsets-23 broker=0] Log loaded for partition __consumer_offsets-23 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,314] INFO [Partition __consumer_offsets-23 broker=0] __consumer_offsets-23 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,319] INFO [Partition __consumer_offsets-1 broker=0] Log loaded for partition __consumer_offsets-1 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,319] INFO [Partition __consumer_offsets-1 broker=0] __consumer_offsets-1 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,325] INFO [Partition __consumer_offsets-39 broker=0] Log loaded for partition __consumer_offsets-39 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,325] INFO [Partition __consumer_offsets-39 broker=0] __consumer_offsets-39 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,331] INFO [Partition __consumer_offsets-20 broker=0] Log loaded for partition __consumer_offsets-20 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,331] INFO [Partition __consumer_offsets-20 broker=0] __consumer_offsets-20 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,336] INFO [Partition __consumer_offsets-17 broker=0] Log loaded for partition __consumer_offsets-17 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,336] INFO [Partition __consumer_offsets-17 broker=0] __consumer_offsets-17 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,341] INFO [Partition __consumer_offsets-36 broker=0] Log loaded for partition __consumer_offsets-36 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,341] INFO [Partition __consumer_offsets-36 broker=0] __consumer_offsets-36 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,354] INFO [Partition __consumer_offsets-14 broker=0] Log loaded for partition __consumer_offsets-14 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,354] INFO [Partition __consumer_offsets-14 broker=0] __consumer_offsets-14 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,365] INFO [Partition __consumer_offsets-33 broker=0] Log loaded for partition __consumer_offsets-33 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,365] INFO [Partition __consumer_offsets-33 broker=0] __consumer_offsets-33 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,374] INFO [Partition __consumer_offsets-49 broker=0] Log loaded for partition __consumer_offsets-49 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,374] INFO [Partition __consumer_offsets-49 broker=0] __consumer_offsets-49 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,382] INFO [Partition __consumer_offsets-11 broker=0] Log loaded for partition __consumer_offsets-11 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,382] INFO [Partition __consumer_offsets-11 broker=0] __consumer_offsets-11 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,388] INFO [Partition __consumer_offsets-30 broker=0] Log loaded for partition __consumer_offsets-30 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,388] INFO [Partition __consumer_offsets-30 broker=0] __consumer_offsets-30 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,393] INFO [Partition __consumer_offsets-46 broker=0] Log loaded for partition __consumer_offsets-46 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,393] INFO [Partition __consumer_offsets-46 broker=0] __consumer_offsets-46 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,397] INFO [Partition __consumer_offsets-27 broker=0] Log loaded for partition __consumer_offsets-27 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,397] INFO [Partition __consumer_offsets-27 broker=0] __consumer_offsets-27 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,402] INFO [Partition __consumer_offsets-8 broker=0] Log loaded for partition __consumer_offsets-8 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,402] INFO [Partition __consumer_offsets-8 broker=0] __consumer_offsets-8 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,407] INFO [Partition __consumer_offsets-24 broker=0] Log loaded for partition __consumer_offsets-24 with initial high watermark 3 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,407] INFO [Partition __consumer_offsets-24 broker=0] __consumer_offsets-24 starts at Leader Epoch 0 from offset 3. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,409] INFO [Partition __consumer_offsets-43 broker=0] Log loaded for partition __consumer_offsets-43 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,409] INFO [Partition __consumer_offsets-43 broker=0] __consumer_offsets-43 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,414] INFO [Partition __consumer_offsets-5 broker=0] Log loaded for partition __consumer_offsets-5 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,414] INFO [Partition __consumer_offsets-5 broker=0] __consumer_offsets-5 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,419] INFO [Partition userTopics-0 broker=0] Log loaded for partition userTopics-0 with initial high watermark 1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,420] INFO [Partition userTopics-0 broker=0] userTopics-0 starts at Leader Epoch 0 from offset 1. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,422] INFO [Partition photosTopic-0 broker=0] Log loaded for partition photosTopic-0 with initial high watermark 32 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,422] INFO [Partition photosTopic-0 broker=0] photosTopic-0 starts at Leader Epoch 0 from offset 32. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,425] INFO [Partition __consumer_offsets-21 broker=0] Log loaded for partition __consumer_offsets-21 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,425] INFO [Partition __consumer_offsets-21 broker=0] __consumer_offsets-21 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,429] INFO [Partition __consumer_offsets-40 broker=0] Log loaded for partition __consumer_offsets-40 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,429] INFO [Partition __consumer_offsets-40 broker=0] __consumer_offsets-40 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,434] INFO [Partition __consumer_offsets-2 broker=0] Log loaded for partition __consumer_offsets-2 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,434] INFO [Partition __consumer_offsets-2 broker=0] __consumer_offsets-2 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,439] INFO [Partition __consumer_offsets-37 broker=0] Log loaded for partition __consumer_offsets-37 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,439] INFO [Partition __consumer_offsets-37 broker=0] __consumer_offsets-37 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,443] INFO [Partition __consumer_offsets-18 broker=0] Log loaded for partition __consumer_offsets-18 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,443] INFO [Partition __consumer_offsets-18 broker=0] __consumer_offsets-18 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,448] INFO [Partition __consumer_offsets-34 broker=0] Log loaded for partition __consumer_offsets-34 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,448] INFO [Partition __consumer_offsets-34 broker=0] __consumer_offsets-34 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,453] INFO [Partition __consumer_offsets-15 broker=0] Log loaded for partition __consumer_offsets-15 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,453] INFO [Partition __consumer_offsets-15 broker=0] __consumer_offsets-15 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,461] INFO [Partition __consumer_offsets-12 broker=0] Log loaded for partition __consumer_offsets-12 with initial high watermark 6090 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,461] INFO [Partition __consumer_offsets-12 broker=0] __consumer_offsets-12 starts at Leader Epoch 0 from offset 6090. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,463] INFO [Partition __consumer_offsets-31 broker=0] Log loaded for partition __consumer_offsets-31 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,463] INFO [Partition __consumer_offsets-31 broker=0] __consumer_offsets-31 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,468] INFO [Partition __consumer_offsets-9 broker=0] Log loaded for partition __consumer_offsets-9 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,468] INFO [Partition __consumer_offsets-9 broker=0] __consumer_offsets-9 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,472] INFO [Partition __consumer_offsets-47 broker=0] Log loaded for partition __consumer_offsets-47 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,472] INFO [Partition __consumer_offsets-47 broker=0] __consumer_offsets-47 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,477] INFO [Partition __consumer_offsets-19 broker=0] Log loaded for partition __consumer_offsets-19 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,477] INFO [Partition __consumer_offsets-19 broker=0] __consumer_offsets-19 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,482] INFO [Partition __consumer_offsets-28 broker=0] Log loaded for partition __consumer_offsets-28 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,483] INFO [Partition __consumer_offsets-28 broker=0] __consumer_offsets-28 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,488] INFO [Partition __consumer_offsets-38 broker=0] Log loaded for partition __consumer_offsets-38 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,488] INFO [Partition __consumer_offsets-38 broker=0] __consumer_offsets-38 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,493] INFO [Partition __consumer_offsets-35 broker=0] Log loaded for partition __consumer_offsets-35 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,493] INFO [Partition __consumer_offsets-35 broker=0] __consumer_offsets-35 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,498] INFO [Partition __consumer_offsets-6 broker=0] Log loaded for partition __consumer_offsets-6 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,498] INFO [Partition __consumer_offsets-6 broker=0] __consumer_offsets-6 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,504] INFO [Partition __consumer_offsets-44 broker=0] Log loaded for partition __consumer_offsets-44 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,504] INFO [Partition __consumer_offsets-44 broker=0] __consumer_offsets-44 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,510] INFO [Partition __consumer_offsets-25 broker=0] Log loaded for partition __consumer_offsets-25 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,510] INFO [Partition __consumer_offsets-25 broker=0] __consumer_offsets-25 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,515] INFO [Partition __consumer_offsets-16 broker=0] Log loaded for partition __consumer_offsets-16 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,515] INFO [Partition __consumer_offsets-16 broker=0] __consumer_offsets-16 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,520] INFO [Partition sagasTopic-0 broker=0] Log loaded for partition sagasTopic-0 with initial high watermark 65 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,520] INFO [Partition sagasTopic-0 broker=0] sagasTopic-0 starts at Leader Epoch 0 from offset 65. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,522] INFO [Partition __consumer_offsets-22 broker=0] Log loaded for partition __consumer_offsets-22 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,522] INFO [Partition __consumer_offsets-22 broker=0] __consumer_offsets-22 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,527] INFO [Partition __consumer_offsets-41 broker=0] Log loaded for partition __consumer_offsets-41 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,528] INFO [Partition __consumer_offsets-41 broker=0] __consumer_offsets-41 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,532] INFO [Partition __consumer_offsets-32 broker=0] Log loaded for partition __consumer_offsets-32 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,532] INFO [Partition __consumer_offsets-32 broker=0] __consumer_offsets-32 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,538] INFO [Partition __consumer_offsets-3 broker=0] Log loaded for partition __consumer_offsets-3 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,538] INFO [Partition __consumer_offsets-3 broker=0] __consumer_offsets-3 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,543] INFO [Partition __consumer_offsets-13 broker=0] Log loaded for partition __consumer_offsets-13 with initial high watermark 0 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,543] INFO [Partition __consumer_offsets-13 broker=0] __consumer_offsets-13 starts at Leader Epoch 0 from offset 0. Previous Leader Epoch was: -1 (kafka.cluster.Partition)
+[2019-12-25 02:42:05,557] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-22 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,558] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-25 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,558] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-28 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-31 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-34 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-37 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-40 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-43 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-46 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-49 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-41 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-44 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-47 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-1 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-4 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-7 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-10 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,559] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-13 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-16 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-19 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-2 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-5 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-8 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-11 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-14 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-17 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-20 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-23 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-26 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-29 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-35 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-38 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-32 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-0 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,560] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-3 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-6 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-9 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-12 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-15 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-18 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-21 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-24 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-27 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-30 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-33 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-36 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-39 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-42 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-45 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,561] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-48 (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,564] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-22 in 6 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,565] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-25 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,565] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-28 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,566] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-31 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,566] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-34 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,566] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-37 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,566] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-40 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,567] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-43 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,567] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-46 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,567] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-49 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,567] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-41 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,568] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-44 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,568] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-47 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,568] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-1 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,568] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-4 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,569] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-7 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,569] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-10 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,569] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-13 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,570] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-16 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,570] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-19 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,571] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-2 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,571] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-5 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,571] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-8 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,572] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-11 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,572] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-14 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,572] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-17 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,573] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-20 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,573] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-23 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,574] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-26 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,574] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-29 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,574] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-35 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,575] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-38 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,575] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-32 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,575] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-0 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,576] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-3 in 1 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,576] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-6 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,576] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-9 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,685] INFO [GroupCoordinator 0]: Loading group metadata for my_group with generation 74 (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:42:05,685] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-12 in 109 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,686] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-15 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,686] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-18 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,686] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-21 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,690] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-24 in 4 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,690] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-27 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,690] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-30 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,690] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-33 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,691] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-36 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,691] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-39 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,691] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-42 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,694] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-45 in 3 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:05,695] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-48 in 0 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:42:54,068] INFO [GroupCoordinator 0]: Preparing to rebalance group console-consumer-50537 in state PreparingRebalance with old generation 0 (__consumer_offsets-1) (reason: Adding new member consumer-console-consumer-50537-1-f7722c4c-84f0-4a2d-94d4-0f985e1e092a with group instanceid None) (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:42:54,072] INFO [GroupCoordinator 0]: Stabilized group console-consumer-50537 generation 1 (__consumer_offsets-1) (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:42:54,080] INFO [GroupCoordinator 0]: Assignment received from leader for group console-consumer-50537 for generation 1 (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:52:04,988] INFO [GroupMetadataManager brokerId=0] Removed 0 expired offsets in 13 milliseconds. (kafka.coordinator.group.GroupMetadataManager)
+[2019-12-25 02:56:56,156] INFO [GroupCoordinator 0]: Preparing to rebalance group my_group in state PreparingRebalance with old generation 74 (__consumer_offsets-12) (reason: Adding new member consumer-my_group-1-19f8fed6-4bc8-463d-a3da-a5f07b28799b with group instanceid None) (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:56:56,158] INFO [GroupCoordinator 0]: Stabilized group my_group generation 75 (__consumer_offsets-12) (kafka.coordinator.group.GroupCoordinator)
+[2019-12-25 02:56:56,164] INFO [GroupCoordinator 0]: Assignment received from leader for group my_group for generation 75 (kafka.coordinator.group.GroupCoordinator)
