@@ -2,6 +2,14 @@
 
 This is microservice of our *IASA-KA-75-KA-76-Pharos-Production-Distributed-Systems* project called **SagasLife**. This part is responsible for scaling photos to different resolutions(by width).
 
+# Data flows
+
+The main operation is scaling original photo:
+
+
+
+![Scaling](misc/img/PUT.png)
+
 # Algorithm
 
 Two main operations is put and delete photo. Both of them accept image name. Requests to this microservice are sent via Kafka topics. All of the topic names can be configured via `conf/config.json`. All errors are being reported to `Sagas` microservice via `sagasTopic` option in config file. 
