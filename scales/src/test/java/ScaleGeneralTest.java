@@ -5,6 +5,7 @@ import io.vertx.kafka.client.consumer.KafkaConsumer;
 import io.vertx.kafka.client.producer.KafkaProducer;
 import io.vertx.kafka.client.producer.KafkaProducerRecord;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import scales.model.Config;
 import scales.model.ConfigMessageCodec;
@@ -16,6 +17,7 @@ import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
 import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
 
@@ -27,7 +29,7 @@ abstract class ScaleGeneralTest {
 
     private String mKafkaHost;
     private String mKafkaPort;
-    private String mScaleRequest;
+    private String mPutRequest;
     private String mDeleteRequest;
     private String mUserpicsTopic;
     private String mPhotosTopic;
@@ -36,8 +38,9 @@ abstract class ScaleGeneralTest {
     // test-specific data
 
     private ArrayList<String> mSagasResponses;
-    private ArrayList<String> mUserpicsRequests;
-    private ArrayList<String> mPhotosRequests;
+    private Integer mPutRequestsNum = 0;
+    private Integer mDelRequestsNum = 0;
+    private HashMap<String, Integer> mImagesRequests = new HashMap<>();
 
     private KafkaProducer<String, String> mProducer;
     private KafkaConsumer<String, String> mSagasConsumer;
@@ -69,22 +72,67 @@ abstract class ScaleGeneralTest {
 
     abstract Future<Void> actualTests();
 
+
+    @Test
+    /** Check:
+     *  1. If number of put and del responses is equal to that of requests
+     *  2. If all responses is "ok"
+     *  3. If number of image name occurrences in responses is equal to that of requests
+     */
     private void checkForRequestResults() {
+        int putReqNum = 0, delReqNum = 0;
+        int commandStart = "photo-scale:".length();
+        for (String req : mSagasResponses) {
+            int statusStart;
+            if (req.substring(commandStart).startsWith(mDeleteRequest)) {
+                delReqNum++;
+                statusStart = commandStart + mDeleteRequest.length();
+            } else {
+                putReqNum++;
+                statusStart = commandStart + mPutRequest.length();
+            }
 
-    }
+            assertTrue(req.substring(statusStart).startsWith("ok:"));
+            String imageName = req.substring(statusStart + "ok:".length());
 
-    private void toUserpicsTopic(String request) {
-        mProducer.write(
-                KafkaProducerRecord.create(mUserpicsTopic, request)
-        );
-        mUserpicsRequests.add(request);
+            mImagesRequests.compute(imageName, (k, v) -> {
+                        assertNotNull(v);
+                        return v - 1;
+                    }
+            );
+        }
+
+        assertEquals(putReqNum, (int) mPutRequestsNum);
+        assertEquals(delReqNum, (int) mDelRequestsNum);
+
+        for (Map.Entry<String, Integer> stringIntegerEntry : mImagesRequests.entrySet()) {
+            Integer occurrNum = stringIntegerEntry.getValue();
+            assertEquals(occurrNum, 0);
+        }
     }
 
     private void toPhotosTopic(String request) {
+        toTopic(request, mPhotosTopic);
+    }
+
+    private void toUserpicsTopic(String request) {
+        toTopic(request, mUserpicsTopic);
+    }
+
+    private void toTopic(String request, String topic) {
         mProducer.write(
-                KafkaProducerRecord.create(mPhotosTopic, request)
+                KafkaProducerRecord.create(topic, request)
         );
-        mPhotosRequests.add(request);
+
+        String name;
+        if (request.startsWith(mDeleteRequest)) {
+            mDelRequestsNum++;
+            name = request.substring(mDeleteRequest.length());
+        } else {
+            mPutRequestsNum++;
+            name = request.substring(mPutRequest.length());
+        }
+        mImagesRequests.compute(name, (k, v) -> (v == null) ? 1 : v + 1);
     }
 
     private Future<Void> setupVertx() {
@@ -107,7 +155,7 @@ abstract class ScaleGeneralTest {
         mUserpicsTopic = config.getUserpicsTopic();
         mPhotosTopic = config.getPhotosTopic();
         mDeleteRequest = config.getDeleteRequest();
-        mScaleRequest = config.getScaleRequest();
+        mPutRequest = config.getScaleRequest();
         mSagasTopic = config.getSagasTopic();
 
         if (mSagasConsumer != null) mSagasConsumer.unsubscribe();
