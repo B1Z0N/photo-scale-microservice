@@ -50,5 +50,4 @@ public class ImageResize {
             return baos.toByteArray();
         }
     }
-
 }

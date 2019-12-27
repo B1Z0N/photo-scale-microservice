@@ -1,3 +1,5 @@
+package integration;
+
 import io.vertx.config.ConfigRetriever;
 import io.vertx.core.*;
 import io.vertx.junit5.VertxExtension;

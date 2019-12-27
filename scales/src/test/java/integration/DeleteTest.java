@@ -1,7 +1,8 @@
+package integration;
 
-public class DeleteTest extends ScaleGeneralTest {
+class DeleteTest extends ScaleGeneralTest {
     @Override
-    public void actualTests() {
+    void actualTests() {
         delPhoto("pretty_woman.jpg");
         delUserpic("pretty_woman.jpg");
         delPhoto("ugly_man.jpg");

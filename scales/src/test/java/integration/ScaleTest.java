@@ -1,3 +1,4 @@
+package integration;
 
 class ScaleTest extends ScaleGeneralTest {
     @Override
