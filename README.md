@@ -2,6 +2,20 @@
 
 This is microservice of our *IASA-KA-75-KA-76-Pharos-Production-Distributed-Systems* project called **SagasLife**. This part is responsible for scaling photos to different resolutions(by width).
 
+- [About](#about)
+- [Data flows](#data-flows)
+- [Algorithm](#algorithm)
+- [Examples](#examples)
+    + [Scaling new photo](#scaling-new-photo)
+    + [Deletion of scales](#deletion-of-scales)
+- [Customization](#customization)
+- [Running](#running)
+- [Running kafka](#running-kafka)
+- [Running tests](#running-tests)
+  * [Unit tests](#unit-tests)
+  * [Integration tests](#integration-tests)
+- [TODO:](#todo-)
+
 # Data flows
 
 The main operation is scaling original photo:
