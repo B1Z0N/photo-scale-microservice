@@ -60,7 +60,7 @@ Actions:
 
 # Customization
 
-All this settings defined in `conf/config.json` - Single Source Of Truth. Customize it to suit your needs, even without reloading the project.
+All this settings defined in `scales/src/main/resources/conf/config.json` - Single Source Of Truth. Customize it to suit your needs, even without reloading the project.
 
 1. `sizes`: add new sizes to scale into
 2. `aws`
@@ -90,7 +90,7 @@ For more info on configuring run, read [this](https://github.com/IASA-HUB/vertx-
 
 # Running kafka
 
-To run project you need to start kafka with configuration from `conf/config.json` file. Go to `misc/kafk..` and there are 5 `.sh` files:
+To run project you need to start kafka with configuration from `scales/src/main/resources/conf/config.json` file. Go to `misc/kafk..` and there are 5 `.sh` files:
 
 1. `start1ZooKeeper.sh`
 2. `start2Kafka.sh`
@@ -115,17 +115,19 @@ There are two types of tests for this project:
 1. Unit tests - testing autonomous part of the code
 2. Integration tests - testing project as a whole
 
+From now on we are inside directory `scales/src/test/java`
+
 ## Unit tests
 
-There are one unit test currently: `ResizeTest`. You should add JUnit configuration pointing to `scales/java/unit/ResizeTest`.
+There are one unit test currently: `ResizeTest`. You should add JUnit configuration pointing to `unit/ResizeTest`.
 It is responsible for testing `ImageResize` class.
 
 ## Integration tests
 
 To run this ones you need to start kafka and run main configuration(two items above). 
-Then add two configurations pointing to `scales/java/integration/DeleteTest` and `scales/java/integration/ScaleTest`.
+Then add two configurations pointing to `integration/DeleteTest` and `integration/ScaleTest`.
 
-You could easily add your own tests of this type: just inherit from abstract class `scales/java/integration/ScaleGeneralTest` 
+You could easily add your own tests of this type: just inherit from abstract class `integration/ScaleGeneralTest` 
 and define custom method: `actualTests`, fulfill it with 4 types of method calls: 
 
 1. `delPhoto` - put delete request to photosTopic;
