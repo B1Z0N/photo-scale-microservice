@@ -69,7 +69,7 @@ public class MainVerticle extends MicroserviceVerticle {
         vertx.deployVerticle(className, options, ar -> {
             if (ar.failed()) {
                 completion.fail(ar.cause());
-                verror("Deploy: " + className);
+                verror("Deploy: " + className + ", reason: " + ar.cause());
             } else {
                 registerVerticle(className, ar.result());
                 completion.complete();

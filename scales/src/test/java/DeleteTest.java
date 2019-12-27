@@ -1,8 +1,10 @@
-import io.vertx.core.Future;
 
 public class DeleteTest extends ScaleGeneralTest {
     @Override
-    Future<Void> actualTests() {
-        return null;
+    public void actualTests() {
+        delPhoto("pretty_woman.jpg");
+        delUserpic("pretty_woman.jpg");
+        delPhoto("ugly_man.jpg");
+        delUserpic("ugly_man.jpg");
     }
 }

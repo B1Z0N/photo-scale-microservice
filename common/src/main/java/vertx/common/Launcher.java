@@ -17,6 +17,7 @@ public class Launcher extends io.vertx.core.Launcher {
     new Launcher().dispatch(args);
   }
 
+
   // Overrides
 
   @Override

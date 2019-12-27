@@ -1,27 +1,23 @@
+import io.vertx.config.ConfigRetriever;
 import io.vertx.core.*;
-import io.vertx.core.json.JsonObject;
 import io.vertx.junit5.VertxExtension;
+import io.vertx.junit5.VertxTestContext;
 import io.vertx.kafka.client.consumer.KafkaConsumer;
 import io.vertx.kafka.client.producer.KafkaProducer;
 import io.vertx.kafka.client.producer.KafkaProducerRecord;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import scales.model.Config;
-import scales.model.ConfigMessageCodec;
-import scales.model.OriginID;
-import scales.model.OriginIDCodec;
-import scales.verticles.MainVerticle;
 
 import javax.annotation.Nonnull;
-import java.io.IOException;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_FETCH;
-import static scales.verticles.ConfigurationVerticle.EBA_CONFIG_UPDATE;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(VertxExtension.class)
 abstract class ScaleGeneralTest {
 
@@ -30,94 +26,124 @@ abstract class ScaleGeneralTest {
     private String mKafkaHost;
     private String mKafkaPort;
     private String mPutRequest;
-    private String mDeleteRequest;
+    private String mDelRequest;
     private String mUserpicsTopic;
     private String mPhotosTopic;
     private String mSagasTopic;
 
     // test-specific data
 
-    private ArrayList<String> mSagasResponses;
+    private ArrayList<String> mSagasResponses = new ArrayList<>();
     private Integer mPutRequestsNum = 0;
     private Integer mDelRequestsNum = 0;
     private HashMap<String, Integer> mImagesRequests = new HashMap<>();
+
+    // number of requests to check if we could start making assertions
+    private Integer mRequestsNum = 0;
+    // and promise that signals finish of computing
+    private Promise<Void> mFinishPromise = Promise.promise();
 
     private KafkaProducer<String, String> mProducer;
     private KafkaConsumer<String, String> mSagasConsumer;
 
     private Vertx mVertx;
 
-    @BeforeEach
-    public void setUp() throws IOException {
-        setupVertx().setHandler(ar -> {
-            if (ar.failed()) {
-                throw new RuntimeException("Can't setup vertx");
-            }
+    @BeforeAll
+    void setUp(Vertx vertx, VertxTestContext testContext) {
+        deployVertx().setHandler(deployAr -> {
             Promise<Void> start = Promise.promise();
-
-            registerCodecs();
-            setupConfigListener();
-            setupConfig(start);
-
-            start.future().setHandler(setup -> {
-                if (setup.failed()) {
-                    throw new RuntimeException(setup.cause().getMessage());
+            start.future().setHandler(ar -> {
+                if (ar.failed()) {
+                    testContext.failNow(ar.cause());
+                } else {
+                    actualTests();
                 }
-                actualTests().setHandler(tests -> {
-                    checkForRequestResults();
-                });
             });
+
+            setupConfig(start);
+        });
+
+        // start assertions after all of the code
+        mFinishPromise.future().setHandler(finishAr -> {
+            mSagasConsumer.commit();
+            assertTrue(finishAr.succeeded());
+            testContext.completeNow();
         });
     }
 
-    abstract Future<Void> actualTests();
+
+    // run some operations in descendant classes
+    // use putPhoto, delPhoto, putUserpic, delUserpic inside
+    abstract void actualTests();
 
 
-    @Test
-    /** Check:
-     *  1. If number of put and del responses is equal to that of requests
-     *  2. If all responses is "ok"
-     *  3. If number of image name occurrences in responses is equal to that of requests
+    /* Check:
+       1. If number of put and del responses is equal to that of requests
+       2. If all responses is "ok"
+       3. If number of image name occurrences in responses is equal to that of requests
      */
-    private void checkForRequestResults() {
+    @Test
+    void checkForRequestResults(Vertx vertx, VertxTestContext testContext) {
         int putReqNum = 0, delReqNum = 0;
         int commandStart = "photo-scale:".length();
-        for (String req : mSagasResponses) {
+        for (String response : mSagasResponses) {
             int statusStart;
-            if (req.substring(commandStart).startsWith(mDeleteRequest)) {
+            if (response.substring(commandStart).startsWith(mDelRequest)) {
                 delReqNum++;
-                statusStart = commandStart + mDeleteRequest.length();
+                statusStart = commandStart + mDelRequest.length();
             } else {
                 putReqNum++;
                 statusStart = commandStart + mPutRequest.length();
             }
 
-            assertTrue(req.substring(statusStart).startsWith("ok:"));
-            String imageName = req.substring(statusStart + "ok:".length());
+            // status should be okay
+            // if not - relax, it is not code error
+            // it's just report to sagas
+            assumeTrue(response.substring(statusStart).startsWith("ok:"));
+            String imageName = response.substring(statusStart + "ok:".length());
 
             mImagesRequests.compute(imageName, (k, v) -> {
+                        // this image name must exist in requests
                         assertNotNull(v);
                         return v - 1;
                     }
             );
         }
 
+        // check if number of delRequests and put requests are the same
+        // of that on request and response side
         assertEquals(putReqNum, (int) mPutRequestsNum);
         assertEquals(delReqNum, (int) mDelRequestsNum);
 
         for (Map.Entry<String, Integer> stringIntegerEntry : mImagesRequests.entrySet()) {
             Integer occurrNum = stringIntegerEntry.getValue();
+            // number of responses to current image name
+            // negated the number of requests
+            // should be zero
             assertEquals(occurrNum, 0);
         }
+
+        testContext.completeNow();
     }
 
-    private void toPhotosTopic(String request) {
-        toTopic(request, mPhotosTopic);
+    // kafka communication methods
+
+    void putUserpic(String imgName) {
+        toTopic(mPutRequest + imgName, mUserpicsTopic);
     }
 
-    private void toUserpicsTopic(String request) {
-        toTopic(request, mUserpicsTopic);
+    void delUserpic(String imgName) {
+        toTopic(mDelRequest + imgName, mUserpicsTopic);
     }
+
+    void putPhoto(String imgName) {
+        toTopic(mPutRequest + imgName, mPhotosTopic);
+    }
+
+    void delPhoto(String imgName) {
+        toTopic(mDelRequest + imgName, mPhotosTopic);
+    }
+
 
     private void toTopic(String request, String topic) {
         mProducer.write(
@@ -125,43 +151,19 @@ abstract class ScaleGeneralTest {
         );
 
         String name;
-        if (request.startsWith(mDeleteRequest)) {
+        if (request.startsWith(mDelRequest)) {
             mDelRequestsNum++;
-            name = request.substring(mDeleteRequest.length());
+            name = request.substring(mDelRequest.length());
         } else {
             mPutRequestsNum++;
             name = request.substring(mPutRequest.length());
         }
         mImagesRequests.compute(name, (k, v) -> (v == null) ? 1 : v + 1);
+        mRequestsNum++;
     }
 
-    private Future<Void> setupVertx() {
-        Promise<Void> start = Promise.promise();
-        mVertx = Vertx.vertx();
-        mVertx.deployVerticle(MainVerticle.class.getName(), ar -> {
-            if (ar.failed()) {
-                start.fail("Main verticle deployment");
-            } else {
-                start.complete();
-            }
-        });
 
-        return start.future();
-    }
-
-    private void setupFromConfig(@Nonnull Config config, Promise<Void> start) {
-        mKafkaHost = config.getKafkaHost();
-        mKafkaPort = config.getKafkaPort();
-        mUserpicsTopic = config.getUserpicsTopic();
-        mPhotosTopic = config.getPhotosTopic();
-        mDeleteRequest = config.getDeleteRequest();
-        mPutRequest = config.getScaleRequest();
-        mSagasTopic = config.getSagasTopic();
-
-        if (mSagasConsumer != null) mSagasConsumer.unsubscribe();
-        setupSagasConsumer(start);
-        setupKafkaProducer();
-    }
+    // deployment and setup methods
 
 
     private void setupSagasConsumer(Promise<Void> start) {
@@ -170,13 +172,17 @@ abstract class ScaleGeneralTest {
         kafkaConfig.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         kafkaConfig.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         kafkaConfig.put("group.id", "my_group");
-        kafkaConfig.put("auto.offset.reset", "earliest");
+        kafkaConfig.put("auto.offset.reset", "latest");
         kafkaConfig.put("enable.auto.commit", "true");
 
         mSagasConsumer = KafkaConsumer.create(mVertx, kafkaConfig);
 
         mSagasConsumer.handler(record -> {
             mSagasResponses.add(record.value());
+            // if all sent requests are captured responses, then start assertions
+            if (--mRequestsNum == 0) {
+                mFinishPromise.complete();
+            }
         });
 
         mSagasConsumer.subscribe(mSagasTopic, ar -> {
@@ -196,57 +202,47 @@ abstract class ScaleGeneralTest {
         kafkaConfig.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         kafkaConfig.put("group.id", "my_group");
         kafkaConfig.put("auto.offset.reset", "earliest");
-        kafkaConfig.put("enable.auto.commit", "true");
-
 
         mProducer = KafkaProducer.create(mVertx, kafkaConfig);
     }
 
 
-    /**
-     * Set our channels of communication using Config and Profile classes
-     * and codecs for them
-     */
-    private void registerCodecs() {
-        try {
-            mVertx.eventBus().registerDefaultCodec(Config.class, new ConfigMessageCodec());
-        } catch (IllegalStateException ignored) {
-        }
-        try {
-            mVertx.eventBus().registerDefaultCodec(OriginID.class, new OriginIDCodec());
-        } catch (IllegalStateException ignored) {
-        }
+    private Future<Void> deployVertx() {
+        Promise<Void> deploy = Promise.promise();
+        mVertx = Vertx.vertx();
+        deploy.complete();
+        return deploy.future();
     }
 
 
-    /**
-     * Listen on configuration changes and update sizes accordingly
-     */
-    private void setupConfigListener() {
-        mVertx.eventBus().<Config>consumer(EBA_CONFIG_UPDATE, configAr -> {
-            setupFromConfig(configAr.body(), Promise.promise());
-        });
-    }
+    // config-relative methods
+
 
     private void setupConfig(Promise<Void> startPromise) {
-        Promise<Config> promise = Promise.promise();
-        promise.future().setHandler(configAr -> {
+        ConfigRetriever retriever = ConfigRetriever.create(mVertx);
+        retriever.getConfig(configAr -> {
             if (configAr.failed()) {
-                startPromise.fail("Can't fetch config");
+                startPromise.fail(configAr.cause());
+            } else {
+                setupFromConfig(new Config(configAr.result()), startPromise);
             }
         });
 
-        fetchConfig(promise, startPromise);
+        retriever.configStream().exceptionHandler(e -> startPromise.fail(e.getMessage()));
     }
 
 
-    private void fetchConfig(Promise<Config> promise, Promise<Void> startPromise) {
-        mVertx.eventBus().<Config>request(EBA_CONFIG_FETCH, new JsonObject(), configAr -> {
-            if (configAr.failed()) {
-                promise.fail(configAr.cause());
-            } else {
-                setupFromConfig(configAr.result().body(), startPromise);
-            }
-        });
+    private void setupFromConfig(@Nonnull Config config, Promise<Void> start) {
+        mKafkaHost = config.getKafkaHost();
+        mKafkaPort = config.getKafkaPort();
+        mUserpicsTopic = config.getUserpicsTopic();
+        mPhotosTopic = config.getPhotosTopic();
+        mDelRequest = config.getDeleteRequest();
+        mPutRequest = config.getScaleRequest();
+        mSagasTopic = config.getSagasTopic();
+
+        if (mSagasConsumer != null) mSagasConsumer.unsubscribe();
+        setupKafkaProducer();
+        setupSagasConsumer(start);
     }
 }

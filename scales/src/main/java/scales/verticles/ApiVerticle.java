@@ -1,5 +1,6 @@
 package scales.verticles;
 
+import io.vertx.kafka.client.common.TopicPartition;
 import io.vertx.kafka.client.consumer.KafkaConsumer;
 import io.vertx.kafka.client.producer.KafkaProducer;
 import io.vertx.kafka.client.producer.KafkaProducerRecord;
@@ -71,8 +72,6 @@ public class ApiVerticle extends MicroserviceVerticle {
         kafkaConfig.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         kafkaConfig.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         kafkaConfig.put("group.id", "my_group");
-        kafkaConfig.put("auto.offset.reset", "earliest");
-        kafkaConfig.put("enable.auto.commit", "true");
 
         mSagasProducer = KafkaProducer.create(vertx, kafkaConfig);
     }
@@ -84,7 +83,7 @@ public class ApiVerticle extends MicroserviceVerticle {
         config.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         config.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         config.put("group.id", "my_group");
-        config.put("auto.offset.reset", "earliest");
+        config.put("auto.offset.reset", "latest");
         config.put("enable.auto.commit", "true");
 
         mConsumer = KafkaConsumer.create(getVertx(), config);
@@ -112,6 +111,11 @@ public class ApiVerticle extends MicroserviceVerticle {
                 );
             }
         });
+
+        new TopicPartition(mUserpicsTopic, 0);
+        Set<TopicPartition> topicPs = new HashSet<>();
+        topicPs.add(new TopicPartition(mUserpicsTopic, 0));
+        topicPs.add(new TopicPartition(mPhotosTopic, 0));
     }
 
 
