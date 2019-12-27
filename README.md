@@ -14,7 +14,7 @@ This is microservice of our *IASA-KA-75-KA-76-Pharos-Production-Distributed-Syst
 - [Running tests](#running-tests)
   * [Unit tests](#unit-tests)
   * [Integration tests](#integration-tests)
-- [TODO:](#todo-)
+- [TODO:](#todo)
 
 # Data flows
 
