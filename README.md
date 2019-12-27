@@ -95,9 +95,37 @@ Here is my normal usage of this commands(assuming topics are previously created)
 
 P. S. You'll need a whole lot of terminals(or a virtual terminals, like [terminator is](https://terminator-gtk3.readthedocs.io/en/latest/#). Highly recommend!)
 
+# Running tests
 
+There are two types of tests for this project:
+1. Unit tests - testing autonomous part of the code
+2. Integration tests - testing project as a whole
+
+## Unit tests
+
+There are one unit test currently: `ResizeTest`. You should add JUnit configuration pointing to `scales/java/unit/ResizeTest`.
+It is responsible for testing `ImageResize` class.
+
+## Integration tests
+
+To run this ones you need to start kafka and run main configuration(two items above). 
+Then add two configurations pointing to `scales/java/integration/DeleteTest` and `scales/java/integration/ScaleTest`.
+
+You could easily add your own tests of this type: just inherit from abstract class `scales/java/integration/ScaleGeneralTest` 
+and define custom method: `actualTests`, fulfill it with 4 types of method calls: 
+
+1. `delPhoto` - put delete request to photosTopic;
+2. `delUserpic` - put delete request to userpicsTopic;
+3. `putPhoto` - put scale request to photosTopic;
+4. `putUserpic` - put scale request to userpicsTopic;
+
+That's it, inherited code will easily do the job for you!
+
+**But beware of mixing `del` and `put` requests!**
+Because of asynchronous nature of vertx it might not be completed sequentially, as you'd want it to be.
+Even though the tests will pass. The reason it works because in real world there are no chance that two
+types of requests are being fired on one photo simultaneously.
 
 # TODO:
 
-1. Cover with tests(both integration and unit)
-2. Put into docker
+1. Put into docker
