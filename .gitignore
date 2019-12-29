@@ -92,3 +92,4 @@ file-uploads
 ##########
 .envrc
 .env
+misc/kafka_2.12-2.4.0/logs/

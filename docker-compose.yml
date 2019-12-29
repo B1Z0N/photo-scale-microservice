@@ -1,90 +1,24 @@
 version: '3.7'
 
 networks:
-  contracts-server-network:
-    driver: bridge
-    ipam:
-      config:
+  scalenet:
+    ipam: 
+      config: 
         - subnet: 10.50.0.0/16
 
 services:
   config:
     build: .
-    hostname: config
-    container_name: config
+    hostname: scls
+    container_name: scls
+    environment: 
+      VERTX_CONFIG_PATH: conf/config.json
+    env_file: 
+      .env
+    volumes:
+      - ./scales/src/main/resources/conf:/opt/server/conf
+    entrypoint: ["sh", "-c"]
+    command: ["java -jar scales-0.1.0-all.jar run scales.verticles.MainVerticle -cluster -conf /opt/server/conf/config.json"]
     networks:
-      contracts-server-network:
+      scalenet:
         ipv4_address: 10.50.1.1
-    environment:
-      - VERTX_CONFIG_PATH=/opt/server/conf/config.json
-    volumes:
-      - ./conf:/opt/server/conf
-      - ./ssl:/opt/server/ssl
-    entrypoint: ["sh", "-c"]
-    command: ["java -jar contracts-configuration-0.1.0-all.jar run contracts.configuration.verticles.ConfigurationVerticle -cluster"]
-
-  demo:
-    build: .
-    hostname: demo
-    container_name: demo
-    networks:
-      contracts-server-network:
-        ipv4_address: 10.50.1.2
-    environment:
-      - VERTX_CONFIG_PATH=/opt/server/conf/config.json
-    volumes:
-      - ./conf:/opt/server/conf
-      - ./ssl:/opt/server/ssl
-    entrypoint: ["sh", "-c"]
-    command: ["java -jar contracts-configuration-0.1.0-all.jar run contracts.configuration.verticles.DemoVerticle -cluster"]
-
-  service-discovery:
-    build: .
-    hostname: service-discovery
-    container_name: service-discovery
-    networks:
-      contracts-server-network:
-        ipv4_address: 10.50.1.3
-    ports:
-      - 8080:8080
-    environment:
-      - VERTX_CONFIG_PATH=/opt/server/conf/config.json
-    volumes:
-      - ./conf:/opt/server/conf
-      - ./ssl:/opt/server/ssl
-    entrypoint: ["sh", "-c"]
-    command: ["java -jar contracts-configuration-0.1.0-all.jar run contracts.configuration.verticles.ServiceDiscoveryVerticle -cluster"]
-
-  api-1:
-    build: .
-    hostname: api-1
-    container_name: api-1
-    networks:
-      contracts-server-network:
-        ipv4_address: 10.50.1.4
-    ports:
-      - 50061:50051
-    environment:
-      - VERTX_CONFIG_PATH=/opt/server/conf/config.json
-    volumes:
-      - ./conf:/opt/server/conf
-      - ./ssl:/opt/server/ssl
-    entrypoint: ["sh", "-c"]
-    command: ["java -jar contracts-configuration-0.1.0-all.jar run contracts.configuration.verticles.ApiVerticle -cluster"]
-
-  api-2:
-    build: .
-    hostname: api-2
-    container_name: api-2
-    networks:
-      contracts-server-network:
-        ipv4_address: 10.50.1.5
-    ports:
-      - 50062:50051
-    environment:
-      - VERTX_CONFIG_PATH=/opt/server/conf/config.json
-    volumes:
-      - ./conf:/opt/server/conf
-      - ./ssl:/opt/server/ssl
-    entrypoint: ["sh", "-c"]
-    command: ["java -jar contracts-configuration-0.1.0-all.jar run contracts.configuration.verticles.ApiVerticle -cluster"]

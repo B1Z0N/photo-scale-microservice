@@ -29,10 +29,9 @@ RUN apk add --update \
 
 WORKDIR /opt/server/
 
-COPY --from=builder /opt/server/configuration/build/libs/profile-configuration-0.1.0-all.jar .
-COPY --from=builder /opt/server/conf ./conf
-COPY --from=builder /opt/server/ssl ./ssl
+COPY --from=builder /opt/server/scales/build/libs/scales-0.1.0-all.jar .
+COPY --from=builder /opt/server/scales/src/main/resources/conf ./conf
 
-EXPOSE 50051 5701
+EXPOSE 5701 9092
 
 CMD ["/bin/bash"]

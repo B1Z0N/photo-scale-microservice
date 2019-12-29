@@ -126,6 +126,16 @@ Because of asynchronous nature of vertx it might not be completed sequentially, 
 Even though the tests will pass. The reason it works because in real world there are no chance that two
 types of requests are being fired on one photo simultaneously.
 
-# TODO:
 
-1. Put into docker
+# Running in docker
+
+There are special script in the root to run docker: `dockerscript.sh`
+
+It has two uses:
+
+1. `./dockerscript.sh up` -- runs it in the host network
+2. `./dockerscript.sh bridge up` -- runs it in the bridge network `10.50.0.0/16`
+
+Host kafka should be responding on port `9092`. Which can be altered in config.
+
+To customize container, you can edit files: `Dockerfile`, `docker-compose.yml`.
