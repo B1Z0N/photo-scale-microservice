@@ -12,7 +12,6 @@ import java.net.URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 class ResizeTest {
 
     // scaling-relative tests/data

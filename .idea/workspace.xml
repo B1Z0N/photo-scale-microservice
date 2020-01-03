@@ -1,55 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a867259b-05d1-46c1-a3e8-6c85939fdce9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env_exmpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dockerscript.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-25-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-25-14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-25-15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-00" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-19" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-26-23" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-27-00" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-27-14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-27-17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-27-19" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/controller.log.2019-12-27-22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/kafkaServer-gc.log.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/kafkaServer-gc.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/kafkaServer-gc.log.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/kafkaServer-gc.log.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/log-cleaner.log.2019-12-25-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/log-cleaner.log.2019-12-26-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/log-cleaner.log.2019-12-26-17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-25-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-25-14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-25-15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-00" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-19" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-26-23" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-27-14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-27-17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-27-19" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-27-22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/server.log.2019-12-27-23" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/state-change.log.2019-12-25-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/state-change.log.2019-12-26-02" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/state-change.log.2019-12-26-17" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/zookeeper-gc.log.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/zookeeper-gc.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/zookeeper-gc.log.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/kafka_2.12-2.4.0/logs/zookeeper-gc.log.3" beforeDir="false" />
+    <list default="true" id="4425971f-81c7-4a19-8ba7-467a125622ec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scales/src/test/java/integration/ScaleGeneralTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/scales/src/test/java/integration/ScaleGeneralTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scales/src/test/java/unit/ResizeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/scales/src/test/java/unit/ResizeTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,51 +25,37 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="photo-scale-microservice" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1VRgsZ3ypPwSw8ssjBgpvSW5BHw" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1VrEqC3vNJPHtGCu1mOTBU8yWbX" />
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.env" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/scales/src/main/resources" />
-      <recent name="$PROJECT_DIR$/scales/src/test" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/scales/src/test/resources" />
-      <recent name="$PROJECT_DIR$/scales/src/test" />
-      <recent name="$PROJECT_DIR$/scales/src/test/java" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -123,8 +69,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Launcher">
+  <component name="RunManager" selected="JUnit.DeleteTest">
     <configuration name="Launcher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="AWS_S3_SECRET_KEY" value="0TqEyG0lijEqzPvp9RVhjN0N6mnlk1KuOIW4NyIy" />
+        <env name="AWS_S3_ACCESS_KEY" value="AKIAJEEKHMLZQDW6MPVA" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="scales.Launcher" />
       <module name="photo-scale-microservice.scales.main" />
       <option name="PROGRAM_PARAMETERS" value="run scales.verticles.MainVerticle -cluster" />
@@ -135,7 +85,25 @@
         <option name="IS_IGNORE_MISSING_FILES" value="false" />
         <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
         <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
           <ENTRY IS_ENABLED="true" PARSER="env" PATH=".env" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="scales.Launcher" />
+      <module name="scales" />
+      <option name="PROGRAM_PARAMETERS" value="run scales.verticles.MainVerticle -cluster" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
           <ENTRY IS_ENABLED="true" PARSER="runconfig" />
         </ENTRIES>
       </extension>
@@ -209,8 +177,8 @@
     <list>
       <item itemvalue="Application.Launcher" />
       <item itemvalue="JUnit.ScaleTest" />
-      <item itemvalue="JUnit.ResizeTest" />
       <item itemvalue="JUnit.DeleteTest" />
+      <item itemvalue="JUnit.ResizeTest" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -218,62 +186,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a867259b-05d1-46c1-a3e8-6c85939fdce9" name="Default Changelist" comment="" />
-      <created>1577221528687</created>
+      <changelist id="4425971f-81c7-4a19-8ba7-467a125622ec" name="Default Changelist" comment="" />
+      <created>1578003001942</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1577221528687</updated>
+      <updated>1578003001942</updated>
     </task>
-    <task id="LOCAL-00001" summary="Fixed bugs, refactored, spliced into multiple functions">
-      <created>1577224967700</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1577224967700</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Removed redundant dependencies and other useless code">
-      <created>1577226320824</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1577226320824</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added testing abstract base">
-      <created>1577283273441</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1577283273441</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added main testing method, after all operations was recorded">
-      <created>1577318047979</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1577318047979</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Finished integration tests">
-      <created>1577465907547</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1577465907548</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Finished unit tests and tests as whole">
-      <created>1577470270069</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1577470270069</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added unit tests and updated readme">
-      <created>1577471400878</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1577471400878</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -288,36 +206,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed bugs, refactored, spliced into multiple functions" />
-    <MESSAGE value="Removed redundant dependencies and other useless code" />
-    <MESSAGE value="Added testing abstract base" />
-    <MESSAGE value="Added main testing method, after all operations was recorded" />
-    <MESSAGE value="Finished integration tests" />
-    <MESSAGE value="Finished unit tests and tests as whole" />
-    <MESSAGE value="Added unit tests and updated readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added unit tests and updated readme" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/scales/src/main/java/scales/verticles/ConfigurationVerticle.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/scales/src/main/java/scales/verticles/ApiVerticle.java</url>
-          <line>133</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/photo_scale_microservice$ScaleTest.ic" NAME="ScaleTest Coverage Results" MODIFIED="1577454209766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/photo_scale_microservice$Launcher.ic" NAME="Launcher Coverage Results" MODIFIED="1577998709034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
