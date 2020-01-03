@@ -101,9 +101,9 @@ To run project you need to start kafka with configuration from `scales/src/main/
 Here is my normal usage of this commands(assuming topics are previously created):
 1. `./start1ZooKeeper.sh`
 2. `./start2Kafka.sh`
-3. `./send2Topic.sh userpicsTopic`
-4. `./send2Topic.sh photosTopic`
-5. `./listenTopic.sh sagasTopic`
+3. `./send2Topic.sh local userpicsTopic`
+4. `./send2Topic.sh local photosTopic`
+5. `./listenTopic.sh local sagasTopic`
 
 
 
@@ -144,13 +144,17 @@ types of requests are being fired on one photo simultaneously.
 
 # Running in docker
 
-There are special script in the root to run docker: `dockerscript.sh`
+Just run `docker-compose up` and you are done, well it is not THAT easy, but it is easy indeed.
+Firstly you need to read `.env_exmpl` file and do what it tolds you.
+Then you can steadily run `docker-compose up`, it will perform this ones for you:
+1. Setting up zookeeper
+2. Setting up kafka
+3. Setting up vertx(running program)
 
-It has two uses:
+Now you need to connect to internal docker kafka, so that you can send some info inside. 
+Use `misc/kafka.../send2Topic.sh` and `misc/kafka.../listenTopic.sh` in such a way(to send to internal kafka):
+1. `./send2Topic.sh userpicsTopic`
+2. `./send2Topic.sh photosTopic`
+3. `./listenTopic.sh sagasTopic`
 
-1. `./dockerscript.sh up` -- runs it in the host network
-2. `./dockerscript.sh bridge up` -- runs it in the bridge network `10.50.0.0/16`
-
-Host kafka should be responding on port `9092`. Which can be altered in config.
-
-To customize container, you can edit files: `Dockerfile`, `docker-compose.yml`.
+Go on, just write `put:some_photo.jpg` or `del:other_photo.jpg`. But this photos should at least be on your `S3`.
