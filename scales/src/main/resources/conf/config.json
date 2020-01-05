@@ -25,7 +25,7 @@
   "extension": "jpg",
 
   "kafka" : {
-    "host" : "localhost",
+    "host" : "10.50.5.1",
     "port" : "9092",
     "photosTopic" : "photosTopic",
     "userpicsTopic" : "userpicsTopic",

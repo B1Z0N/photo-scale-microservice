@@ -1,12 +1,95 @@
 version: '3.7'
 
+
 networks:
   scalenet:
-    ipam: 
-      config: 
+    driver: bridge
+    ipam:
+      config:
         - subnet: 10.50.0.0/16
 
+
+
 services:
+  zoo:
+    image: confluentinc/cp-zookeeper:latest
+    restart: "on-failure"
+    hostname: zoo
+    container_name: zoo
+    networks:
+      scalenet:
+        ipv4_address: 10.50.3.1
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_MAX_CLIENT_CNXNS: 100
+      ZOOKEEPER_GLOBAL_OUTSTANDING_LIMIT: 1000
+      ZOOKEEPER_SNAP_COUNT: 100000
+      ZOOKEEPER_AUTOPURGE_SNAP_RETAIN_COUNT: 3
+      ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: 0
+      ZOOKEEPER_4LW_COMMANDS_WHITELIST: '*'
+      KAFKA_HEAP_OPTS: '-Xms1g -Xmx1g'
+      LOG_DIR: /var/log/zookeeper
+      ZOOKEEPER_DATA_DIR: /var/lib/zookeeper
+      ZOOKEEPER_SERVER_ID: 1
+    volumes:
+      - ./servers/zoo/node-1/lib/data:/var/lib/zookeeper/data
+      - ./servers/zoo/node-1/lib/log:/var/lib/zookeeper/log
+      - ./servers/zoo/node-1/log:/var/log/zookeeper
+    logging:
+      driver: "none"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    restart: "on-failure"
+    hostname: kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+    networks:
+      scalenet:
+        ipv4_address: 10.50.5.1
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 10.50.3.1:2181
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://10.50.5.1:9092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      KAFKA_LOG4J_LOGGERS: "kafka.comtroller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      KAFKA_HEAP_OPTS: '-Xms4g -Xmx4g'
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_NUM_PARTITIONS: 1
+      KAFKA_LOG_RETENTION_HOURS: 168
+      KAFKA_OFFSETS_RETENTION_MINUTES: 10080
+      KAFKA_OFFSETS_TOPIC_NUM_PARTITIONS: 48
+      KAFKA_OFFSETS_TOPIC_REPLICATIONS_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 2
+      KAFKA_TRANSACTION_STATE_LOG_NUM_PARTITIONS: 48
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_DATA_DIR: /var/lib/kafka
+      LOG_DIR: /var/log/kafka
+      CONFLUENT_METRICS_ENABLE: 'false'
+      CONFLUENT_SUPPORT_CUSTOMERS_ID: 'anonymous'
+      CONFLUENT_SUPPORT_METRICS_ENABLE: 0
+    volumes:
+      - ./servers/kafka/node-1/data:/var/lib/kafka/data
+      - ./servers/kafka/node-1/log:/var/log/kafka
+      - ./scripts:/opt/scripts
+    depends_on:
+      - zoo
+    links:
+      - zoo
+    logging:
+      driver: "none"
+
   config:
     build: .
     hostname: scls
@@ -21,4 +104,6 @@ services:
     command: ["java -jar scales-0.1.0-all.jar run scales.verticles.MainVerticle -cluster -conf /opt/server/conf/config.json"]
     networks:
       scalenet:
-        ipv4_address: 10.50.1.1
+        ipv4_address: 10.50.1.3
+    depends_on: 
+      - kafka
