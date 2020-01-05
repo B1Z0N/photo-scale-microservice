@@ -30,8 +30,8 @@ abstract class ScaleGeneralTest {
 
     // config data
 
-    private String mKafkaHost;
-    private String mKafkaPort;
+    private String mKafkaHost = "localhost";
+    private String mKafkaPort = "19092";
     private String mPutRequest;
     private String mDelRequest;
     private String mUserpicsTopic;
@@ -240,8 +240,8 @@ abstract class ScaleGeneralTest {
 
 
     private void setupFromConfig(@Nonnull Config config, Promise<Void> start) {
-        mKafkaHost = config.getKafkaHost();
-        mKafkaPort = config.getKafkaPort();
+//        mKafkaHost = config.getKafkaHost();
+//        mKafkaPort = config.getKafkaPort();
         mUserpicsTopic = config.getUserpicsTopic();
         mPhotosTopic = config.getPhotosTopic();
         mDelRequest = config.getDeleteRequest();
